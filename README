@@ -1,6 +1,6 @@
 Sequence to Medical Phenotypes (STMP) is a pipeline featuring variant annotation, prioritization, pharmacogenomics, and tools for analyzing genomic trios (mother, father, child).
 
-**Release versions can be downloaded from https://github.com/AshleyLab/stmp/releases.**
+** Release versions can be downloaded from https://github.com/AshleyLab/stmp/releases **
 
 The toolkit currently uses an SQLite database for added portability.
 
