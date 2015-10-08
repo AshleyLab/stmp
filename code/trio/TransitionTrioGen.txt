@@ -1,0 +1,3 @@
+self	nonself	nonself
+nonself	self	nonself
+nonself	nonself	self

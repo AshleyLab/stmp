@@ -1,0 +1,6 @@
+self	nonself	nonself	nonself	nonself	nonself
+nonself	self	nonself	nonself	nonself	nonself
+nonself	nonself	self	nonself	nonself	nonself
+nonself	nonself	nonself	self	nonself	nonself
+nonself	nonself	nonself	nonself	self	nonself
+nonself	nonself	nonself	nonself	nonself	self

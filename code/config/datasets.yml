@@ -1,0 +1,129 @@
+default:
+    Build: GRCh37
+    Dataset_Path: '../db/datasets/' # where datasets will be downloaded before loading into our database (path is relative to the location of stmp.py)
+#    Delimiters_for_multiple_matches: ['||'] # currently unused but may be used in a future release
+
+# pharmgkb requires a license to download. Uncomment the below lines and add the path to the downloaded file under Source if you would like to import and annotate with this dataset.
+#pharmgkb:
+#  License:
+#    Type: Academic
+#    URL: https://www.pharmgkb.org/downloads/
+#  Annotation: hg19_pgkb
+#  Source: # requires license to download. Add the path to the downloaded file if you have such a license and would like to use this dataset.
+##  Class: #TBD
+#  AnnotationType: region
+#  Description: pharmGKB basic clinical annotation (drug, class of association, evidence
+#    level)_ Description of evidence level:http://www_pharmgkb_org/page/clinAnnLevels
+#  Comment:
+#  ColumnHeaders: ['', 'chr', 'start', 'stop', 'drugInfo']
+#  DataType: ['', varchar(10), int, int, varchar(255)]
+
+refseq:
+  Annotation: refseq
+  Source: 'http://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/refFlat.txt.gz'
+#  Class: ['function'] # for now
+  AnnotationType: region
+  Description: 
+  Comment: ''
+  ColumnHeaders: ['geneName', 'name', 'chrom', 'strand', 'start', 'end', 'cdsStart', 'cdsEnd', 'exonCount', 'exonStarts', 'exonEnds'] # here start = txStart and end = txEnd, as these encompass a larger region. We leave cdsStart and cdsEnd as they are.
+  DataType: [string, string, string, varchar(1), int, int, int, int, int, int, int]
+
+# Core datasets required for tiering
+clinvar:
+  Annotation: clinvar
+  Source: 'ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/clinvar.vcf.gz'
+#  Class: ['pgx'] # for now
+  AnnotationType: point
+  Description: 
+    - TODO: variant classification according to clinvar vcf in dbvar (can add the appropriate info tag and type to the ColumnHeaders and DataType fields below if desired)
+    - variant disease annotation according to clinvar vcf in dbvar
+    - variant disease review status in clinvar vcf in dbvar
+    - TODO: variant accessionID according to clinvar vcf in dbvar (see above)
+    - TODO: variant data source according to clinvar vcf in dbvar (see above)
+    - TODO: variant data source ID according to clinvar vcf in dbvar (see above)
+  Comment: ''
+  ColumnHeaders: [CLNSIG, CLNREVSTAT] # info tags in VCF file
+  DataType: [int, varchar(255)]
+
+#hapmap2and3_CEU:
+#  Annotation: hg19_hapmap2and3_CEU
+#  Source: '' #TBA
+#  Category: allele_frequency
+#  Description: CEU hapmap population allele frequency
+#  Comment: lifted over from hg18
+#  Delimiters_for_multiple_matches: ''
+#  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
+#  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
+
+popfreq_all:
+    Annotation: hg19_popfreq_all_20150413
+    Source: 'http://www.openbioinformatics.org/annovar/download/hg19_popfreq_all_20150413.txt.gz'
+#    Class: #TBA
+    AnnotationType: region
+    Description: 
+    Comment: ''
+    ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'pop_freq_max', "1000g_all", "1000g_afr", "1000g_amr", "1000g_eas", "1000g_eur", "1000g_sas", "exac_all", "exac_afr", "exac_amr", "exac_eas", "exac_fin", 'exac_nfe', 'exac_oth', 'exac_sas', 'esp6500siv2_all', 'esp6500siv2_aa', 'esp6500siv2_ea', 'cg46']
+    DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float']
+
+cg69:
+  Annotation: hg19_cg69
+  Source: 'http://www.openbioinformatics.org/annovar/download/hg19_cg69.txt.gz'
+  AnnotationType: region
+  Category: frequency
+  Description: Complete genomics public panel (69 subjects, including 17 member CEPH pedigree)
+  Comment: ''
+  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
+  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
+
+#hapmap2and3_CHB:
+#  Annotation: hg19_hapmap2and3_CHB
+#  Source: '' # TBA
+#  Category: allele_frequency
+#  Description: CHB hapmap population allele frequency
+#  Comment: lifted over from hg18
+#  Delimiters_for_multiple_matches: ''
+#  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
+#  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
+
+#hapmap2and3_YRI:
+#  Annotation: hapmap2and3_YRI
+#  Category: allele_frequency
+#  Description: YRI hapmap population allele frequency
+#  Comment: lifted over from hg18
+#  Delimiters_for_multiple_matches: ''
+#  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
+#  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
+
+#phastCons:
+#  Annotation: hg19_phastConsElements46way
+#  Category: position
+#  Description:
+#    - phastCons most conserved element score, 0-1000
+#    - phastCons most conserved element lod score
+#  Comment: DOES NOT match alt allele from vcf file to risk variant
+#  Delimiters_for_multiple_matches: '|'
+#  ColumnNames: ['chrom', 'start', 'stop', 'MSA_MCE_score', 'MSA_MCE_lod']
+#  DataType: ['varchar(10)', 'int', 'int', 'varchar(255)', 'varchar(500)']
+
+dbnsfp:
+  Annotation: hg19_ljb26_all
+  Source: 'http://www.openbioinformatics.org/annovar/download/hg19_ljb26_all.txt.gz'
+  Category: position
+  Description: 
+      - "placental subset of site-wise conservation score PhyloP score from dbNSFP 0-1"
+      - "placental subset of site-wise conservation score PhyloPprediction fromdbNSFP C=conserved, N=neutral"
+      - "SIFT score from dbNSFP, 0-1"
+      - "SIFT prediction, D=damaging, T=tolerated"
+      - "HumDiv trained PolyPhen scores from dbNSFP, 0-1"
+      - "HumDiv trained PolyPhen prediction from dbNSFP, D=probably damaging, P=possibly damaging, B=benign"
+      - "LRT test of codon constraint from dbNSFP 0-1"
+      - "LRT prediction of effect of NS variant from dbNSFP, D=deleterious, N=neutral"
+      - "Mutation Taster score for ensembl NS SNVs from dbNSFP 0-1"
+      - 'Mutation Taster score for ensembl NS SNVs from dbNSFP, A=disease causing automatic, D=disease causing, N = polymoprhism, P = polymorphism automatic '
+      - GERP++ predictions for NS SNVs from dbNSFP
+  Comment: ['on dbNSFP scale, larger score is more conserved', 'http://onlinelibrary_wiley_com/doi/10_1002/humu_21517/full']
+  Delimiters_for_multiple_matches: ''
+  ColumnNames: ["chrom", "start", "end", "ref", "alt", "SIFT_score", "SIFT_pred", "Polyphen2_HDIV_score", "Polyphen2_HDIV_pred", "Polyphen2_HVAR_score", "Polyphen2_HVAR_pred", "LRT_score", "LRT_pred", "MutationTaster_score", "MutationTaster_pred", "MutationAssessor_score", "MutationAssessor_pred", "FATHMM_score", "FATHMM_pred", "RadialSVM_score", "RadialSVM_pred", "LR_score", "LR_pred", "VEST3_score", "CADD_raw", "CADD_phred", "GERP++_RS", "phyloP46way_placental", "phyloP100way_vertebrate", "SiPhy_29way_logOdds"]
+  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'double', 'double', 'double', 'double', 'double', 'double']
+
+# If you would like to import additional datasets for use in annotation, add them below. To find out more about the information required for each dataset listed in this file, see the datasets above and datasets_spec.yml.

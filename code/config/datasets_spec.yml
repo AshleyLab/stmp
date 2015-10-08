@@ -1,0 +1,19 @@
+default:
+    Build: GRCh37
+    Dataset_Path: 'datasets/' # where datasets will be downloaded before loading into our database
+    Delimiters_for_multiple_matches: ['||'] # potentially check if this comes up in any dataset during load and raise a warning/adjust it if it does
+    Parameter_Annovar: # annovar default parameters
+    
+#Template dataset:
+    Annotation: What the dataset should be called in our database. This will be prepended to each column in the annotated output file (e.g. for Annotation=clinvar, output columns would be clinvar_clnsig, clinvar_clnrevstat, etc.)
+    Source: URL/path to locally downloaded source file
+    Class: (optional) any combination of ['function','freq', 'regulatory', 'low-confidence', 'conservation', 'tolerance', 'function_score', 'somatic', 'pgx', 'clinical'] 
+    AnnotationType: (optional) one of ['Annovar'|'Snpeff'|'region'|'point'] 
+    ColumnHeaders: ordered list of columns named as you would like them to appear in the annotated output. To exclude a column, just give it a blank name '' (e.g. ['', 'chr', 'start', 'stop', ...]. If dataset is a VCF, just specify the names of the tags you'd like to import from the INFO column. Standard VCF columns (e.g. chr, start, ID, ref, alt, qual, filter) will be imported automatically.
+    DataType: ordered list of data types for each of the columns specified above. If a column is excluded, the datatype should also be given as a blank string ''. For VCF datasets, just specify datatypes of the INFO tags given above -- datatypes for the other columns will be taken care of automatically. Note that sqlite3 does not check data types so STMP will not throw an error if the actual data does not match the given data type.
+    StartingLine: (optional) Line in the dataset file to start the import at (default = 0). Use this if headers are not prefixed with '#'.
+    Description: (optional) description of dataset
+    License: (optional)
+        # Type: (optional) e.g. academic
+        # URL: (optional) URL of dataset homepage/license page
+    Comment: (optional) any other comments
