@@ -102,7 +102,7 @@ cg69:
 #    - phastCons most conserved element lod score
 #  Comment: DOES NOT match alt allele from vcf file to risk variant
 #  Delimiters_for_multiple_matches: '|'
-#  ColumnNames: ['chrom', 'start', 'stop', 'MSA_MCE_score', 'MSA_MCE_lod']
+#  ColumnHeaders: ['chrom', 'start', 'stop', 'MSA_MCE_score', 'MSA_MCE_lod']
 #  DataType: ['varchar(10)', 'int', 'int', 'varchar(255)', 'varchar(500)']
 
 dbnsfp:
@@ -123,7 +123,7 @@ dbnsfp:
       - GERP++ predictions for NS SNVs from dbNSFP
   Comment: ['on dbNSFP scale, larger score is more conserved', 'http://onlinelibrary_wiley_com/doi/10_1002/humu_21517/full']
   Delimiters_for_multiple_matches: ''
-  ColumnNames: ["chrom", "start", "end", "ref", "alt", "SIFT_score", "SIFT_pred", "Polyphen2_HDIV_score", "Polyphen2_HDIV_pred", "Polyphen2_HVAR_score", "Polyphen2_HVAR_pred", "LRT_score", "LRT_pred", "MutationTaster_score", "MutationTaster_pred", "MutationAssessor_score", "MutationAssessor_pred", "FATHMM_score", "FATHMM_pred", "RadialSVM_score", "RadialSVM_pred", "LR_score", "LR_pred", "VEST3_score", "CADD_raw", "CADD_phred", "GERP++_RS", "phyloP46way_placental", "phyloP100way_vertebrate", "SiPhy_29way_logOdds"]
+  ColumnHeaders: ["chrom", "start", "end", "ref", "alt", "SIFT_score", "SIFT_pred", "Polyphen2_HDIV_score", "Polyphen2_HDIV_pred", "Polyphen2_HVAR_score", "Polyphen2_HVAR_pred", "LRT_score", "LRT_pred", "MutationTaster_score", "MutationTaster_pred", "MutationAssessor_score", "MutationAssessor_pred", "FATHMM_score", "FATHMM_pred", "RadialSVM_score", "RadialSVM_pred", "LR_score", "LR_pred", "VEST3_score", "CADD_raw", "CADD_phred", "GERP++_RS", "phyloP46way_placental", "phyloP100way_vertebrate", "SiPhy_29way_logOdds"]
   DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'double', 'double', 'double', 'double', 'double', 'double']
 
 # If you would like to import additional datasets for use in annotation, add them below. To find out more about the information required for each dataset listed in this file, see the datasets above and datasets_spec.yml.
