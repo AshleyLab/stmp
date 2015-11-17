@@ -20,28 +20,42 @@ Example:
 import vcfUtils
 import vcfHeaders
 import sys
+import os
+import yaml_utils
+import yaml_keys
+import general_utils
+import xlwt # for exporting tiered results as Excel workbook (XLS file)
+import stmp_consts
 
 #function for tier 1,2,3,4 targeted calls in specified gene regions, infile is from stanovar vcf
 # pop = population our sample comes from
 # freq = frequency cutoff
-def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds, freq=0.01, geneNameCol=82):
+def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds):
+    # populate parameters from YAML module specifications
+    freq = yaml_cmds[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTRareAlleleFreqCutoff]
+    gene_name_col_header = yaml_cmds[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTGeneNameCol]
+    functional_column_headers = yaml_utils.convertColumns(yaml_cmds[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTFunctionalCols], yaml_cmds)
+    
     #open input and output files and initialize counters and lists for background populations
     filein = open(in_file, "r")
     output_log = open(out_stem+".metrics", "w")
     output_log.write("Metrics for stmp filtering, all variants from reference\n")
     header = filein.readline().rstrip("\n")
     headlist = header.split("\t")
-    g_file = open(gene_file, "r")
+    if(gene_file != None):
+        g_file = open(gene_file, "r")
+    fileoutrare = open(out_stem+'.rare.txt', 'w')
     fileout0 = open(out_stem+".tier0.txt", 'w')
     fileout1 = open(out_stem+".tier1.txt", "w")
     fileout2 = open(out_stem+".tier2.txt", "w")
     fileout3 = open(out_stem+".tier3.txt", "w")
     fileout4 = open(out_stem+".tier4.txt", "w")
-    fileout0.write(header + "\n")
-    fileout1.write(header + "\n")
-    fileout2.write(header + "\n")
-    fileout3.write(header + "\n")
-    fileout4.write(header + "\n")
+    fileoutrare.write(header+"\n")
+    fileout0.write("tier\t"+header + "\n")
+    fileout1.write("tier\t"+header + "\n")
+    fileout2.write("tier\t"+header + "\n")
+    fileout3.write("tier\t"+header + "\n")
+    fileout4.write("tier\t"+header + "\n")
     total = 0
     damaging0 = 0
     damaging1 = 0
@@ -51,165 +65,114 @@ def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds, freq=0.01, geneN
     target_genes = 0
     rarevars = 0
     
-    if (pop == "CEU") or (pop == "c"):
-        backpoplist = vcfUtils.get_listindex(headlist, [vcfHeaders.kHapMap2And3_CEU, vcfHeaders.k1000g_all, vcfHeaders.k1000g_eur, vcfHeaders.kCg69, vcfHeaders.kEsp6500si_ALL, vcfHeaders.kEsp6500si_EA])
-    elif (pop == "ASN") or (pop == "a"):
-        backpoplist = vcfUtils.get_listindex(headlist, [vcfHeaders.k_hapmap2and3_CHB, vcfHeaders.k1000g_all, vcfHeaders.kCg69, vcfHeaders.kEsp6500si_ALL])
-    elif (pop == "AFR") or (pop == "f"):
-        backpoplist = vcfUtils.get_listindex(headlist, [vcfHeaders.k_hapmap2and3_YRI, vcfHeaders.k1000g_all, vcfHeaders.k1000g_afr, vcfHeaders.kCg69, vcfHeaders.kEsp6500si_ALL, vcfHeaders.k_esp6500si_AA])
-    else:
-        print >> sys.stderr, "Error in diseaseUtils.tiers_allvars - Population specified is not supported"
-        exit(1)
+    allele_freq_cols = yaml_utils.convertColumns(yaml_cmds[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTAlleleFreqCols], yaml_cmds) #convertTieringColumns(yaml_cmds)
+    
+    backpoplist = vcfUtils.get_listindex(headlist, allele_freq_cols)
 
     #initialize gene list for region prioritization
-    genes = {}
-    for line in g_file:
-        linelist = line.split("\t")
-        gene = linelist[1]
-        
-        if genes.has_key(gene) == 0:
-            genes[gene] = linelist[2]+":"+linelist[3]
-        else:
-            genes[gene] = genes[gene]+";"+linelist[2]+":"+linelist[3]
+    if(gene_file != None):
+        genes = {}
+        for line in g_file:
+            if line.startswith('#'):
+                continue
+            linelist = line.rstrip("\n").split("\t")
+            gene = linelist[0]
+            
+            if not genes.has_key(gene):
+                genes[gene] = 1
+            else:
+                # debug: uncomment if not debugging
+#                 print 'warning: duplicate gene ' + gene + ' in gene list ' + gene_file
+                None
     
     #iterate over input file and parse into tiers
     for line in filein:
         total+=1
-        if ("PASS" in line) and ("#" in line) == 0 and vcfUtils.is_rare(line, freq, backpoplist):
+        if (("PASS" in line) and ("#" in line) == 0 and vcfUtils.is_rare(line, freq, backpoplist)
+            and not vcfUtils.contains_text('MT', line, [stmp_consts.vcf_col_header_chrom], headlist, yaml_cmds, case_sensitive=False)
+            and not vcfUtils.contains_text('ncRNA', line, functional_column_headers, headlist, yaml_cmds, case_sensitive=True)
+            ):
             rarevars+=1
-            linelist = line.split("\t")
+            fileoutrare.write(line)
+            linelist = line.rstrip("\n").split("\t")
             # for now
-            tmp = linelist[geneNameCol].split(',')
+            tmp = linelist[headlist.index(gene_name_col_header)].split(',')
             gene = tmp[0]
 
-            if genes.has_key(gene):
+            if gene_file == None or genes.has_key(gene):
                 target_genes+=1
                 # tier 0: clinvar
-                if(vcfUtils.isClinvarPathogenicOrLikelyPathogenic(line, headlist, yaml_cmds)):
-                    fileout0.write(line)
+                if(vcfUtils.isClinvarPathogenicOrLikelyPathogenic(line, headlist, yaml_cmds) and not vcfUtils.contains_text('0', line, [yaml_cmds['clinvar'][yaml_keys.kDAnnotation]+'_'+vcfHeaders.kClinvarStarHeader], headlist, yaml_cmds, case_sensitive=False)):
+                    fileout0.write("0\t"+line)
                     damaging0+=1
-                elif vcfUtils.is_functional(line, "stoploss stopgain splicing frameshift"):
-                    fileout1.write(line)
-                    damaging1+=1           
-                elif (vcfUtils.is_functional(line, "nonsynonymous") and vcfUtils.is_conserved(line, headlist, 2)) or ("nonframeshift" in line):
-                    fileout2.write(line)
-                    damaging2+=1
-                elif vcfUtils.is_functional(line, "nonsynonymous") and vcfUtils.is_pathogenic(line, headlist, 2):
-                    fileout3.write(line)
-                    damaging3+=1
-                else:
-                    fileout4.write(line)
-                    damaging4+=1
-
-    output_log.write("Total variants queried: "+str(total)+"\n")
-    output_log.write("Rare variants queried: "+str(rarevars)+"\n")
-    output_log.write("Rare variants in target genes: "+str(target_genes)+"\n")
-    output_log.write("Candidate variants, tier 0: "+str(damaging0)+"\n")
-    output_log.write("Candidate variants, tier 1: "+str(damaging1)+"\n")
-    output_log.write("Candidate variants, tier 2: "+str(damaging2)+"\n")
-    output_log.write("Candidate variants, tier 3: "+str(damaging3)+"\n")
-    output_log.write("Candidate variants, tier 4: "+str(damaging4)+"\n")
-
-    filein.close()
-    g_file.close()
-    fileout0.close()
-    fileout1.close()
-    fileout2.close()
-    fileout3.close()
-    fileout4.close()
-
-
-#function tier 1,2,3,4 variants from reference in specified gene regions, default clinvar - starts from stanovar vcf
-def tiers_target(in_file, out_stem, gene_file, pop, yaml_cmds, freq=0.01):
-    #open input and output files and initialize counters and lists for background populations
-    filein = open(in_file, "r")
-    g_file = open(gene_file, "r")
-    header = filein.readline().rstrip("\n")
-    headlist = header.split("\t")
-    output_log = open(out_stem+".metrics", "w")
-    output_log.write("Metrics for stmp filtering, clinvar variants\n")
-    fileout0 = open(out_stem+".tier0.txt", 'w')
-    fileout1 = open(out_stem+".tier1.txt", "w")
-    fileout2 = open(out_stem+".tier2.txt", "w")
-    fileout3 = open(out_stem+".tier3.txt", "w")
-    fileout4 = open(out_stem+".tier4.txt", "w")
-    fileout1.write(header + "\n")
-    fileout2.write(header + "\n")
-    fileout3.write(header + "\n")
-    fileout4.write(header + "\n")
-    total = 0
-    damaging0 = 0
-    damaging1 = 0
-    damaging2 = 0
-    damaging3 = 0
-    damaging4 = 0
-    target_genes = 0
-
-    # TODO: generate these headers as dynamically as possible using info in the YAML.
-    # TODO test to make sure each of these headers actually exists in the annotated file and warn if any are missing
-    if (pop == "CEU") or (pop == "c"):
-        backpoplist = vcfUtils.get_listindex(headlist, "hg19_hapmap2and3_CEU_info hg19_popfreq_all_20150413_1000g_all hg19_popfreq_all_20150413_1000g_eur hg19_cg69_info hg19_esp6500si_all_info hg19_popfreq_all_20150413_esp6500siv2_all hg19_esp6500si_ea_info hg19_popfreq_all_20150413_esp6500siv2_ea")
-#         backpoplist = vcfUtils.get_listindex(headlist, "hapmap2and3_CEU 1000g2010nov_ALL 1000g2011may_ALL 1000g2012apr_ALL 1000g2012apr_EUR cg69 esp6500si_ALL esp6500si_EA")
-    elif (pop == "ASN") or (pop == "a"):
-        backpoplist = vcfUtils.get_listindex(headlist, "hg19_hapmap2and3_CHB_info hg19_popfreq_all_20150413_1000g_all 1000g2012apr_ASN hg19_cg69_info hg19_esp6500si_all_info hg19_popfreq_all_20150413_esp6500siv2_all") # WARNING missing 1000g_ASN in curent datasets
-#         backpoplist = vcfUtils.get_listindex(headlist, "hapmap2and3_CHB 1000g2010nov_ALL 1000g2011may_ALL 1000g2012apr_ALL 1000g2012apr_ASN cg69 esp6500si_ALL")
-    elif (pop == "AFR") or (pop == "f"):
-        backpoplist = vcfUtils.get_listindex(headlist, "hg19_hapmap2and3_YRI_info hg19_popfreq_all_20150413_1000g_all hg19_popfreq_all_20150413_1000g_afr hg19_cg69_info hg19_esp6500si_all_info hg19_popfreq_all_20150413_esp6500siv2_all hg19_esp6500si_aa_info hg19_popfreq_all_20150413_esp6500siv2_aa")
-    else:
-        print >> sys.stderr, "Error in diseaseUtils.tiers_allvars - Population specified is not supported"
-        exit(1)
-
-    #initialize gene list for region prioritization
-    genes = {}
-    for line in g_file:
-        linelist = line.split("\t")
-        gene = linelist[1]
-        if genes.has_key(gene) == 0:
-            genes[gene] = linelist[2]+":"+linelist[3]
-        else:
-            genes[gene] = genes[gene]+";"+linelist[2]+":"+linelist[3]
-
-    #iterate over input file and parse into tiers
-    for line in filein:
-        total+=1
-        if ("PASS" in line) and (("#" in line) == 0) and (("0/1" in line) or ("1/1" in line)):
-            linelist = line.split("\t")
-            gene = linelist[1]
-            if genes.has_key(gene):
-                target_genes+=1
-                # tier 0: clinvar
-                if(vcfUtils.isClinvarPathogenicOrLikelyPathogenic(line, headlist, yaml_cmds)):
-                    fileout0.write(line)
-                    damaging0+=1
-                elif vcfUtils.is_functional(line, "stoploss stopgain splicing frameshift"):
-                    fileout1.write(line)
+                elif vcfUtils.is_functional(line, "stoploss stopgain splicing frameshift", functional_column_headers, headlist):
+                    fileout1.write("1\t"+line)
                     damaging1+=1
-                elif vcfUtils.is_rare(line, freq, backpoplist):
-                    fileout2.write(line)
+                elif ((vcfUtils.is_functional(line, "nonsynonymous", functional_column_headers, headlist) and vcfUtils.is_conserved(line, headlist, yaml_cmds)) or vcfUtils.is_functional(line, "nonframeshift", functional_column_headers, headlist)):
+                    fileout2.write("2\t"+line)
                     damaging2+=1
-                elif vcfUtils.is_functional(line, "nonframeshift nonsynonymous"):
-                    fileout3.write(line)
+                elif vcfUtils.is_functional(line, "nonsynonymous", functional_column_headers, headlist) and vcfUtils.is_pathogenic(line, headlist, yaml_cmds):
+                    fileout3.write("3\t"+line)
                     damaging3+=1
-                else:
-                    fileout4.write(line)
+                elif vcfUtils.tolerance_pass(line, headlist, yaml_cmds):
+                    fileout4.write("4\t"+line)
                     damaging4+=1
+                # else ignore variant
 
     output_log.write("Total variants queried: "+str(total)+"\n")
-    output_log.write("Total variants in gene list: "+str(target_genes)+"\n")
-    output_log.write("Candidate variants, tier 0: "+str(damaging0)+"\n")
-    output_log.write("Candidate variants, tier 1: "+str(damaging1)+"\n")
-    output_log.write("Candidate variants, tier 2: "+str(damaging2)+"\n")
-    output_log.write("Candidate variants, tier 3: "+str(damaging3)+"\n")
-    output_log.write("Candidate variants, tier 4: "+str(damaging4)+"\n")
+    output_log.write("Rare variants (allele freq < {freq}) queried: ".format(freq=str(freq))+str(rarevars)+"\n")
+    output_log.write("Rare variants in {num} target genes: ".format(num=str(len(genes)) if gene_file != None else '')+str(target_genes)+"\n")
+    output_log.write("Candidate variants, tier 0 (rare clinvar pathogenic or likely pathogenic variants): "+str(damaging0)+"\n")
+    output_log.write("Candidate variants, tier 1 (rare LOF variants -- stoploss, stopgain, splicing, and frameshift): "+str(damaging1)+"\n")
+    output_log.write("Candidate variants, tier 2 (rare nonframeshift or (nonsynonymous and conserved) variants): "+str(damaging2)+"\n")
+    output_log.write("Candidate variants, tier 3 (rare nonsynonymous pathogenic variants): "+str(damaging3)+"\n")
+    output_log.write("Candidate variants, tier 4 (all other rare variants with ExAC tolerance z-score (syn_z or mis_z or lof_z) > 2): "+str(damaging4)+"\n")
 
     filein.close()
-    g_file.close()
+    if(gene_file != None):
+        g_file.close()
+    fileoutrare.close()
     fileout0.close()
     fileout1.close()
     fileout2.close()
     fileout3.close()
     fileout4.close()
+
+
+# converts tiered output txt files to a single XLS worksheet (with a single sheet per output dir, and variants sorted by tier within each sheet)
+def tiers2xls(tier_dirs, output_dir):
+    # make new excel output worksheet
+    wb = xlwt.Workbook()
+     
+    for dir in tier_dirs:
+        dirname = general_utils.get_file_or_dir_name(dir)
+        sheetname = dirname
+        sheet = wb.add_sheet(sheetname)
+        rowNum = 0 # number of row to write to within excel sheet
+        tier0file = os.path.join(dir, 'tiering_allvars.tier0.txt')
+        tier1file = os.path.join(dir, 'tiering_allvars.tier1.txt')
+        tier2file = os.path.join(dir, 'tiering_allvars.tier2.txt')
+        tier3file = os.path.join(dir, 'tiering_allvars.tier3.txt')
+        tier4file = os.path.join(dir, 'tiering_allvars.tier4.txt')
+        tierFiles = [tier0file, tier1file, tier2file, tier3file, tier4file]
+        
+        for idx,tierFile in enumerate(tierFiles):
+            tierh = open(tierFile, 'r')
+            if(idx != 0): # skip header for all files except the first one
+                tierh.readline()
+                
+            for line in tierh:
+                lineContents = line.rstrip("\n").split("\t")
+                for col,value in enumerate(lineContents):
+                    sheet.write(rowNum, col, value)
+                
+                rowNum += 1
     
+    #save the excel file
+    out_path = os.path.join(output_dir, 'tiered_output.xls')
+    wb.save(out_path)
+    return out_path
+
     
 #filter all by local allele frequency
 def filter_sfs(infile, sfs_file, outfile, thresh):

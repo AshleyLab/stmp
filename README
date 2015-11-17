@@ -16,6 +16,7 @@ Other dependencies (these must be in the user or system PATH before running STMP
 
 Python dependencies
 - Pyyaml version 3.11
+- xlwt version 1.0.0 (for exporting results to an Excel file)
 
 -----------------------------------------------------------
 Installation Instructions

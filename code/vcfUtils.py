@@ -1,5 +1,4 @@
-#Rick Dewey 5.22.12
-#Last modified 1.26.14 Rick Dewey
+#Rick Dewey 5.22.12, Prag Batra 2015
 #module for general vcf utilities
 #usage: utils module for vcf parsing
 #!/usr/bin/env python
@@ -8,6 +7,8 @@ import os
 import re
 import sys
 import vcfHeaders
+import yaml_keys
+import yaml_utils
 
 #gets proper head from vcf file, ignoring all other stuff
 def get_head(infile):
@@ -100,8 +101,29 @@ def is_rare(templine, freq_thresh, bp_indexlist):
                 rare_flag = 0 # not rare
     return rare_flag
 
+# returns true if the specified text is found in any of the specified columns
+# NOTE: columns must already be converted using yaml_utils (so they need to be absolute column names in the annotated output file)
+def contains_text(text, templine, columns, header, yaml_commands, case_sensitive=False):
+    lineSubset = ''
+    lineContents = templine.rstrip("\n").split("\t")
+    for column in columns:
+        lineSubset += ' ' + lineContents[header.index(column)]
+    
+    if((case_sensitive and text in lineSubset) or (not case_sensitive and text.lower() in lineSubset.lower())):
+        return True
+    #else
+    return False
+
+
 #boolean, returns 1 for a variant with user-defined functional properties as annotated by annovar
-def is_functional(templine, function_list):
+def is_functional(templine, function_list, functional_columns, header):
+    lineFunctionalSubset = ''
+    lineContents = templine.rstrip("\n").split("\t")
+    for column in functional_columns:
+        lineFunctionalSubset += ' ' + lineContents[header.index(column)]
+    
+    templine = lineFunctionalSubset
+    
     functional = 0
     if ("stoploss" in templine) and ("stoploss" in function_list):
         functional=1
@@ -133,46 +155,88 @@ def is_functional(templine, function_list):
         functional=1
     return functional
 
-#boolean, returns 1 for variant that is conserved according to user-defined criteria
-def is_conserved(templine, headlist, thresh):
-    total = 0
-    templinelist = templine.split("\t")
-    phyloP = ''
-    if(vcfHeaders.kPhyloP_pred in headlist):
-        phyloP = templinelist[headlist.index(vcfHeaders.kPhyloP_pred)]
-    else:
-        print 'warning: ' + vcfHeaders.kPhyloP_pred + ' not found in annotated header'
-        
-    gerp = ''
-    if(vcfHeaders.kGerp in headlist):
-        gerp = templinelist[headlist.index(vcfHeaders.kGerp)]
-    else:
-        print 'warning: ' + vcfHeaders.kGerp + ' not found in annotated header'
-        
-    phast_cons = ''
-    if(vcfHeaders.kPhastConsElts46Way in headlist):
-        phast_cons = templinelist[headlist.index(vcfHeaders.kPhastConsElts46Way)]
-    else:
-        print 'warning: ' + vcfHeaders.kPhastConsElts46Way + ' not found in annotated header'
+# returns true if the given line passes ExAC tolerance thresholds (based on parameters specified in YAML)
+# NOTE: currently, we check all specified tolerance columns to see if ANY of their z-scores are above the specified z-score cutoff, returning true if this is the case.
+def tolerance_pass(line, headlist, yaml_commands):
+    lineList = line.rstrip("\n").split("\t")
+    tiering_cmds = yaml_commands[yaml_keys.kModules][yaml_keys.kTiering]
+    tolerance_zscore_colHeaders = yaml_utils.convertColumns(tiering_cmds[yaml_keys.kTToleranceZScoreCols], yaml_commands)
+    tolerance_zscore_cutoff = tiering_cmds[yaml_keys.kTToleranceZScoreCutoff]
     
-    wg_gerp = ''
-    if(vcfHeaders.kWg_gerp in headlist): 
-        wg_gerp = templinelist[headlist.index(vcfHeaders.kWg_gerp)]
-    else:
-        print 'warning: ' + vcfHeaders.kWg_gerp + ' not found in annotated header'
+    for zscore_col_header in tolerance_zscore_colHeaders:
+        zscores = lineList[headlist.index(zscore_col_header)].split(yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDMultimatchDelimiter]) # our delimiter
+        for zscore in zscores:
+            if(zscore != '' and float(zscore) > float(tolerance_zscore_cutoff)):
+                return True
+    #else
+    return False
 
-    if gerp != "" and phyloP != "":
-        gerp = float(gerp)
-        if gerp >= 2.0:
-            total+=1
-    if phyloP == "C":
-        total+=1
-    if phast_cons!= "":
-        if int(phast_cons) >= 250:
-            total+=1
-    if wg_gerp != "":
-        if float(wg_gerp) >= 2.0:
-            total+=1
+#boolean, returns 1 for variant that is conserved according to user-defined criteria
+def is_conserved(templine, headlist, yaml_commands):
+    total = 0
+    templinelist = templine.rstrip("\n").split("\t")
+    
+    tiering_cmds = yaml_commands[yaml_keys.kModules][yaml_keys.kTiering]
+    colHeaders = yaml_utils.convertColumns(tiering_cmds[yaml_keys.kTConservationCols], yaml_commands)
+    colThresholds = tiering_cmds[yaml_keys.kTConservationThresholds]
+    thresh = tiering_cmds[yaml_keys.kTConservationGlobalThreshold]
+    
+    for idx,colHeader in enumerate(colHeaders):
+        colThreshold = colThresholds[idx]
+        col = templinelist[headlist.index(colHeader)]
+        try:
+            if(col != '' and
+               (((type(colThreshold) is float or type(colThreshold) is int) and float(col) >= colThreshold)
+                or col == colThreshold)
+            ):
+                total += 1
+        except ValueError:
+            print 'headlist ' + str(headlist)
+            print 'templinelist ' + str(templinelist)
+            print 'colHeader: ' + str(colHeader)
+            print 'headlist index: ' + str(headlist.index(colHeader))
+            print 'col: ' + str(col)
+            raise
+        #debug
+#         elif(col == ''):
+#             print 'warning: no value for '
+    
+#     phyloP = ''
+#     if(vcfHeaders.kPhyloP_pred in headlist):
+#         phyloP = templinelist[headlist.index(vcfHeaders.kPhyloP_pred)]
+#     else:
+#         print 'warning: ' + vcfHeaders.kPhyloP_pred + ' not found in annotated header'
+#         
+#     gerp = ''
+#     if(vcfHeaders.kGerp in headlist):
+#         gerp = templinelist[headlist.index(vcfHeaders.kGerp)]
+#     else:
+#         print 'warning: ' + vcfHeaders.kGerp + ' not found in annotated header'
+#         
+#     phast_cons = ''
+#     if(vcfHeaders.kPhastConsElts46Way in headlist):
+#         phast_cons = templinelist[headlist.index(vcfHeaders.kPhastConsElts46Way)]
+#     else:
+#         print 'warning: ' + vcfHeaders.kPhastConsElts46Way + ' not found in annotated header'
+#     
+#     wg_gerp = ''
+#     if(vcfHeaders.kWg_gerp in headlist): 
+#         wg_gerp = templinelist[headlist.index(vcfHeaders.kWg_gerp)]
+#     else:
+#         print 'warning: ' + vcfHeaders.kWg_gerp + ' not found in annotated header'
+# 
+#     if gerp != "": #and phyloP != "":
+#         gerp = float(gerp)
+#         if gerp >= 2.0:
+#             total+=1
+#     if phyloP == "C":
+#         total+=1
+#     if phast_cons!= "":
+#         if int(phast_cons) >= 250:
+#             total+=1
+#     if wg_gerp != "":
+#         if float(wg_gerp) >= 2.0:
+#             total+=1
     if total >= thresh:
         return 1
     else:
@@ -217,7 +281,9 @@ def getClinvarClinsigArray(templine, headlist):
 
 def isClinvarPathogenicOrLikelyPathogenic(line, headlist, yaml_cmds):
     clinsigStr = getClinvarClinsigStr(line, headlist, yaml_cmds)
-    if(str(vcfHeaders.kCLINVAR_CLINSIG_LIKELY_PATHOGENIC_CODE) in clinsigStr or str(vcfHeaders.kCLINVAR_CLINSIG_PATHOGENIC_CODE) in clinsigStr):
+    if(str(vcfHeaders.kCLINVAR_CLINSIG_LIKELY_PATHOGENIC_CODE) in clinsigStr or (str(vcfHeaders.kCLINVAR_CLINSIG_PATHOGENIC_CODE) in clinsigStr 
+#         and str(vcfHeaders.kCLINVAR_CLINSIG_OTHER_CODE) != clinsigStr
+        )):
         return True
     return False
 
@@ -249,72 +315,139 @@ def getClinvarClinReviewStatusArray(templine, headlist):
 def clinvarStars(templine, headlist, yaml_cmds):
     clinRevStatStr = getClinvarClinReviewStatusStr(templine, headlist, yaml_cmds)
     
-    # 4 star: practice guideline
-    if(clinRevStatStr.find('practice_guideline') != -1):
+    # new star code (for clinvar xml)
+    if('practice guideline' in clinRevStatStr):
         return 4
-    
-    # 3 star: expert panel
-    if(clinRevStatStr.find('exp') != -1):
+    if('reviewed by expert panel' in clinRevStatStr):
         return 3
-    
-    #0, 1, and 2 star: check assertion criteria and whether assertions agree
-    numAssertionCriteriaProvided = clinRevStatStr.count('criteria_provided') - clinRevStatStr.count('no_assertion_criteria_provided')
-    if(numAssertionCriteriaProvided == 0):
-        return 0
-    if(numAssertionCriteriaProvided == 1 and clinRevStatStr.find('criteria_provided\x2c_multiple_submitters') == -1):
-        return 1
-    if(numAssertionCriteriaProvided > 1 or clinRevStatStr.find('criteria_provided\x2c_multiple_submitters') != -1):
-        if clinRevStatStr.find('conflicting_interpretations') != -1:
-            return 1
-        #else, no conflicting interpretations
+    if('criteria provided, multiple submitters, no conflicts' in clinRevStatStr):
         return 2
+    if('criteria provided, single submitter' in clinRevStatStr or 'criteria provided, conflicting interpretations' in clinRevStatStr):
+        return 1
+    if('no assertion criteria provided' in clinRevStatStr or 'no assertion provided' in clinRevStatStr):
+        return 0
+    else:
+        return '' # unknown
+    
+    # old star code (for clinvar vcf)
+#     # 4 star: practice guideline
+#     if(clinRevStatStr.find('practice_guideline') != -1):
+#         return 4
+#     
+#     # 3 star: expert panel
+#     if(clinRevStatStr.find('exp') != -1):
+#         return 3
+#     
+#     #0, 1, and 2 star: check assertion criteria and whether assertions agree
+#     numAssertionCriteriaProvided = clinRevStatStr.count('criteria_provided') - clinRevStatStr.count('no_assertion_criteria_provided')
+#     if(numAssertionCriteriaProvided == 0):
+#         return 0
+#     if(numAssertionCriteriaProvided == 1 and clinRevStatStr.find('criteria_provided\x2c_multiple_submitters') == -1):
+#         return 1
+#     if(numAssertionCriteriaProvided > 1 or clinRevStatStr.find('criteria_provided\x2c_multiple_submitters') != -1):
+#         if clinRevStatStr.find('conflicting_interpretations') != -1:
+#             return 1
+#         #else, no conflicting interpretations
+#         return 2
 
+# whether the given column passes the given criterion (> if a given threshold = number, or = if threshold = string)
+def passes_criteria(col, colThresholds):
+#     passed = False
+    for colThreshold in colThresholds:
+        if(col != '' and
+           (((type(colThreshold) is float or type(colThreshold) is int) and float(col) >= colThreshold)
+            or col == colThreshold)
+        ):
+#             passed = True
+            return True
+    #else
+    return False
 
 #boolean, returns 1 for variant that is pathogenic according to user-defined criteria
-def is_pathogenic(templine, headlist, nalg):
+def is_pathogenic(templine, headlist, yaml_commands):
     templinelist = templine.split("\t")
     pathogenic = 0
     
-    sift = templinelist[headlist.index(vcfHeaders.kSiftPred)] if vcfHeaders.kSiftPred in headlist else ''
-    pp2 = templinelist[headlist.index(vcfHeaders.kPolyphen2Pred)] if vcfHeaders.kPolyphen2Pred in headlist else ''
-    lrt = templinelist[headlist.index(vcfHeaders.kLrtPred)] if vcfHeaders.kLrtPred in headlist else ''
-    mt = templinelist[headlist.index(vcfHeaders.kMutationTasterPred)] if vcfHeaders.kMutationTasterPred in headlist else ''
-    pp2_2 = templinelist[headlist.index(vcfHeaders.kPolyphen2Pred_2)] if vcfHeaders.kPolyphen2Pred_2 in headlist else ''
+    tiering_cmds = yaml_commands[yaml_keys.kModules][yaml_keys.kTiering]
+    nalg = tiering_cmds[yaml_keys.kTPathogenicityGlobalThreshold]
     
-    # check for header mismatches
-    if(vcfHeaders.kSiftPred not in headlist):
-        print 'warning: ' + vcfHeaders.kSiftPred + ' not found in annotated header'
-    if(vcfHeaders.kPolyphen2Pred not in headlist):
-        print 'warning: ' + vcfHeaders.kPolyphen2Pred + ' not found in annotated header'
-    if(vcfHeaders.kLrtPred not in headlist):
-        print 'warning: ' + vcfHeaders.kLrtPred + ' not found in annotated header'
-    if(vcfHeaders.kMutationTasterPred not in headlist):
-        print 'warning: ' + vcfHeaders.kMutationTasterPred + ' not found in annotated header'
-    if(vcfHeaders.kPolyphen2Pred_2 not in headlist):
-        print 'warning: ' + vcfHeaders.kPolyphen2Pred_2 + ' not found in annotated header (though currently unused)'
+    colHeaders = yaml_utils.convertColumns(tiering_cmds[yaml_keys.kTPathogenicityCols], yaml_commands)
+    colsThresholds = tiering_cmds[yaml_keys.kTPathogenicityThresholds]
     
-    if sift == "D":
-        pathogenic+=1
-        #debug
-        print 'SIFT=D'
-    if (pp2 == "P") or (pp2 == "D"):
-        pathogenic+=1
-        #debug 
-        print 'pp=P or D'
-    if lrt == "D":
-        pathogenic+=1
-        # debug
-        print 'lrt=D'
-    if (mt == "A") or (mt == "D"):
-        pathogenic+=1
-        #debug
-        print 'mt=A or D'
+    for idx,colHeader in enumerate(colHeaders):
+        if(isinstance(colHeader, list)):
+            passed = False
+            colThresholdsList = colsThresholds[idx]
+            for idx,singleColHeader in enumerate(colHeader):
+                colThresholds = yaml_utils.split_multiple_col_thresholds(colThresholdsList[idx], yaml_commands)
+                col = templinelist[headlist.index(singleColHeader)]
+                if(passes_criteria(col, colThresholds)):
+                    passed = True
+                    break
+            if(passed):
+                pathogenic += 1
+            continue
+
+        #else
+#         if(isinstance(colsThresholds[idx], list)):
+        colThresholds = yaml_utils.split_multiple_col_thresholds(colsThresholds[idx], yaml_commands)
+        col = templinelist[headlist.index(colHeader)]
+        passed = passes_criteria(col, colThresholds)
+        if(passed):
+            pathogenic += 1
+            
+#         passed = False
+#         for colThreshold in colThresholds:
+#             if(col != '' and
+#                (((type(colThreshold) is float or type(colThreshold) is int) and float(col) >= colThreshold)
+#                 or col == colThreshold)
+#             ):
+#                 passed = True
+#                 break
+#         if(passed):
+#             pathogenic += 1
+    
+#     sift = templinelist[headlist.index(vcfHeaders.kSiftPred)] if vcfHeaders.kSiftPred in headlist else ''
+#     pp2 = templinelist[headlist.index(vcfHeaders.kPolyphen2Pred)] if vcfHeaders.kPolyphen2Pred in headlist else ''
+#     lrt = templinelist[headlist.index(vcfHeaders.kLrtPred)] if vcfHeaders.kLrtPred in headlist else ''
+#     mt = templinelist[headlist.index(vcfHeaders.kMutationTasterPred)] if vcfHeaders.kMutationTasterPred in headlist else ''
+#     pp2_2 = templinelist[headlist.index(vcfHeaders.kPolyphen2Pred_2)] if vcfHeaders.kPolyphen2Pred_2 in headlist else ''
+#     
+#     # check for header mismatches
+#     if(vcfHeaders.kSiftPred not in headlist):
+#         print 'warning: ' + vcfHeaders.kSiftPred + ' not found in annotated header'
+#     if(vcfHeaders.kPolyphen2Pred not in headlist):
+#         print 'warning: ' + vcfHeaders.kPolyphen2Pred + ' not found in annotated header'
+#     if(vcfHeaders.kLrtPred not in headlist):
+#         print 'warning: ' + vcfHeaders.kLrtPred + ' not found in annotated header'
+#     if(vcfHeaders.kMutationTasterPred not in headlist):
+#         print 'warning: ' + vcfHeaders.kMutationTasterPred + ' not found in annotated header'
+#     if(vcfHeaders.kPolyphen2Pred_2 not in headlist):
+#         print 'warning: ' + vcfHeaders.kPolyphen2Pred_2 + ' not found in annotated header (though currently unused)'
+#     
+#     if sift == "D":
+#         pathogenic+=1
+#         #debug
+#         print 'SIFT=D'
+#     if (pp2 == "P") or (pp2 == "D"):
+#         pathogenic+=1
+#         #debug 
+#         print 'pp=P or D'
+#     if lrt == "D":
+#         pathogenic+=1
+#         # debug
+#         print 'lrt=D'
+#     if (mt == "A") or (mt == "D"):
+#         pathogenic+=1
+#         #debug
+#         print 'mt=A or D'
     if pathogenic >= int(nalg):
         #debug
-        print 'is pathogenic'
+#         print 'is pathogenic'
         return 1
     else:
-        print 'not pathogenic'
+        #debug
+#         print 'not pathogenic'
         return 0
 
 

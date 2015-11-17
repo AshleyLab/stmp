@@ -1,109 +1,72 @@
 default:
-    Build: GRCh37
+    Build: hg19
     Dataset_Path: '../db/datasets/' # where datasets will be downloaded before loading into our database (path is relative to the location of stmp.py)
-#    Delimiters_for_multiple_matches: ['||'] # currently unused but may be used in a future release
+    Bed_Path: '../db/db_beds'
+    Delimiter_for_multiple_matches: '|'
 
-# pharmgkb requires a license to download. Uncomment the below lines and add the path to the downloaded file under Source if you would like to import and annotate with this dataset.
-#pharmgkb:
-#  License:
-#    Type: Academic
-#    URL: https://www.pharmgkb.org/downloads/
-#  Annotation: hg19_pgkb
-#  Source: # requires license to download. Add the path to the downloaded file if you have such a license and would like to use this dataset.
-##  Class: #TBD
-#  AnnotationType: region
-#  Description: pharmGKB basic clinical annotation (drug, class of association, evidence
-#    level)_ Description of evidence level:http://www_pharmgkb_org/page/clinAnnLevels
-#  Comment:
-#  ColumnHeaders: ['', 'chr', 'start', 'stop', 'drugInfo']
-#  DataType: ['', varchar(10), int, int, varchar(255)]
+
+#### Core datasets required for tiering and summary (consensus) columns ####
 
 refseq:
   Annotation: refseq
   Source: 'http://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/refFlat.txt.gz'
 #  Class: ['function'] # for now
-  AnnotationType: region
+  Category: region
   Description: 
   Comment: ''
-  ColumnHeaders: ['geneName', 'name', 'chrom', 'strand', 'start', 'end', 'cdsStart', 'cdsEnd', 'exonCount', 'exonStarts', 'exonEnds'] # here start = txStart and end = txEnd, as these encompass a larger region. We leave cdsStart and cdsEnd as they are.
+  ColumnHeaders: ['genename', 'name', 'chrom', 'strand', 'start', 'end', 'cdsStart', 'cdsEnd', 'exonCount', 'exonStarts', 'exonEnds'] # here start = txStart and end = txEnd, as these encompass a larger region. We leave cdsStart and cdsEnd as they are.
   DataType: [string, string, string, varchar(1), int, int, int, int, int, int, int]
 
-# Core datasets required for tiering
 clinvar:
   Annotation: clinvar
-  Source: 'ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/clinvar.vcf.gz'
-#  Class: ['pgx'] # for now
-  AnnotationType: point
-  Description: 
-    - TODO: variant classification according to clinvar vcf in dbvar (can add the appropriate info tag and type to the ColumnHeaders and DataType fields below if desired)
-    - variant disease annotation according to clinvar vcf in dbvar
-    - variant disease review status in clinvar vcf in dbvar
-    - TODO: variant accessionID according to clinvar vcf in dbvar (see above)
-    - TODO: variant data source according to clinvar vcf in dbvar (see above)
-    - TODO: variant data source ID according to clinvar vcf in dbvar (see above)
-  Comment: ''
-  ColumnHeaders: [CLNSIG, CLNREVSTAT] # info tags in VCF file
-  DataType: [int, varchar(255)]
+  Source: 'https://raw.githubusercontent.com/macarthur-lab/clinvar/master/output/clinvar.tsv'
+  Class: clinical
+  Category: point
+  Description:
+    - xml parsed clinvar data
+  Comment:
+  ColumnHeaders: [chr,pos,ref,alt,mut,measureset_id,symbol,clinical_significance, review_status,hgvs_c, hgvs_p, all_submitters, all_traits, all_pmids, pathogenic, conflicted]
+  DataType: [varchar(5),int,varchar(500),varchar(500),varchar(255),varchar(255),varchar(255),varchar(255), varchar(255),varchar(255), varchar(255), varchar(255), varchar(255), varchar(255), int, int]
 
-#hapmap2and3_CEU:
-#  Annotation: hg19_hapmap2and3_CEU
-#  Source: '' #TBA
-#  Category: allele_frequency
-#  Description: CEU hapmap population allele frequency
-#  Comment: lifted over from hg18
-#  Delimiters_for_multiple_matches: ''
-#  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
-#  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
+# NOTE: inaccuracies have been identified in the below dataset (clinvar_vcf). It is recommended that you use the Macarthur Clinvar dataset above ("clinvar") instead. If you would like to use both datasets, uncomment the below lines and clinvar_vcf will be imported into the database whenever STMP is next run with the --update_db parameter.
+#clinvar_vcf:
+#  Annotation: clinvar_vcf
+#  Source: 'ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/clinvar.vcf.gz'
+##  Class: ['pgx'] # for now
+#  Category: point
+#  Description: 
+#    - TODO: variant classification according to clinvar vcf in dbvar (can add the appropriate info tag and type to the ColumnHeaders and DataType fields below if desired)
+#    - variant disease annotation according to clinvar vcf in dbvar
+#    - variant disease review status in clinvar vcf in dbvar
+#    - TODO: variant accessionID according to clinvar vcf in dbvar (see above)
+#    - TODO: variant data source according to clinvar vcf in dbvar (see above)
+#    - TODO: variant data source ID according to clinvar vcf in dbvar (see above)
+#  Comment: ''
+#  ColumnHeaders: [CLNSIG, CLNREVSTAT] # info tags in VCF file - WARNING: modifying the name of the CLNSIG or CLNREVSTAT headers will cause tiering or clinvar dataset import, respectively, to fail.
+#  DataType: [int, varchar(255)]
 
-popfreq_all:
+1kg_popfreq_all:
     Annotation: hg19_popfreq_all_20150413
     Source: 'http://www.openbioinformatics.org/annovar/download/hg19_popfreq_all_20150413.txt.gz'
 #    Class: #TBA
-    AnnotationType: region
+    Category: point
     Description: 
     Comment: ''
     ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'pop_freq_max', "1000g_all", "1000g_afr", "1000g_amr", "1000g_eas", "1000g_eur", "1000g_sas", "exac_all", "exac_afr", "exac_amr", "exac_eas", "exac_fin", 'exac_nfe', 'exac_oth', 'exac_sas', 'esp6500siv2_all', 'esp6500siv2_aa', 'esp6500siv2_ea', 'cg46']
     DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float']
 
-cg69:
-  Annotation: hg19_cg69
-  Source: 'http://www.openbioinformatics.org/annovar/download/hg19_cg69.txt.gz'
-  AnnotationType: region
-  Category: frequency
-  Description: Complete genomics public panel (69 subjects, including 17 member CEPH pedigree)
-  Comment: ''
-  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
-  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
-
-#hapmap2and3_CHB:
-#  Annotation: hg19_hapmap2and3_CHB
-#  Source: '' # TBA
-#  Category: allele_frequency
-#  Description: CHB hapmap population allele frequency
-#  Comment: lifted over from hg18
-#  Delimiters_for_multiple_matches: ''
-#  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
-#  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
-
-#hapmap2and3_YRI:
-#  Annotation: hapmap2and3_YRI
-#  Category: allele_frequency
-#  Description: YRI hapmap population allele frequency
-#  Comment: lifted over from hg18
-#  Delimiters_for_multiple_matches: ''
-#  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
-#  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
-
+# NOTE: This dataset must be manually downloaded and may require preprocessing prior to import. Once the file has been downloaded and/or preprocessed, save it to db/datasets/ and specify the filename under "Source" below, or specify the full path to the file under "Source" below. Then uncomment the below lines and the dataset will be imported on the next run of STMP with the --update_db parameter.
 #phastCons:
 #  Annotation: hg19_phastConsElements46way
-#  Category: position
+#  Source: hg19_phastConsElements46way.txt
+#  Category: region
 #  Description:
 #    - phastCons most conserved element score, 0-1000
 #    - phastCons most conserved element lod score
 #  Comment: DOES NOT match alt allele from vcf file to risk variant
 #  Delimiters_for_multiple_matches: '|'
-#  ColumnHeaders: ['chrom', 'start', 'stop', 'MSA_MCE_score', 'MSA_MCE_lod']
-#  DataType: ['varchar(10)', 'int', 'int', 'varchar(255)', 'varchar(500)']
+#  ColumnHeaders: ['chrom', 'start', 'stop', 'MSA_MCE_lod', 'MSA_MCE_score']
+#  DataType: ['varchar(10)', 'int', 'int', 'varchar(500)', 'varchar(255)']
 
 dbnsfp:
   Annotation: hg19_ljb26_all
@@ -125,5 +88,158 @@ dbnsfp:
   Delimiters_for_multiple_matches: ''
   ColumnHeaders: ["chrom", "start", "end", "ref", "alt", "SIFT_score", "SIFT_pred", "Polyphen2_HDIV_score", "Polyphen2_HDIV_pred", "Polyphen2_HVAR_score", "Polyphen2_HVAR_pred", "LRT_score", "LRT_pred", "MutationTaster_score", "MutationTaster_pred", "MutationAssessor_score", "MutationAssessor_pred", "FATHMM_score", "FATHMM_pred", "RadialSVM_score", "RadialSVM_pred", "LR_score", "LR_pred", "VEST3_score", "CADD_raw", "CADD_phred", "GERP++_RS", "phyloP46way_placental", "phyloP100way_vertebrate", "SiPhy_29way_logOdds"]
   DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'varchar(1)', 'double', 'double', 'double', 'double', 'double', 'double', 'double']
+
+
+#### Additional datasets (non-core) ####
+
+exac_tol:
+  License:
+  Source: ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3/functional_gene_constraint/forweb_cleaned_exac_r03_march16_z_data_pLI.txt
+  Annotation: exac_tolerance
+  Category: region
+  StartingLine: 1 # first line (0) is header without #
+  Class: tolerance
+  Citation:
+  Description: 'ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3/functional_gene_constraint/README_forweb_cleaned_exac_r03_2015_03_16_z_data_pLI_2015_10_11.txt'
+  ColumnHeaders: [transcript, gene, chr, n_exons, start, end, bp, '', '', '', '', '', '', '', '', '', syn_z, mis_z, lof_z, pLI]
+  DataType: ['varchar(2)', 'int', 'varchar(25)', 'int', 'int', 'int', 'int', '', '', '', '', '', '', '', '', '', 'float', 'float', 'float', 'float']
+#  ColumnHeaders: [chr, start, end, n_exons, bp, syn_z, mis_z, lof_z, pLI]
+#  DataType: ['varchar(25)', 'int','int','int','int','float','float','float','float']
+
+uk10k:
+  License:
+  Source: 'ftp://ngs.sanger.ac.uk/production/uk10k/UK10K_COHORT/REL-2012-06-02/UK10K_COHORT.20140722.sites.vcf.gz'
+  Annotation: uk10k_freq
+  Category: point
+  Class: frequency
+  Citation:
+  Description:
+  ColumnHeaders: [AF]
+  DataType: [float]
+  Comment: 'http://www.uk10k.org/data.html'
+
+gonl:
+  License:
+  Source: 'https://molgenis26.target.rug.nl/downloads/gonl_public/variants/release5/gonl.SV.r5.vcf.gz'
+  Annotation: gonl
+  Category: point
+  Class: frequency
+  Citation: 'Whole-genome sequence variation, population structure and demographic history of the Dutch population. Nature Genetics (2014)' 
+  Description:
+  ColumnHeaders: [AF]
+  DataType: [float]
+
+
+## Datasets requiring manual download/preprocessing ##
+
+# pharmgkb requires a license to download. Uncomment the below lines and add the path to the downloaded file under Source if you would like to import and annotate with this dataset.
+#pharmgkb:
+#  License:
+#    Type: Academic
+#    URL: https://www.pharmgkb.org/downloads/
+#  Annotation: hg19_pgkb
+#  Source: # requires license to download. Add the path to the downloaded file if you have such a license and would like to use this dataset.
+##  Class: #TBD
+#  AnnotationType: region
+#  Description: pharmGKB basic clinical annotation (drug, class of association, evidence
+#    level)_ Description of evidence level:http://www_pharmgkb_org/page/clinAnnLevels
+#  Comment:
+#  ColumnHeaders: ['', 'chr', 'start', 'stop', 'drugInfo']
+#  DataType: ['', varchar(10), int, int, varchar(255)]
+
+# The below datasets must be manually downloaded and may require preprocessing prior to import. Once each dataset has been downloaded and/or preprocessed, save the file to db/datasets/ and specify the filename under "Source" below, or specify the full path to the file under "Source" below. Then uncomment the below lines and the datasets will be imported on the next run of STMP with the --update_db parameter.
+#uniprot_domain:
+#  License:
+#  Source: uniprot_domain_hg19.bed
+#  Annotation: uniprot_domain
+#  Category: region
+#  StartingLine: 0 # first line (0) is header without #
+#  ColumnHeaders: [chr, start, stop, info]
+#  DataType: ['varchar(25)', 'int', 'int', 'varchar(255)']
+
+#uniprot_proteome:
+#  License:
+#  Source: uniprot_proteome_hg19.bed
+#  Annotation: uniprot_proteome
+#  Category: region
+#  StartingLine: 73 # first line (0) is header without #
+#  ColumnHeaders: [chr, start, stop, protein]
+#  DataType: ['varchar(25)', 'int', 'int', 'varchar(255)']
+
+#wellderly:
+#  License:
+#  Source: SWGR_v1.0_snvs_small_indels_shuffled_split_hg19_freq.vcf
+#  Annotation: wellderly_freq
+#  Category: point
+#  Class: frequency
+#  Citation:
+#  Description:
+#  ColumnHeaders: [AF]
+#  DataType: [float]
+#  Comment: 'ftp://stsi-ftp.sdsc.edu/pub/wellderly/ -- requires preprocessing (see stmp-utils)'
+
+#genedx:
+#  License:
+#  Source: genedx.bed
+#  Annotation: genedx
+#  Category: region
+#  Class: [panel,genelist]
+#  Citation:
+#  Description:
+#  StartingLine: 1 # first line (0) is header without #
+#  ColumnHeaders: ['chrom','start','stop','','',condition]
+#  DataType: ['varchar(2)','int','int','','',varchar(255)]
+#  Comment: "Oct-2015,http://www.genedx.com"
+
+#protein_atlas:
+#  Annotation: protein_atlas
+#  Source: proteinatlas_all.bed
+#  Category: region
+#  StartingLine: 1
+#  ColumnHeaders: [chr,start,end,'','','','','','','',class,'','','','','','','','',subcellular_location,'','','','']
+#  DataType: [varchar(5),int,int,'','','','','','','',varchar(255),'','','','','','','','',varchar(255),'','','','']
+
+#kegg:
+#  License: 
+#  Source: hg19_knownKegg.txt
+#  Annotation: hg19_knownKegg2
+#  Category: region
+#  ColumnHeaders: ['',chr,start,end,info,info2]
+#  DataType: ['',int,int,int,varchar(255),varchar(1)]
+
+
+#### Outdated or otherwise unused datasets ####
+
+#hapmap2and3_CHB:
+#  Annotation: hg19_hapmap2and3_CHB
+#  Source: '' # TBA
+#  Category: allele_frequency
+#  Description: CHB hapmap population allele frequency
+#  Comment: lifted over from hg18
+#  Delimiters_for_multiple_matches: ''
+#  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
+#  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
+
+#hapmap2and3_YRI:
+#  Annotation: hapmap2and3_YRI
+#  Category: allele_frequency
+#  Description: YRI hapmap population allele frequency
+#  Comment: lifted over from hg18
+#  Delimiters_for_multiple_matches: ''
+#  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
+#  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
+
+#cg69:
+#  Annotation: hg19_cg69
+#  Source: 'http://www.openbioinformatics.org/annovar/download/hg19_cg69.txt.gz'
+#  Category: point
+#  Category: #frequency
+#  Description: Complete genomics public panel (69 subjects, including 17 member CEPH pedigree)
+#  Comment: ''
+#  ColumnHeaders: ['chrom', 'start', 'stop', 'ref', 'alt', 'info']
+#  DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'varchar(255)']
+
+
+#### User-added datasets ####
 
 # If you would like to import additional datasets for use in annotation, add them below. To find out more about the information required for each dataset listed in this file, see the datasets above and datasets_spec.yml.

@@ -1,5 +1,4 @@
-#Rick Dewey 2.13.13 rdewey@stanford.edu
-#Last modified: 1.26.14
+#Rick Dewey 2.13.13 rdewey@stanford.edu, Prag Batra 2015 prag@stanford.edu
 #PGX annotation
 #utils for PGX annotations for STMP
 
@@ -191,7 +190,7 @@ def haplotyper(gene, hapfile, vcf_list, vhet_list, vhom_list, vdict, in_file):
     for element in use_index:
         rs_list.append(head_list[element])
 
-    #intialize list for haplotypes, there are 2^n possible haplotypes for n heterozygous variants, and 2^(n-1) possible haplotype combinations
+    #initialize list for haplotypes, there are 2^n possible haplotypes for n heterozygous variants, and 2^(n-1) possible haplotype combinations
     for rsid in rs_list:
         if (rsid in vhet_list):
             count_het+=1
@@ -293,10 +292,4 @@ def star_caller(hap_dir, n_file, o_stem):
         else:
             fileout.write(gene_symb+"\t"+"No haplotype matches\n")
     fileout.close()
-
-
-#merges star allele designations and individual genotypes with CPIC guidelines for output of guideline based recommendations
-#def cpic_annotator(cpic, stars, n_file, o_stem):
-#    vcf_vars = vcf_reader_vars(n_file)
-#    file out = open_compressed_or_regular(o_stem+".cpic.txt", "w")
 

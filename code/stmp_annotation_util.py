@@ -17,6 +17,7 @@ Example:
 
 '''
 
+import yaml_keys
 import sys
 import linecache
 import sqlite3
@@ -29,23 +30,22 @@ import mmap
 import datetime
 import vcfHeaders
 import vcfUtils
+import tsv_utils
 import gzip
+import yaml_utils
+import general_utils
 
 # Locations of important things. (for now -- ideally should be in user's path)
 SNPEFF = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir, os.pardir, 'third_party', 'snpeff', 'snpEff', 'snpEff.jar'))
-# 'snpEff.jar' # should be in user's PATH
-# os.path.join(os.path.dirname(os.path.realpath(__file__)), 'third_party/snpeff/snpEff/snpEff.jar') # location of Pablo's famous variant effect predictor.
 SNPEFF_MEMORY_ALLOCATION = '6g'
 
 ANNOVAR_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir, os.pardir, 'third_party', 'annovar')) # we need this both for annovar executable (annotate_variation.pl, table_annovar.pl) and to locate humandb folder for functional annotations
 
-#  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'third_party/annovar') # needed for humandb folder
 
 START_COLUMN_HEADERS = ['start', 'begin', 'pos']
 STOP_COLUMN_HEADERS = ['stop', 'end']
 CHR_HEADERS = ['chr', 'chrom', 'chromosome']
 
-BED_DELIMITER = '|||'
 
 def open_compressed_or_regular(f, options):
 	if(f.endswith('.gz')):
@@ -62,7 +62,8 @@ def downloadDB(db_yaml, out_path, out_dir, download_method, ucsc_basePath = None
 	elif(download_method == 'URL'):
 		if not os.path.exists(out_dir):
 			os.makedirs(out_dir)
-		cmd = "cd {out_dir}; wget --retr-symlinks --timestamping {url}".format(out_dir=out_dir, outfile=out_path, url=db_yaml['Source']) # For now, just download the file with the same name as on the server (we'll use the name given in the YAML when importing it into our database). "--timestamping" flag won't re-retrieve files unless newer than local file.
+		cmd = "cd {out_dir}; wget --retr-symlinks --no-check-certificate --timestamping {url}".format(out_dir=out_dir, outfile=out_path, url=db_yaml['Source']) # For now, just download the file with the same name as on the server (we'll use the name given in the YAML when importing it into our database). "--timestamping" flag won't re-retrieve files unless newer than local file.
+		print 'command to download dataset: ' + str(cmd)
 		subprocess.Popen(cmd, shell=True).wait()
 		#record download date in separate metadata file for versioning purposes
 		metadata_path = out_path+'.info'
@@ -87,17 +88,21 @@ def downloadDBs(yaml_commands, out_dir, logfile = None):
 		if(dataset == 'default'):
 			build = yaml_commands[dataset]['Build']
 			continue
+		if(dataset==yaml_keys.kModules): # skip module spec as that isn't a database
+			continue
 		
 		if(yaml_commands[dataset] != None and 'Annotation' in yaml_commands[dataset]):
 			dataset_name = yaml_commands[dataset]['Annotation']
 			print 'Downloading dataset for annotation: ' + dataset_name
 			# attempt to download from annovar site
 			cmd = 'perl {annotate_variation} -buildver {build} -downdb -webfrom annovar {dbname} {out_dir}'.format(build=build, annotate_variation=os.path.join(ANNOVAR_PATH, 'annotate_variation.pl'), dbname=dataset_name, out_dir=out_dir)
+			print 'annovar db download command: ' + str(cmd)
 			retVal = subprocess.Popen(cmd, shell=True).wait()
 			# TODO grab name/path of annovar downloaded file
 			if(retVal != 0):
 				# attempt to download from UCSC site
 				cmd2 = 'perl {annotate_variation} -buildver hg19 -downdb {dbname} {out_dir}'.format(annotate_variation=os.path.join(ANNOVAR_PATH, 'annotate_variation.pl'), dbname=dataset_name, out_dir=out_dir)
+				print 'Retrying with Annovar alt db download command: ' + str(cmd2)
 				retVal = subprocess.Popen(cmd2, shell=True).wait()
 				# TODO grab name/path of downloaded file
 				if(retVal != 0):
@@ -125,18 +130,6 @@ def checkDBs(yaml_commands, out_dir):
 	print 'Total datasets in YAML: ' + str(len(yaml_commands.keys()))
 	print 'Missing datasets: ' + str(missingDatasets)
 	
-	
-# 	foundFiles = []
-# 	for file in os.listdir(db_dir):
-# 		filename = os.path.splitext(file)[0]
-# 		#debug
-# 		print 'filename: ' + filename
-# 		if(filename not in yaml_commands):
-# 			print 'yaml '
-# 	
-# 	for dataset in yaml_commands:
-# 		if(dataset in os.listdir(db_dir))
-# 		# TODO finish
 
 # CURRENTLY UNUSED
 # helper function: uses mmap to delete a given set of positions from a file
@@ -200,6 +193,7 @@ def splitMultiallelic(vcf_filepath, out_dir, skip_if_exists=False):
 		return outfilepath
 	#else
 	cmd = "bcftools norm -m - '{vcf_filepath}' -O z -o '{out_dir}'".format(vcf_filepath=vcf_filepath, out_dir=outfilepath)
+	print 'bcftools split multiallelic command: ' + str(cmd)
 	
 	subprocess.Popen(cmd, shell=True).wait()
 	return outfilepath
@@ -210,6 +204,7 @@ def stripVCFComments(vcf_filepath, out_dir):
 	vcf_name = getSampleName(vcf_filepath)
 	outfilepath = os.path.join(out_dir, vcf_name + '_noComments' + '.vcf')
 	cmd = 'grep -v "^##" {vcf_filepath} > {vcf_outfile}'.format(vcf_filepath = vcf_filepath, vcf_outfile = outfilepath)
+	print 'command to strip vcf comments: ' + str(cmd)
 	subprocess.Popen(cmd, shell=True).wait()
 	return outfilepath
 
@@ -223,6 +218,7 @@ def annovar_annotate_functional(vcf_file_loc, output_dir, buildver='hg19', human
 	# annotate
 	cmd = '{table_annovar} {vcf_file_loc} {humandb_loc} -buildver {buildver} -out {outprefix} -remove -protocol {protocols} -operation {operations} -vcfinput'.format(vcf_file_loc=vcf_file_loc, table_annovar = os.path.join(ANNOVAR_PATH, 'table_annovar.pl'), humandb_loc=humandb_loc, buildver=buildver, outprefix=outpathprefix, protocols=",".join(genedefs), operations=','.join("g" for i in range(0, len(genedefs))))
 	
+	print 'annovar annotation cmd: ' + str(cmd)
 	
 	outfile = os.path.join(output_dir, 'annovar' + '.' + buildver + '_multianno.txt')
 	
@@ -239,6 +235,7 @@ def vcf2allelefreq(vcf_file_loc, output_dir, overwriteIfExists=False):
 		print 'skipped conversion of ' + sample_name + ' to allele freq VCF because already converted'
 	else:
 		cmd = "bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT\t%AC\t%AN\n' " + vcf_file_loc + " | awk '{OFS=\"\t\";print $0,$6/$7}' > " + outfilepath
+		print 'vcf to allele freq bcftools cmd: ' + str(cmd)
 		subprocess.Popen(cmd, shell=True).wait()
 	
 	return outfilename
@@ -250,11 +247,11 @@ def snpeff(vcf_file_loc, output_dir):
 	# master script.  That way we don't need to hold things waiting for completion here.
 	sample_name = getSampleName(vcf_file_loc)
 	print("Running snpEff on " + sample_name)
-	cmd = "java -Xmx{memalloc} -jar {snpeff_jar} eff hg19 {vcf}".format(snpeff_jar = SNPEFF, vcf = vcf_file_loc, memalloc=SNPEFF_MEMORY_ALLOCATION)
+	cmd = "java -Xmx{memalloc} -jar {snpeff_jar} eff hg19 {vcf} -stats {out_loc} -csvStats".format(snpeff_jar = SNPEFF, vcf = vcf_file_loc, memalloc=SNPEFF_MEMORY_ALLOCATION, out_loc=output_dir)
 	#debug
-	print 'cmd: ' + cmd
+	print 'snpeff annot cmd: ' + cmd
 	annotated_vcf = os.path.join(output_dir, "{sample_name}.snpeff.vcf".format(sample_name = sample_name))
-	p = subprocess.Popen(cmd, stdout = open_compressed_or_regular(annotated_vcf, 'w'), shell = True)	
+	p = subprocess.Popen(cmd, stdout = open_compressed_or_regular(annotated_vcf, 'w'), shell = True)
 	
 	return [p, sample_name, annotated_vcf]
 
@@ -264,6 +261,7 @@ def snpeff(vcf_file_loc, output_dir):
 def snpeff2tsv(sample_name, snpeff_vcf_outfile, output_dir):
 	# strip comments from VCF to make it a tsv
 	cmd = "grep -v '^##' {vcf}".format(vcf = snpeff_vcf_outfile)
+	print 'snpeff vcf to tsv conversion command (remove \'##\' lines): ' + str(cmd)
 	tsv_out_filePath = os.path.join(output_dir, "{sample_name}.snpeff.tsv".format(sample_name = sample_name))
 	out_file = open(tsv_out_filePath, 'w')
 	subprocess.Popen(cmd, stdout = out_file, shell=True).wait()
@@ -312,6 +310,7 @@ def vcf2tsv(vcf_path, tags, output_dir, output_extension='.tsv'):
 	for col in vcfCols:
 		vcfColStrs.append('%' + col)
 	cmd = "bcftools query -f '{vcfCols}\t{joinedTags}\n' {vcf}".format(vcfCols = "\t".join(vcfColStrs[:-1]), joinedTags="\t".join(tagStrs), vcf=vcf_path)
+	print 'vcf to tsv cmd (bcftools extract tags from INFO col): ' + str(cmd)
 	subprocess.Popen(cmd, stdout = open_compressed_or_regular(outpath, 'a'), shell=True).wait()
 	
 	return outpath
@@ -330,7 +329,7 @@ def generateJoinedOutfilePath(output_dir, sample_name):
 # joins the files together to form 1 big annotated TSV
 # NOTE: requires all files to have exactly the same # of lines in the same order
 # Also will not work properly if point or region annotation output files have multiple header lines (which start with #)
-def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_dir, skipJoinCheck, skip=False): # by default, don't skip in case the output file was updated
+def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_dir, skipJoinCheck, yaml_commands, skip=False): # by default, don't skip in case the output file was updated
 	
 	print 'Merging all annotations into a single file'
 	
@@ -425,7 +424,6 @@ def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_d
 			line = line + "\t" + "\t".join(annoLine.split("\t")[5:len(annovarHeader.split("\t"))-1]) # include all columns except the last one (Otherinfo), which spans multiple columns
 			
 			# deal with other lines
-# 			for fileIndex, line2 in enumerate([snpeffLine, pointLine, regionLine]):
 			for fileIndex, line2 in enumerate([pointLine, regionLine]): # for now, exclude snpeff since it annotates in the INFO column which is trickier to merge
 				line2 = line2.rstrip("\n")
 				lineContents = line2.split("\t")
@@ -467,28 +465,137 @@ def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_d
 				if(lineElt.lstrip().rstrip() == '.' or lineElt.lstrip().rstrip() == ''):
 					lineElt = ''
 					lineElts[idx] = lineElt
-			line = "\t".join(lineElts)
 			
+			## Annotation postprocessing (in-place). Add consensus cols as specified in YAML.
+			if(lineNum == 0): #first line = header
+				header = list(lineElts) # header DOES NOT include new consensus cols!
+				# inject postprocessed consensus col headers
+				lineElts = get_consensus_col_header_line(lineElts, yaml_commands)
+			else:
+				# inject postprocessed consensus cols into annotated output
+				lineElts = get_consensus_col_line(lineElts, header, yaml_commands)
+			
+			line = "\t".join(lineElts)
 			output.write(line + "\n")
 	
 	return out_filepath
 
+# gets the consensus columns in the proper order (look up each one in the YAML for details of what cols it is generated from)
+def get_ordered_consensus_cols(consensus_col_cmds):
+	consensus_fields = []
+	consensus_cmds = consensus_col_cmds
+	if(yaml_keys.kAConsensusColumnsOrder in consensus_cmds):
+		consensus_fields = consensus_cmds[yaml_keys.kAConsensusColumnsOrder]
+	for consensus_field in consensus_cmds: # all other (unordered) consensus fields
+		if(consensus_field != yaml_keys.kAConsensusColumnsOrder and consensus_field not in consensus_fields):
+			consensus_fields.append(consensus_field)
 
-def root_or_cwd(dir):
+	return consensus_fields
+
+def get_consensus_col_names(consensus_col_cmds, suffix):
+	consensus_col_names = []
+	ordered_consensus_cols = get_ordered_consensus_cols(consensus_col_cmds)
+	for consensus_field in ordered_consensus_cols:
+		consensus_col_name = consensus_field+'_' + suffix
+ 		consensus_col_names.append(consensus_col_name)
+ 	return consensus_col_names
+
+# returns header line with consensus cols inserted in appropriate position (according to YAML)
+# header = header elements (list), NOT a string!
+# same for output (line elements as a list, not a string)
+def get_consensus_col_header_line(header, yaml_commands):
+	annotation_cmds = yaml_commands[yaml_keys.kModules][yaml_keys.kAnnotation]
+	consensus_col_cmds = annotation_cmds[yaml_keys.kAConsensusColumns]
+	consensus_col_suffix = annotation_cmds[yaml_keys.kAConsensusColumnSuffix]
+	offset = annotation_cmds[yaml_keys.kAConsensusColumnOffset]
+	consensus_col_headers = get_consensus_col_names(consensus_col_cmds, consensus_col_suffix)
+	for idx,consensus_header in enumerate(consensus_col_headers):
+		header.insert(offset+idx, consensus_header)
+	
+	return header
+	
+	
+# returns line with added consensus cols (in appropriate position as specified in YAML)
+# header = header elements (list), NOT a string! index of specific headers must also line up with the lineElts (so give the header BEFORE inserting consensus columns into it)
+# same for output (line elements as a list, not a string)
+def get_consensus_col_line(lineElts, header, yaml_commands):
+	consensus_col_values = []
+	annotation_cmds = yaml_commands[yaml_keys.kModules][yaml_keys.kAnnotation]
+	consensus_col_cmds = annotation_cmds[yaml_keys.kAConsensusColumns]
+	consensus_col_criteria = annotation_cmds[yaml_keys.kAConsensusCriteria]
+	offset = annotation_cmds[yaml_keys.kAConsensusColumnOffset]
+	consensus_fields = get_ordered_consensus_cols(consensus_col_cmds)
+	# debug
+# 	print 'ordered consensus cols: ' + str(consensus_fields)
+	for consensus_field in consensus_fields:
+		consensus_cols = yaml_utils.convertColumns(consensus_col_cmds[consensus_field], yaml_commands)
+		#debug
+# 		print 'consensus cols: ' + str(consensus_cols)
+		if(consensus_field in consensus_col_criteria): # apply special criteria for finding a consensus beyond default behavior
+			consensus_value = get_consensus_value(lineElts, header, consensus_cols, consensus_col_criteria[consensus_field])
+		else:
+			consensus_value = get_consensus_value(lineElts, header, consensus_cols)
+		#debug: print consensus value
+# 		print 'consensus value: ' + str(consensus_value)
+		consensus_col_values.append(consensus_value)
+	
+	# now inject the values into the appropriate place in lineElts
+	for idx,value in enumerate(consensus_col_values):
+		lineElts.insert(offset+idx, str(value))
+	
+	return lineElts
+
+
+def get_values(lineElts, header, consensus_cols):
+	values = []
+	for consensus_col in consensus_cols:
+		#debug
+# 		print 'header: ' + str(header)
+		idx = header.index(consensus_col)
+		#debug
+# 		print 'idx: ' + str(idx)
+		values.append(lineElts[idx])
+	return values
+
+# for now, we pick the first value from the list that isn't blank or "unknown" (case-insensitive search). If no values match these criteria, we output ''.
+def get_consensus_value(lineElts, header, consensus_cols, consensus_criteria='default'):
+	values = get_values(lineElts, header, consensus_cols)
+	#debug
+# 	print 'values: ' + str(values)
+	if(consensus_criteria == 'default'):
+		for value in values:
+			if value != '' and value != ' ' and 'unknown' not in value.lower() and 'NONE' not in value:
+				return value
+		#else no known value
+		return ''
+	#else
+	if(consensus_criteria == yaml_keys.kAConsensusCriteriaTypeMaxFreq): # get max frequency value (compares all values as floats)
+		maxValue = 0.0
+		foundHit = False
+		for value in values:
+			if(value != '' and value != ' '):
+				try:
+					if(float(value) > float(maxValue)):
+						foundHit = True
+						maxValue = float(value)
+				except ValueError:
+					print 'Warning: value ' + str(value) + ' not a float? ' + ' or maxValue ' + str(maxValue) + ' not a float?'
+		if(foundHit):
+			return maxValue
+		else:
+			return ''
+	#else
+	raise ValueError('Unknown consensus criteria specified in YAML: ' + str(consensus_criteria))
+
+
+def root_or_cwd(mydir):
 	# If the user has specified a file using a partial filepath relative to the current working directory, complete that path so that 
 	# the file may be located.  If the filepath is absolute (i.e. starting from the root directory) then leave it alone.
-	
-	if dir[0] != '/':
-		return os.path.join(os.getcwd(), dir) # merge the current working directory to the provided partial path
+	if mydir[0] != '/':
+		return os.path.join(os.getcwd(), mydir) # merge the current working directory to the provided partial path
 	else:
-		return(dir) # no change
+		return(mydir) # no change
 
-# loads YAML file and returns content as nested python dictionaries/arrays
-def parse_yaml(loc):
-	# Parse a YAML file which will instruct the annotation steps to be completed.
-	with open(loc, "r") as stream:
-		yaml_commands = yaml.safe_load(stream)
-		return yaml_commands
 
 # converts a relative path to an absolute path with respect to the directory where this script is located (NOT the current working directory)
 def relativeToAbsolutePath_scriptDir(relativePath):
@@ -499,15 +606,8 @@ def relativeToAbsolutePath_scriptDir(relativePath):
 
 # connect to SQLite database
 def connect_db(db_file, host_name='', user_name='', db_name='', unix_socket_loc=''):
-	
 	db_file = os.path.abspath(db_file)
-
 # 	# TODO use relativeToAbsolutePath helper function above
-# 	script_dir = os.path.dirname(os.path.realpath(__file__))
-# # 	os.path.abspath(db_file)
-# 	if(not db_file.startswith('/')):
-# 		db_file = os.path.join(script_dir, db_file)
-	
 	print 'using database file: ' + db_file
 	if(not os.path.exists(os.path.dirname(db_file))):
 		os.makedirs(os.path.dirname(db_file))
@@ -603,20 +703,22 @@ def standardizeColHeaders(colHeader):
 def clinvar_addStars(clinvar_tsv_path, colHeaders, colTypes, yaml_cmds, clinStarHeader=vcfHeaders.kClinvarStarHeader, output_dir=None):
 	
 	#debug
-	print 'clinvar tmp tsv path (prior to star annotation): ' + clinvar_tsv_path
+# 	print 'clinvar tmp tsv path (prior to star annotation): ' + clinvar_tsv_path
 	
 	filename = getFilename(clinvar_tsv_path)
 	filename_noExtension = stripExtension(filename)
 	if(output_dir == None):
 		output_dir = os.path.dirname(clinvar_tsv_path)
-	outpath = os.path.join(output_dir, filename_noExtension+'.tsv')
+	outpath = os.path.join(output_dir, filename_noExtension+'.stars.tsv')
 	infile = open(clinvar_tsv_path, 'r')
 	outfile = open(outpath, 'w')
 	header = []
-	for line in infile:
+	for idx,line in enumerate(infile):
 		line = line.rstrip("\n")
-		if(line.startswith('#')):
-			line = line[1:]
+		if(idx == 0):
+			if(line.startswith('#')):
+				line = line[1:]
+# 			line = line[1:]
 			header = line.split("\t")
 			outfile.write('#' + line + "\t" + clinStarHeader + "\n")
 			continue
@@ -637,6 +739,14 @@ def clinvar_addStars(clinvar_tsv_path, colHeaders, colTypes, yaml_cmds, clinStar
 def setup_db_yaml(database_connection, yaml_commands, skip=True):
 	c = database_connection.cursor()
 	
+	# get existing list of tables
+	c.execute('SELECT name FROM sqlite_master WHERE type = "table";')
+	tables= c.fetchall()
+	table_names = [t[0] for t in tables]
+	
+	#debug
+# 	print 'table names: ' + str(table_names)
+	
 	for db in yaml_commands:
 		
 		#load default info
@@ -646,22 +756,26 @@ def setup_db_yaml(database_connection, yaml_commands, skip=True):
 		if not os.path.exists(datasetPath):
 			os.makedirs(datasetPath)
 		
-		if(db == 'default'):
-# # 			build = yaml_commands['default']['Build'] # required
-# 			datasetPath = yaml_commands['default']['Dataset_Path']
-# 			#debug
-# 			print 'datasetpath: ' + str(datasetPath)
-# 			if(not os.path.isabs(datasetPath)):
-# 				datasetPath = os.path.join(os.path.dirname(os.path.realpath(__file__)), datasetPath)
-# 			if not os.path.exists(datasetPath):
-# 				os.makedirs(datasetPath)
-# # 			databasePath['']
-# # 			ucsc_baseurl = yaml_commands['default']['UCSC_BaseURL'] # required
-# # 			annovar_params = yaml_commands['default']['Parameter_Annovar'] if 'Parameter_Annovar' in yaml_commands['default'] else ''
+		if(db == 'default' or db == yaml_keys.kModules):
 			continue
 		
 		#else
 		startLine = yaml_commands[db]['StartingLine'] if 'StartingLine' in yaml_commands[db] else 0
+		# check if dataset already in db and skip if it is
+		db_name = yaml_commands[db]['Annotation'].replace('.', '_').replace('-', '_') # get the name of the database from the YAML, replacing illegal characters
+		if(yaml_commands[db][yaml_keys.kDCategory] == yaml_keys.kDCategoryTypeRegion):
+			db_name += '_r'
+	
+		#Skip tables already present (by name, that is) in the database.
+		#debug
+		print 'db name: ' + db_name
+		if(db_name in table_names and skip):
+			print 'Skipped completed DB: ' + db_name
+			continue
+		elif db_name in table_names: # if user has chosen not to skip completed datasets and table name is present in the database
+			# drop table
+			c.execute("DROP table if exists '{table}';".format(table = db_name))
+		
 		#handle URL download
 		if yaml_commands[db]['Source'].lower().startswith('http:') or yaml_commands[db]['Source'].lower().startswith('https:') or yaml_commands[db]['Source'].lower().startswith('ftp:'):
 			filename = url2filename(yaml_commands[db]['Source'])
@@ -672,6 +786,11 @@ def setup_db_yaml(database_connection, yaml_commands, skip=True):
 		#handle file path instead of URL
 		else:
 			db_full_path = root_or_cwd(yaml_commands[db]['Source'])
+			if not os.path.isfile(db_full_path):
+				db_full_path = os.path.join(datasetPath, yaml_commands[db]['Source'])
+			if not os.path.isfile(db_full_path):
+				raise IOError('Could not find source ' + str(yaml_commands[db]['Source']) + ' in ' + str(root_or_cwd(yaml_commands[db]['Source'])) + ' or ' + str(os.path.join(datasetPath, yaml_commands[db]['Source'])))
+			
 			filename = getFilename(db_full_path)
 		
 		# now do the database import
@@ -693,32 +812,17 @@ def setup_db_yaml(database_connection, yaml_commands, skip=True):
 			# update filename
 			filename = getFilename(db_full_path)
 			
-			# special extra conversion for clinvar
-			if(filename == 'clinvar.tmp.tsv'): # TODO maybe check top-level entry in YAML instead of this
-				[db_full_path, colHeaders, colTypes] = clinvar_addStars(db_full_path, colHeaders, colTypes, yaml_cmds=yaml_commands, clinStarHeader=vcfHeaders.kClinvarStarHeader)
-				filename = getFilename(db_full_path)
-		
-				
-		db_name = yaml_commands[db]['Annotation'].replace('.', '_').replace('-', '_') # get the name of the database from the YAML, replacing illegal characters
-		
-		if(hasEndKey(colHeaders, STOP_COLUMN_HEADERS)):
-			db_name += '_r' # indicate a DB to be used for region annotation
+		# special extra conversion for clinvar
+		if(yaml_commands[db]['Annotation']=='clinvar'):
+			#debug
+# 			print 'colheaders: ' + str(colHeaders)
+# 			print 'colTypes: ' + str(colTypes)
+# 			print 'file: ' + str(db_full_path)
+			[db_full_path, colHeaders, colTypes] = clinvar_addStars(db_full_path, colHeaders, colTypes, yaml_cmds=yaml_commands, clinStarHeader=vcfHeaders.kClinvarStarHeader)
+			filename = getFilename(db_full_path)
 		
 		#standardize column headers
 		colHeaders = standardizeColHeaders(colHeaders)
-
-		#Skip tables already present (by name, that is) in the database.
-		c.execute('SELECT name FROM sqlite_master WHERE type = "table";')
-		tables= c.fetchall()
-		table_names = [t[0] for t in tables]
-		if (db_name in table_names or db_name + '_r' in table_names) and skip: # if the user has chosen to skip completed datasets and the table name is present in the database...
-			print("Skipped completed DB: " + db_name)
-			continue
-		elif db_name in table_names: # if user has chosen not to skip completed datasets and table name is present in the database
-			# drop table
-			c.execute("DROP table if exists '{table}';".format(table = db_name))
-		elif db_name+'_r' in table_names:
-			c.execute("DROP table if exists '{table}';".format(table = db_name+'_r'))
 
 		# get dataset column info
 		cols = []
@@ -748,6 +852,8 @@ def setup_db_yaml(database_connection, yaml_commands, skip=True):
 		else:
 			query = "create table if not exists {db_name}({cols},\
 				primary key({chromkey}, {startkey}, ref, alt));".format(db_name = db_name, chromkey=chromKey, startkey=startKey, cols = ", ".join(cols))
+			#debug
+			print 'db query: ' + query
 			c.execute(query)
 			c.execute("create index if not exists start_idx on {db_name}({startkey});".format(db_name = db_name, startkey=startKey))
 
@@ -757,7 +863,21 @@ def setup_db_yaml(database_connection, yaml_commands, skip=True):
 		database_connection.commit()
 		print 'Done importing ' + db_name
 		
-		
+	# generate BED files for any newly imported region datasets
+	c.execute('SELECT name FROM sqlite_master WHERE type = "table";')
+	tables= c.fetchall()
+
+	#determine which tables involve ranges (start != stop) and which are single location (start == stop)
+ 	range_tables = [t[0] for t in tables if t[0].endswith('_r') and not t[0].startswith('sample')]
+ 	
+ 	db_bed_dir = relativeToAbsolutePath_scriptDir(yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDBedPath])
+	bed_delimiter = yaml_commands[yaml_keys.kModules][yaml_keys.kAnnotation][yaml_keys.kABedInternalDelimiter]
+ 	
+ 	generate_bed_formatted_dbs(database_connection, range_tables, bed_delimiter=bed_delimiter, db_bed_dir=db_bed_dir, force_overwrite=not skip)
+ 	
+ 	print 'Done generating BED files.'
+ 	
+ 		
 # UNUSED and DEPRECATED - replaced by setup_db_yaml
 def setup_db(db_dir, database_connection, skip):
 	# This script both updates extant datasets and creates new ones within the MySQL database.  
@@ -962,60 +1082,75 @@ def listInLcList(list1, lclist):
 	return None
 
 # reorders columns so the standard columns (chrom, start, stop, ref, alt) are in the proper order when we create the table in our database
-# currently requires STANDARD lowercase column names (chrom, start, stop, ref, alt), NOT alternate names (e.g. chr)
-def reorderColumns(colNamesLc):
+# currently requires STANDARD column names (chrom, start, stop, ref, alt), NOT alternate names (e.g. chr)
+def reorderColumns(colNames):
+	colNamesLc = makeListLowercase(colNames)
 	if('chrom' in colNamesLc):
+		idx = colNamesLc.index('chrom')
 		colNamesLc.remove('chrom')
 		colNamesLc.insert(0, 'chrom')
+		elt = colNames.pop(idx)
+		colNames.insert(0, elt)
 	if('start' in colNamesLc):
+		idx = colNamesLc.index('start')
 		colNamesLc.remove('start')
 		colNamesLc.insert(1, 'start')
+		elt = colNames.pop(idx)
+		colNames.insert(1, elt)
 	if('stop' in colNamesLc):
+		idx = colNamesLc.index('stop')
 		colNamesLc.remove('stop')
 		colNamesLc.insert(2, 'stop')
+		elt = colNames.pop(idx)
+		colNames.insert(2, elt)
 	if('ref' in colNamesLc):
+		idx = colNamesLc.index('ref')
 		colNamesLc.remove('ref')
 		colNamesLc.insert(3, 'ref')
+		elt = colNames.pop(idx)
+		colNames.insert(3, elt)
 	if('alt' in colNamesLc):
+		idx = colNamesLc.index('alt')
 		colNamesLc.remove('alt')
 		colNamesLc.insert(4, 'alt')
+		elt = colNames.pop(idx)
+		colNames.insert(4, elt)
 		
-	return colNamesLc
+	return colNames
 
 
 # generates bed files from region tables in our database so we can use bedtools to perform the region annotation
-def generate_bed_formatted_dbs(database_connection, table_names, db_bed_dir):
-	print("Generating bed-formatted temporary tables")
+def generate_bed_formatted_dbs(database_connection, table_names, db_bed_dir, bed_delimiter, force_overwrite=False):
+	print("Generating bed-formatted tables for region annotation")
 	
 	db_bed_dir = relativeToAbsolutePath_scriptDir(db_bed_dir)
 	
 	if(not os.path.exists(db_bed_dir)):
 		os.makedirs(db_bed_dir)	
-# 	if not os.path.exists(BED_FORMATTED_DB_TMP_DIR):
-# 		os.makedirs(BED_FORMATTED_DB_TMP_DIR)
 
 	c = database_connection.cursor()
 	
 	tables_and_files = [(table, os.path.join(db_bed_dir, table + '.bed')) for table in table_names]
 	
 	for t,f in tables_and_files:
-		if not os.path.isfile(f):
+		if not os.path.isfile(f) or force_overwrite:
 			print("Generating BED for " + t)
 			columnsInfo = getColumnsOfTable(c, t)
-			colNamesLc = []
+			colNames = []
 			# get column nmes
 			for columnInfo in columnsInfo:
-				colNamesLc.append(str(columnInfo[1]).lower())
+				colNames.append(str(columnInfo[1]))
 			# check for standard columns (chrom, start, stop, ref, alt) and add them in proper order
-			colNamesLc = reorderColumns(colNamesLc)
+			colNames = reorderColumns(colNames)
 			
 			# for bedtools, only pull the rows that have genomic coordinates and positive start coordinate
-			cmd = "SELECT {colnames} from '{t}' where start != '' and stop != '' and start >= 0;".format(t=t, f=f, colnames = ', '.join(colNamesLc))
+			cmd = "SELECT {colnames} from '{t}' where start != '' and stop != '' and start >= 0;".format(t=t, f=f, colnames = ', '.join(colNames))
+			print 'BED generation sql cmd: ' + str(cmd)
 			
 			# write header - NOTE: DOES NOT INCLUDE CHR, START, STOP (only the columns after these, aka the cols that need to be split up when parsing the intersected file)
 			headerf = getHeaderFile(f)
 			headerout = open(headerf, 'w')
-			headerout.write("\t".join([t+'_'+colname for colname in colNamesLc[3:]]) + "\n")
+			headerout.write("\t".join([t+'_'+colname for colname in colNames[3:]]) + "\n")
 			
 			with open(f, 'w') as outfile:
 				for row in c.execute(cmd):
@@ -1033,7 +1168,7 @@ def generate_bed_formatted_dbs(database_connection, table_names, db_bed_dir):
 							infoArr.append(x2)
 							
 					#make name column
-					name = BED_DELIMITER.join(infoArr)
+					name = bed_delimiter.join(infoArr)
 					strings.append(name)
 					
 					#now write our 4 columns to BED file
@@ -1062,9 +1197,12 @@ def getHeaderFile(bed_file_path):
 	return bed_file_path.replace('.bed', '.bed.header')
 
 
-def annotate_range(database_connection, vcf_file_loc, output_dir_loc, db_bed_dir, skip=False, print_range_cmd_only=False, presorted_vcf=False):
+def annotate_range(database_connection, vcf_file_loc, output_dir_loc, modules_yaml_path, yaml_commands, skip=False, print_range_cmd_only=False, presorted_vcf=False, force_overwrite_beds=False):
 	intersected_tmp_dir = os.path.join(output_dir_loc, 'intersected_beds') # TODO make scratch dir a separate param for this function
-	db_bed_dir = relativeToAbsolutePath_scriptDir(db_bed_dir)
+	db_bed_dir = relativeToAbsolutePath_scriptDir(yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDBedPath])
+# 	db_bed_dir = relativeToAbsolutePath_scriptDir(db_bed_dir)
+	bed_delimiter = yaml_commands[yaml_keys.kModules][yaml_keys.kAnnotation][yaml_keys.kABedInternalDelimiter]
+	bed_multimatch_internal_delimiter = yaml_commands[yaml_keys.kModules][yaml_keys.kAnnotation][yaml_keys.kABedMultimatchInternalDelimiter]
 	
 	c = database_connection.cursor()
 	sample_name = 'sample_' + vcf_file_loc[0:len(vcf_file_loc) - 4].replace('.', '_').replace('-', '_').split('/')[-1]
@@ -1081,8 +1219,6 @@ def annotate_range(database_connection, vcf_file_loc, output_dir_loc, db_bed_dir
  	#perform BEDtools intersections with the range tables
  	print("Performing BEDtools intersections with {tabs} tables".format(tabs = len(range_tables)))
 
- 	generate_bed_formatted_dbs(database_connection, range_tables, db_bed_dir=db_bed_dir)
-
  	processes = []
 	
 	if not os.path.exists(intersected_tmp_dir):
@@ -1093,28 +1229,28 @@ def annotate_range(database_connection, vcf_file_loc, output_dir_loc, db_bed_dir
 		bed_file_path = os.path.join(db_bed_dir, t + '.bed')
  		
  		try:
-#  			cmd = "(cat {header}; intersectBed -a {vcf_file_loc} -b {fname} -loj | {condense})".format( # WARNING should be 'cut -f13' after condense?
 			cmd = "(cat {header}; intersectBed -a {vcf_file_loc} -b {fname} -loj | {condense} | cut -f13)".format(
 				header = getHeaderFile(bed_file_path),
 				vcf_file_loc = vcf_file_loc, 
 				fname = bed_file_path,
-				condense = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'condense_intersectBed_output.py')
+				condense = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'condense_intersectBed_output.py --modules={modules_yaml}'.format(modules_yaml=modules_yaml_path))
 			)
 	 		
-	 		if(print_range_cmd_only):
-	 			print 'range cmd: ' + cmd
-	 		else:
-				 processes.append(subprocess.Popen(cmd, stdout = open(out_file_loc, 'w'), shell = True))
+# 	 		if(print_range_cmd_only):
+	 		print 'range annotation cmd: ' + cmd
+# 	 		else:
+			processes.append(subprocess.Popen(cmd, stdout = open(out_file_loc, 'w'), shell = True))
 		except:
 			PrintException()
 	
 	if(print_range_cmd_only):
-		return		
+		return
 	
 	for p in processes:
 		p.wait()
 	
-	annotations = [os.path.join(intersected_tmp_dir, f) for f in os.listdir(intersected_tmp_dir)] 
+	# now merge the range annotations
+	annotations = [os.path.join(intersected_tmp_dir, f) for f in os.listdir(intersected_tmp_dir)]
 	
 	out_filepath = os.path.join(output_dir_loc, "{name}.range_joined.vcf".format(name = sample_name))
 	
@@ -1129,18 +1265,40 @@ def annotate_range(database_connection, vcf_file_loc, output_dir_loc, db_bed_dir
 		fileHeaders[f] = f.readline().rstrip("\n").split("\t") # header split by tab, not bed delimiter
 		f.seek(0) # reset file pos so we correctly read and print out header below
 	
+	# for now, just using the default delimiter. Later, check if there's a specific delimiter for a given dataset and use that instead.
+	dataset_multimatch_delimiter = yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDMultimatchDelimiter]
+	
 	try:
 		def mergeFiles():
 			currPos = 0
+			currLine = -1
 			while True:
 				lineContents = []
+				currLine += 1
 				for file1 in files:
 					fl = file1.readline().rstrip("\n")
 					if(len(fl) == 0 or fl == '.'):
 						# extend lineContents by appropriate # of blank columns
 						lineContents.extend(['']*len(fileHeaders[file1]))
+					elif(bed_multimatch_internal_delimiter in fl):
+						# split annotations and then recombine using specified default delimiter
+						annotations = fl.split(bed_multimatch_internal_delimiter)
+						finalCols = ['']*len(fileHeaders[file1]) # ensures the appropriate number of cols for future hits (which will be appended to the appropriate empty string)
+						for annotation in annotations:
+							annotationComponents = annotation.split(bed_delimiter)
+							if(len(annotationComponents) > 0):
+								for idx,component in enumerate(annotationComponents):
+									try:
+										if(finalCols[idx] != ''):
+											finalCols[idx] += dataset_multimatch_delimiter
+										finalCols[idx] += component
+									except IndexError:
+										print 'error: index ' + str(idx) + ' beyond size of finalCols (' + str(len(finalCols)) + ') on file ' + str(file1) + ' line ' + str(currLine)
+										raise 
+										
+						lineContents.extend(finalCols)
 					else:
-						flc = fl.split(BED_DELIMITER)
+						flc = fl.split(bed_delimiter)
 						lineContents.extend(flc)
 				out_file.write("\t".join(lineContents) + "\n")
 				
@@ -1149,6 +1307,7 @@ def annotate_range(database_connection, vcf_file_loc, output_dir_loc, db_bed_dir
 				if(newPos == currPos):
 					print 'done with intersectbed merge'
 					return
+				#else
 				currPos = newPos
 		
 		mergeFiles()
@@ -1194,8 +1353,9 @@ def getColumnsOfTable(db_connection_cursor, tablename):
 # printDebug = whether or not to print debug messages
 # TODO: add option to do something other than replace if the elt to be inserted already exists
 def db_import(db_connection_cursor, filename, tablename, startLine=0, colMappings={}, escapeStr='', isVCF=False, printDebug=False, enforceTableTypes=True, stripChrIfPresent=True):
-	if(printDebug):
-		print 'filename: ' + filename
+# 	if(printDebug):
+	#debug
+	print 'importing filename: ' + filename
 		
 	db_connection_cursor.execute('pragma table_info({table});'.format(table=tablename))
 	columns = db_connection_cursor.fetchall();
@@ -1208,10 +1368,12 @@ def db_import(db_connection_cursor, filename, tablename, startLine=0, colMapping
 	entries = [] # will be list of tuples to add to db
 	
 	colNames = colMappings.keys()
+	
+	dumpedEntries = False
 
 	# imports all current entries into the db, clearing the entries array afterward
 	# uses colNames from outer function scope
-	def importEntries(entries):
+	def importEntries(entries):	
 		colNameStr = ''
 		if(len(colNames) > 0):
 			colNameStr = '(' + ", ".join(escapeElts(colNames)) + ")"
@@ -1277,6 +1439,11 @@ def db_import(db_connection_cursor, filename, tablename, startLine=0, colMapping
 							
 						# bunch into chunks of 1000 entries for improved load performance
 						if(len(entries) > 1000):
+							#debug
+							if not dumpedEntries:
+# 								print 'entries: ' + str(entries)
+# 								print 'importing ' + str(len(entries)) + ' entries'
+								dumpedEntries = True
 							entries = importEntries(entries)
 				
 				else: # add all columns from file
@@ -1295,13 +1462,18 @@ def db_import(db_connection_cursor, filename, tablename, startLine=0, colMapping
 						colTuple = tuple(lineContents)
 						entries.append(colTuple)
 						if(len(entries) > 1000):
+							#debug
+# 							print 'importing entries ' + str(entries)
 							entries = importEntries(entries)
+							
 			
 			else: # line has escape str
 				None
 	
 	# import any remaining entries (<=1000)
 	if(len(entries) > 0):
+		#debug
+# 		print 'importing entries ' + str(entries)
 		entries = importEntries(entries)
 
 
@@ -1414,8 +1586,11 @@ def annotate_point(database_connection, vcf_file_loc, output_dir_loc, sample_db_
 				percent = float(idx)/int(totalLines)*100
 				print str(datetime.datetime.now()) + ': writing line ' + str(idx) + '/' + str(totalLines) + ' (' + '%.2f' % percent + '% complete)' + ' to point annotation file'
 				timer = currtime
-			
-			f.write("\t".join(str(x).strip("\n") for x in row) + "\n")
+			try:
+				f.write(("\t".join(x.encode('utf8').strip("\n") if isinstance(x, basestring) else str(x) for x in row) + "\n"))
+			except UnicodeEncodeError or UnicodeDecodeError:
+				print 'row: ' + str(row)
+				raise # re-raises the original exception
 			idx += 1
 
 	database_connection.commit()
@@ -1428,7 +1603,6 @@ def get_sample_db_path(db_dir, sample_name):
 	return os.path.join(db_dir, sample_name+'.sqlite')
 
 def upload_vcf(database_connection2, vcf_file_loc, db_dir, force_overwrite=False):
-# 	c = database_connection.cursor()
 	sample_name = getSampleTableName(vcf_file_loc)
 	sample_db_path = get_sample_db_path(db_dir, sample_name)
 	database_connection = sqlite3.connect(sample_db_path)

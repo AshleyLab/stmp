@@ -1,0 +1,2788 @@
+GENE	gene	condition
+AAAS	AAAS	AAAS Del/Dup
+AAAS	AAAS	AAAS Gene Sequencing
+AARS	AARS	Axonal CMT Panel
+AARS	AARS	Hereditary Neuropathy Panel
+AARS2	AARS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+AARS2	AARS2	Comprehensive Mitochondrial Nuclear Gene Panel
+ABCA12	ABCA12	ABCA12 Del/Dup
+ABCA12	ABCA12	ABCA12 Gene Sequencing
+ABCA12	ABCA12	ABCA12 Select Exon Sequencing
+ABCA12	ABCA12	Congenital Ichthyosis XomeDxSlice
+ABCA4	ABCA4	ABCA4 Del/Dup
+ABCA4	ABCA4	Cone-Rod Dystrophy Sequencing Panel
+ABCA4	ABCA4	Stargardt Sequencing Panel
+ABCA4	ABCA4	Stargardt Del/Dup Panel
+ABCA4	ABCA4	arRP Del/Dup Panel
+ABCA4	ABCA4	arRP Sequencing Panel
+ABCB7	ABCB7	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ABCB7	ABCB7	Comprehensive Mitochondrial Nuclear Gene Panel
+ABCC6	ABCC6	ABCC6 Del/Dup
+ABCC6	ABCC6	ABCC6 Gene Sequencing
+ABCC6	ABCC6	ABCC6 Hot Spots (Tier I)
+ABCC9	ABCC9	Comprehensive Cardiomyopathy Panel
+ABHD5	ABHD5	ABHD5 Del/Dup
+ABHD5	ABHD5	ABHD5 Gene Sequencing
+ABHD5	ABHD5	Congenital Ichthyosis XomeDxSlice
+ACAD8	ACAD8	ACAD8 Del/Dup
+ACAD8	ACAD8	ACAD8 Gene Sequencing
+ACAD9	ACAD9	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ACAD9	ACAD9	Comprehensive Mitochondrial Nuclear Gene Panel
+ACAD9	ACAD9	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+ACAD9	ACAD9	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+ACAD9	ACAD9	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+ACADM	ACADM	Fatty Acid Oxidation Sequencing Panel
+ACADM	ACADM	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+ACADM	ACADM	ACADM Del/Dup
+ACADM	ACADM	ACADM Gene Sequencing
+ACADM	ACADM	ACADM Mutation Detection (T121I)
+ACADM	ACADM	ACADM Remaining Exons Sequencing
+ACADM	ACADM	ACADM Select Exons Sequencing
+ACADM	ACADM	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+ACADM	ACADM	Reflex Del/Dup Testing after Hyperammonemia Panel
+ACADS	ACADS	Fatty Acid Oxidation Sequencing Panel
+ACADS	ACADS	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+ACADS	ACADS	ACADS Del/Dup
+ACADS	ACADS	ACADS Gene Sequencing
+ACADS	ACADS	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+ACADS	ACADS	Reflex Del/Dup Testing after Hyperammonemia Panel
+ACADSB	ACADSB	ACADSB (M389V) Mutation Analysis
+ACADSB	ACADSB	ACADSB Del/Dup
+ACADSB	ACADSB	ACADSB Gene Sequencing
+ACADVL	ACADVL	Fatty Acid Oxidation Sequencing Panel
+ACADVL	ACADVL	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+ACADVL	ACADVL	ACADVL Del/Dup
+ACADVL	ACADVL	ACADVL Gene Sequencing
+ACADVL	ACADVL	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+ACADVL	ACADVL	Reflex Del/Dup Testing after Hyperammonemia Panel
+ACAT1	ACAT1	ACAT1 Del/Dup
+ACAT1	ACAT1	ACAT1 Gene Sequencing
+ACO2	ACO2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ACO2	ACO2	Comprehensive Mitochondrial Nuclear Gene Panel
+ACO2	ACO2	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+ACO2	ACO2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+ACSF3	ACSF3	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+ACSF3	ACSF3	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+ACSF3	ACSF3	ACSF3 Del/Dup
+ACSF3	ACSF3	ACSF3 Gene Sequencing
+ACTA1	ACTA1	ACTA1 Gene Sequencing
+ACTA1	ACTA1	Congenital Myopathies & Muscular Dystrophies Panel
+ACTA1	ACTA1	ACTA1 Gene Sequencing & NEB Mutation Analysis
+ACTA1	ACTA1	Neuromuscular Disorders Panel
+ACTA2	ACTA2	Marfan Syndrome/TAAD Del/Dup Panel
+ACTA2	ACTA2	Marfan/TAAD Sequencing & Del/Dup Panel
+ACTA2	ACTA2	Marfan Syndrome/TAAD Sequencing Panel
+ACTB	ACTB	Noonan and RASopathies Panel
+ACTB	ACTB	ACTC (ACTC1)
+ACTB	ACTB	HCM Sequencing Panel
+ACTB	ACTB	Cardiomyopathies Del/Dup Panel
+ACTB	ACTB	DCM/LVNC Sequencing Panel
+ACTB	ACTB	Comprehensive Cardiomyopathy Panel
+ACTG1	ACTG1	Noonan and RASopathies Panel
+ACTN2	ACTN2	DCM/LVNC Sequencing Panel
+ACTN2	ACTN2	Comprehensive Cardiomyopathy Panel
+ACTN2	ACTN2	ACVRL1 (ALK1)
+ACTN2	ACTN2	Hereditary Hemorrhagic Telangiectasia Panel
+ACTN2	ACTN2	Pulmonary Arterial Hypertension Panel
+ADA	ADA	Comprehensive SCID Panel
+ADA	ADA	ADA Del/Dup
+ADA	ADA	ADA Gene Sequencing
+ADA	ADA	B-negative SCID Panel
+ADA	ADA	ADCK3 (CABC1; COQ8)
+ADA	ADA	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ADA	ADA	Comprehensive Mitochondrial Nuclear Gene Panel
+ADA	ADA	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+ADA	ADA	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+ADA	ADA	CoEnzyme Q10 Deficiency Nuclear Gene Panel
+ADSL	ADSL	Childhood-Onset Epilepsy Panel
+ADSL	ADSL	Infantile Epilepsy Panel
+ADSL	ADSL	Comprehensive Epilepsy Panel
+AFG3L2	AFG3L2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+AFG3L2	AFG3L2	Comprehensive Mitochondrial Nuclear Gene Panel
+AFG3L2	AFG3L2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+AGA	AGA	AGA Del/Dup
+AGA	AGA	AGA Gene Sequencing
+AGK	AGK	Combined Mito Genome Plus Mito Nuclear Gene Panel
+AGK	AGK	Comprehensive Mitochondrial Nuclear Gene Panel
+AGK	AGK	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+AGK	AGK	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+AGPS	AGPS	Congenital Ichthyosis XomeDxSlice
+AHI1	AHI1	Joubert Syndrome and Related Disorders Panel
+AHI1	AHI1	Comprehensive Brain Malformations Panel
+AICDA	AICDA	AICDA Del/Dup
+AICDA	AICDA	AICDA Gene Sequencing
+AIFM1	AIFM1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+AIFM1	AIFM1	Comprehensive Mitochondrial Nuclear Gene Panel
+AIFM1	AIFM1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+AIPL1	AIPL1	AIPL1 Del/Dup
+AIPL1	AIPL1	AIPL1 Gene Sequencing
+AIPL1	AIPL1	LCA Tier 5
+AIPL1	AIPL1	LCA Tier 1
+AIRE	AIRE	AIRE Del/Dup
+AIRE	AIRE	AIRE Gene Sequencing
+AIRE	AIRE	AIRE Remaining Exons
+AIRE	AIRE	AIRE Select Exons
+AK2	AK2	Comprehensive SCID Panel
+AK2	AK2	B-negative SCID Panel
+AKAP9	AKAP9	LQTS Del/Dup Panel
+AKAP9	AKAP9	LQTS Sequencing Panel
+AKAP9	AKAP9	LQTS Gene Sequencing & Del/Dup Panel
+AKAP9	AKAP9	Comprehensive Arrhythmia Panel
+ALAS2	ALAS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ALAS2	ALAS2	Comprehensive Mitochondrial Nuclear Gene Panel
+ALDH1B1	ALDH1B1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ALDH1B1	ALDH1B1	Comprehensive Mitochondrial Nuclear Gene Panel
+ALDH3A2	ALDH3A2	ALDH3A2 Del/Dup
+ALDH3A2	ALDH3A2	ALDH3A2 Gene Sequencing
+ALDH3A2	ALDH3A2	Congenital Ichthyosis XomeDxSlice
+ALDH7A1	ALDH7A1	STAT Epilepsy Panel
+ALDH7A1	ALDH7A1	Infantile Epilepsy Panel
+ALDH7A1	ALDH7A1	Comprehensive Epilepsy Panel
+ALOX12B	ALOX12B	ALOX12B Del/Dup
+ALOX12B	ALOX12B	ALOX12B Gene Sequencing
+ALOX12B	ALOX12B	Congenital Ichthyosis XomeDxSlice
+ALOXE3	ALOXE3	ALOXE3 Del/Dup
+ALOXE3	ALOXE3	ALOXE3 Gene Sequencing
+ALOXE3	ALOXE3	Congenital Ichthyosis XomeDxSlice
+ANK2	ANK2	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+ANK2	ANK2	LQTS Del/Dup Panel
+ANK2	ANK2	LQTS Sequencing Panel
+ANK2	ANK2	LQTS Gene Sequencing & Del/Dup Panel
+ANK2	ANK2	Comprehensive Arrhythmia Panel
+ANKRD1	ANKRD1	DCM/LVNC Sequencing Panel
+ANKRD1	ANKRD1	Comprehensive Cardiomyopathy Panel
+ANKRD11	ANKRD11	ANKRD11 Gene Sequencing
+ANO5	ANO5	Limb-Girdle Muscular Dystrophy Panel
+ANO5	ANO5	Neuromuscular Disorders Panel
+AP1S1	AP1S1	Congenital Ichthyosis XomeDxSlice
+APC	APC	Colorectal Cancer Panel
+APC	APC	Pancreatic Cancer Panel
+APC	APC	High/Moderate Risk Panel
+APC	APC	OncoGeneDx Custom Panel
+APC	APC	Comprehensive Cancer Panel
+APC	APC	Lynch/Colorectal High Risk Panel
+APTX	APTX	Combined Mito Genome Plus Mito Nuclear Gene Panel
+APTX	APTX	Comprehensive Mitochondrial Nuclear Gene Panel
+APTX	APTX	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+APTX	APTX	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+APTX	APTX	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+APTX	APTX	CoEnzyme Q10 Deficiency Nuclear Gene Panel
+AR	AR	AR Del/Dup
+AR	AR	AR Gene Sequencing
+AR	AR	AR Repeat Analysis
+AR	AR	Prenatal AR Gene Sequencing
+ARFGEF2	ARFGEF2	Cortical Brain Malformations Panel
+ARFGEF2	ARFGEF2	Comprehensive Brain Malformations Panel
+ARG1	ARG1	ARG1 Del/Dup
+ARG1	ARG1	ARG1 Gene Sequencing
+ARG1	ARG1	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+ARG1	ARG1	Reflex Del/Dup Testing after Hyperammonemia Panel
+ARSA	ARSA	ARSA Del/Dup
+ARSA	ARSA	ARSA Gene Sequencing
+ARSB	ARSB	ARSB Del/Dup
+ARSB	ARSB	ARSB Gene Sequencing
+ARSE	ARSE	ARSE Del/Dup
+ARSE	ARSE	ARSE Gene Sequencing
+ARSE	ARSE	ARSE Gene Sequencing & Del/Dup (Females)
+ARSE	ARSE	Congenital Ichthyosis XomeDxSlice
+ARX	ARX	STAT Epilepsy Panel
+ARX	ARX	ARX Del/Dup
+ARX	ARX	Cortical Brain Malformations Panel
+ARX	ARX	Comprehensive Brain Malformations Panel
+ARX	ARX	Infantile Epilepsy Panel
+ARX	ARX	Comprehensive Epilepsy Panel
+ASL	ASL	ASL Del/Dup
+ASL	ASL	ASL Gene Sequencing
+ASL	ASL	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+ASL	ASL	Reflex Del/Dup Testing after Hyperammonemia Panel
+ASPA	ASPA	ASPA Del/Dup
+ASPA	ASPA	ASPA Gene Sequencing & Del/Dup
+ASPM	ASPM	Microcephaly Panel
+ASS1	ASS1	ASS1 Gene Sequencing
+ASS1	ASS1	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+ASS1	ASS1	Reflex Del/Dup Testing after Hyperammonemia Panel
+ATL1	ATL1	Hereditary Neuropathy Panel
+ATM	ATM	Colorectal Cancer Panel
+ATM	ATM	Pancreatic Cancer Panel
+ATM	ATM	High/Moderate Risk Panel
+ATM	ATM	Breast/Ovarian Cancer Panel
+ATM	ATM	OncoGeneDx Custom Panel
+ATM	ATM	Comprehensive Cancer Panel
+ATM	ATM	Breast Cancer High/Moderate Risk Panel
+ATP1A2	ATP1A2	Comprehensive Epilepsy Panel
+ATP2A1	ATP2A1	Neuromuscular Disorders Panel
+ATP2A2	ATP2A2	ATP2A2 Gene Sequencing
+ATP2C1	ATP2C1	ATP2C1 Gene Sequencing
+ATP5E	ATP5E	Methylglutaconic Aciduria Nuclear Gene Panel
+ATP5E	ATP5E	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ATP5E	ATP5E	Comprehensive Mitochondrial Nuclear Gene Panel
+ATP5E	ATP5E	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+ATP6AP2	ATP6AP2	Infantile Epilepsy Panel
+ATP6AP2	ATP6AP2	Comprehensive Epilepsy Panel
+ATP7A	ATP7A	Hereditary Neuropathy Panel
+ATP7A	ATP7A	ATPAF2 (ATP12)
+ATP7A	ATP7A	Methylglutaconic Aciduria Nuclear Gene Panel
+ATP7A	ATP7A	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ATP7A	ATP7A	Comprehensive Mitochondrial Nuclear Gene Panel
+ATP7A	ATP7A	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+ATP7A	ATP7A	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+ATR	ATR	Microcephaly Panel
+ATRX	ATRX	Microcephaly Panel
+AUH	AUH	Methylglutaconic Aciduria Nuclear Gene Panel
+AUH	AUH	Combined Mito Genome Plus Mito Nuclear Gene Panel
+AUH	AUH	Comprehensive Mitochondrial Nuclear Gene Panel
+AUH	AUH	AUH Del/Dup
+AUH	AUH	AUH Gene Sequencing
+AUH	AUH	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+AXIN2	AXIN2	Colorectal Cancer Panel
+AXIN2	AXIN2	OncoGeneDx Custom Panel
+AXIN2	AXIN2	Comprehensive Cancer Panel
+AXIN2	AXIN2	BBack To Top
+B3GALNT2	B3GALNT2	Syndromic Congenital Muscular Dystrophy Panel
+B3GALNT2	B3GALNT2	Neuromuscular Disorders Panel
+BAG3	BAG3	Neuromuscular Disorders Panel
+BAG3	BAG3	Comprehensive Cardiomyopathy Panel
+BAG3	BAG3	Myofibrillar Myopathy Panel
+BARD1	BARD1	Breast/Ovarian Cancer Panel
+BARD1	BARD1	OncoGeneDx Custom Panel
+BARD1	BARD1	Comprehensive Cancer Panel
+BCKDHA	BCKDHA	BCKDHA Del/Dup
+BCKDHA	BCKDHA	BCKDHA Gene Sequencing
+BCKDHA	BCKDHA	MSUD Sequencing panel
+BCKDHA	BCKDHA	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+BCKDHA	BCKDHA	Reflex Del/Dup Testing after Hyperammonemia Panel
+BCKDHB	BCKDHB	BCKDHB Del/Dup
+BCKDHB	BCKDHB	BCKDHB Gene Sequencing
+BCKDHB	BCKDHB	MSUD Sequencing panel
+BCKDHB	BCKDHB	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+BCKDHB	BCKDHB	Reflex Del/Dup Testing after Hyperammonemia Panel
+BCOR	BCOR	BCOR Del/Dup
+BCOR	BCOR	BCOR P85L Mutation
+BCOR	BCOR	BCOR Remaining Exons Sequencing
+BCOR	BCOR	BCOR Select Exons Sequencing & Del/Dup
+BCS1L	BCS1L	Combined Mito Genome Plus Mito Nuclear Gene Panel
+BCS1L	BCS1L	Comprehensive Mitochondrial Nuclear Gene Panel
+BCS1L	BCS1L	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+BCS1L	BCS1L	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+BEST1	BEST1	BEST1 Del/Dup
+BEST1	BEST1	BEST1 Gene Sequencing
+BIN1	BIN1	Neuromuscular Disorders Panel
+BLM	BLM	BLM Del/Dup
+BLM	BLM	BLM Gene Sequencing
+BMP15	BMP15	Premature Ovarian Failure Sequencing Panel
+BMPR1A	BMPR1A	Colorectal Cancer Panel
+BMPR1A	BMPR1A	JPS Tier 2
+BMPR1A	BMPR1A	High/Moderate Risk Panel
+BMPR1A	BMPR1A	OncoGeneDx Custom Panel
+BMPR1A	BMPR1A	Comprehensive Cancer Panel
+BMPR1A	BMPR1A	BMPR1A, SMAD4 Gene Sequencing & Del/Dup
+BMPR1A	BMPR1A	JPS Del/Dup Analysis
+BMPR1A	BMPR1A	JPS Tier 1
+BMPR2	BMPR2	Pulmonary Arterial Hypertension Panel
+BOLA3	BOLA3	Combined Mito Genome Plus Mito Nuclear Gene Panel
+BOLA3	BOLA3	Comprehensive Mitochondrial Nuclear Gene Panel
+BOLA3	BOLA3	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+BOLA3	BOLA3	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+BRAF	BRAF	Prenatal Noonan Spectrum Disorders Panel
+BRAF	BRAF	Noonan and RASopathies Panel
+BRAF	BRAF	Comprehensive Cardiomyopathy Panel
+BRCA1	BRCA1	Endometrial Cancer Panel
+BRCA1	BRCA1	Pancreatic Cancer Panel
+BRCA1	BRCA1	High/Moderate Risk Panel
+BRCA1	BRCA1	Breast/Ovarian Cancer Panel
+BRCA1	BRCA1	OncoGeneDx Custom Panel
+BRCA1	BRCA1	Comprehensive Cancer Panel
+BRCA1	BRCA1	BRCA1/2 Ashkenazi Founder Mutation Panel
+BRCA1	BRCA1	BRCA1/2 Sequencing and Del/Dup analysis
+BRCA1	BRCA1	BRCA1 and BRCA2 Del/Dup
+BRCA1	BRCA1	BRCA1 and BRCA2 Sequencing
+BRCA1	BRCA1	Breast Cancer High Risk Panel
+BRCA1	BRCA1	Breast Cancer High Risk Panel and PALB2
+BRCA1	BRCA1	Breast Cancer High/Moderate Risk Panel
+BRCA2	BRCA2	Endometrial Cancer Panel
+BRCA2	BRCA2	Pancreatic Cancer Panel
+BRCA2	BRCA2	High/Moderate Risk Panel
+BRCA2	BRCA2	Breast/Ovarian Cancer Panel
+BRCA2	BRCA2	OncoGeneDx Custom Panel
+BRCA2	BRCA2	Comprehensive Cancer Panel
+BRCA2	BRCA2	BRCA1/2 Ashkenazi Founder Mutation Panel
+BRCA2	BRCA2	BRCA1/2 Sequencing and Del/Dup analysis
+BRCA2	BRCA2	BRCA1 and BRCA2 Del/Dup
+BRCA2	BRCA2	BRCA1 and BRCA2 Sequencing
+BRCA2	BRCA2	Breast Cancer High Risk Panel
+BRCA2	BRCA2	Breast Cancer High Risk Panel and PALB2
+BRCA2	BRCA2	Breast Cancer High/Moderate Risk Panel
+BRIP1	BRIP1	Breast/Ovarian Cancer Panel
+BRIP1	BRIP1	OncoGeneDx Custom Panel
+BRIP1	BRIP1	Comprehensive Cancer Panel
+BSCL2	BSCL2	Axonal CMT Panel
+BSCL2	BSCL2	Hereditary Neuropathy Panel
+BTD	BTD	BTD Del/Dup
+BTD	BTD	BTD Gene Sequencing
+BTK	BTK	BTK Del/Dup
+BTK	BTK	BTK Gene Sequencing & Del/Dup
+BTK	BTK	CBack To Top
+CHMP1B	C10ORF2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+CHMP1B	C10ORF2	Comprehensive Mitochondrial Nuclear Gene Panel
+CHMP1B	C10ORF2	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+CHMP1B	C10ORF2	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+CHMP1B	C10ORF2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+C12ORF65	C12ORF65	Combined Mito Genome Plus Mito Nuclear Gene Panel
+C12ORF65	C12ORF65	Comprehensive Mitochondrial Nuclear Gene Panel
+C12ORF65	C12ORF65	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+NDUFAF5	C20ORF7	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFAF5	C20ORF7	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFAF5	C20ORF7	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFAF5	C20ORF7	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFAF6	C8ORF38	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFAF6	C8ORF38	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFAF6	C8ORF38	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFAF6	C8ORF38	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFAF6	C8ORF38	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+CABP4	CABP4	CABP4 Gene Sequencing
+CACNA1C	CACNA1C	LQTS Del/Dup Panel
+CACNA1C	CACNA1C	LQTS Sequencing Panel
+CACNA1C	CACNA1C	LQTS Gene Sequencing & Del/Dup Panel
+CACNA1C	CACNA1C	Comprehensive Arrhythmia Panel
+CACNA1C	CACNA1C	BrS Sequencing Panel
+CACNA1C	CACNA1C	Other Arrhythmic Disorders Del/Dup Panel
+CACNA1F	CACNA1F	CACNA1F Gene Sequencing
+CACNA1S	CACNA1S	Neuromuscular Disorders Panel
+CACNB2	CACNB2	Comprehensive Arrhythmia Panel
+CACNB2	CACNB2	BrS Sequencing Panel
+CACNB2	CACNB2	Other Arrhythmic Disorders Del/Dup Panel
+CACNB4	CACNB4	Childhood-Onset Epilepsy Panel
+CACNB4	CACNB4	Comprehensive Epilepsy Panel
+CAPN3	CAPN3	Limb-Girdle Muscular Dystrophy Panel
+CAPN3	CAPN3	Neuromuscular Disorders Panel
+CASK	CASK	Microcephaly Panel
+CASK	CASK	Comprehensive Brain Malformations Panel
+CASK	CASK	Pontocerebellar Hypoplasia Panel
+CASP10	CASP10	CASP10 Gene Sequencing
+CASP8	CASP8	CASP8 Gene Sequencing
+CASQ2	CASQ2	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+CASQ2	CASQ2	Comprehensive Arrhythmia Panel
+CASQ2	CASQ2	CPVT Sequencing Panel
+CASQ2	CASQ2	Other Arrhythmic Disorders Del/Dup Panel
+CASR	CASR	CASR Gene Sequencing
+CAV1	CAV1	Pulmonary Arterial Hypertension Panel
+CAV3	CAV3	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+CAV3	CAV3	LQTS Del/Dup Panel
+CAV3	CAV3	LQTS Sequencing Panel
+CAV3	CAV3	LQTS Gene Sequencing & Del/Dup Panel
+CAV3	CAV3	HCM Sequencing Panel
+CAV3	CAV3	Cardiomyopathies Del/Dup Panel
+CAV3	CAV3	Limb-Girdle Muscular Dystrophy Panel
+CAV3	CAV3	Comprehensive Arrhythmia Panel
+CAV3	CAV3	Neuromuscular Disorders Panel
+CAV3	CAV3	Comprehensive Cardiomyopathy Panel
+CBL	CBL	Noonan and RASopathies Panel
+CBL	CBL	CBL/NRAS Gene Sequencing
+CBS	CBS	Marfan Syndrome/TAAD Del/Dup Panel
+CBS	CBS	Marfan/TAAD Sequencing & Del/Dup Panel
+CBS	CBS	Marfan Syndrome/TAAD Sequencing Panel
+CBS	CBS	CBS Del/Dup
+CBS	CBS	CBS Gene Sequencing
+CC2D2A	CC2D2A	Joubert Syndrome and Related Disorders Panel
+CC2D2A	CC2D2A	Comprehensive Brain Malformations Panel
+CCM2	CCM2	CCM2 Gene Sequencing
+CCM2	CCM2	Cerebral Cavernous Malformations (CCM) Panel
+CCM2	CCM2	CCM Del/Dup Panel
+CCM2	CCM2	CCM Tier 2
+CD320	CD320	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+CD320	CD320	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+CD3D	CD3D	B-positive SCID Panel
+CD3D	CD3D	Comprehensive SCID Panel
+CD3E	CD3E	B-positive SCID Panel
+CD3E	CD3E	Comprehensive SCID Panel
+CD247	CD3Z	B-positive SCID Panel
+CD247	CD3Z	Comprehensive SCID Panel
+CD40	CD40	CD40 Gene Sequencing
+CD40LG	CD40LG	CD40LG Del/Dup
+CD40LG	CD40LG	CD40LG Gene Sequencing
+CD40LG	CD40LG	CDC73 (HRPT2)
+CD40LG	CD40LG	CDC73 (HRPT2) Gene Sequencing
+CD40LG	CD40LG	CDC73 (HRPT2) Del/Dup
+CD40LG	CD40LG	CDC73 (HRPT2) Remaining Exons Sequencing
+CD40LG	CD40LG	CDC73 (HRPT2) Select Exons Sequencing
+CD40LG	CD40LG	CDC73 Gene Sequencing and Del/Dup
+CDH1	CDH1	Colorectal Cancer Panel
+CDH1	CDH1	High/Moderate Risk Panel
+CDH1	CDH1	Breast/Ovarian Cancer Panel
+CDH1	CDH1	OncoGeneDx Custom Panel
+CDH1	CDH1	Comprehensive Cancer Panel
+CDH1	CDH1	Breast Cancer High Risk Panel
+CDH1	CDH1	Breast Cancer High Risk Panel and PALB2
+CDH1	CDH1	Breast Cancer High/Moderate Risk Panel
+CDH23	CDH23	Usher Syndrome Del/Dup Panel
+CDH23	CDH23	Usher Syndrome Panel
+CDK4	CDK4	Pancreatic Cancer Panel
+CDK4	CDK4	OncoGeneDx Custom Panel
+CDK4	CDK4	Comprehensive Cancer Panel
+CDK4	CDK4	CDKN2A (p16) & CDK4 (Exon2) Sequencing
+CDK4	CDK4	Familial Cutaneous Malignant Melanoma
+CDK5RAP2	CDK5RAP2	Microcephaly Panel
+CDKL5	CDKL5	Rett/Angelman Syndrome Panel
+CDKL5	CDKL5	STAT Epilepsy Panel
+CDKL5	CDKL5	CDKL5 Del/Dup
+CDKL5	CDKL5	CDKL5 Gene Sequencing
+CDKL5	CDKL5	Microcephaly Panel
+CDKL5	CDKL5	Childhood-Onset Epilepsy Panel
+CDKL5	CDKL5	Infantile Epilepsy Panel
+CDKL5	CDKL5	Comprehensive Epilepsy Panel
+CDKN2A	CDKN2A	Pancreatic Cancer Panel
+CDKN2A	CDKN2A	CDKN2A (p16) Gene Sequencing
+CDKN2A	CDKN2A	High/Moderate Risk Panel
+CDKN2A	CDKN2A	Comprehensive Cancer Panel
+CDKN2A	CDKN2A	CDKN2A (p16) & CDK4 (Exon2) Sequencing
+CDKN2A	CDKN2A	Familial Cutaneous Malignant Melanoma
+CENPJ	CENPJ	Microcephaly Panel
+CEP152	CEP152	Microcephaly Panel
+CEP290	CEP290	Joubert Syndrome and Related Disorders Panel
+CEP290	CEP290	CEP290 Del/Dup
+CEP290	CEP290	CEP290 Hot Spots
+CEP290	CEP290	Comprehensive Brain Malformations Panel
+CEP290	CEP290	LCA Tier 1
+CEP41	CEP41	Joubert Syndrome and Related Disorders Panel
+CEP41	CEP41	Comprehensive Brain Malformations Panel
+CERKL	CERKL	CERKL Del/Dup
+CERKL	CERKL	CERKL Gene Sequencing
+CERS3	CERS3	Congenital Ichthyosis XomeDxSlice
+CFL2	CFL2	Congenital Myopathies & Muscular Dystrophies Panel
+CFL2	CFL2	Neuromuscular Disorders Panel
+CHD7	CHD7	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+CHD7	CHD7	CHD7 Del/Dup
+CHD7	CHD7	CHD7 Gene Sequencing
+CHD7	CHD7	Prenatal CHD7 Gene Sequencing
+CHEK2	CHEK2	Endometrial Cancer Panel
+CHEK2	CHEK2	Colorectal Cancer Panel
+CHEK2	CHEK2	High/Moderate Risk Panel
+CHEK2	CHEK2	Breast/Ovarian Cancer Panel
+CHEK2	CHEK2	OncoGeneDx Custom Panel
+CHEK2	CHEK2	Comprehensive Cancer Panel
+CHEK2	CHEK2	Breast Cancer High/Moderate Risk Panel
+CHKB	CHKB	Congenital Myopathies & Muscular Dystrophies Panel
+CHKB	CHKB	Neuromuscular Disorders Panel
+CHM	CHM	CHM Del/Dup
+CHM	CHM	CHM Gene Sequencing
+CHRNA2	CHRNA2	Childhood-Onset Epilepsy Panel
+CHRNA2	CHRNA2	Comprehensive Epilepsy Panel
+CHRNA4	CHRNA4	Childhood-Onset Epilepsy Panel
+CHRNA4	CHRNA4	Comprehensive Epilepsy Panel
+CHRNA7	CHRNA7	Childhood-Onset Epilepsy Panel
+CHRNA7	CHRNA7	Infantile Epilepsy Panel
+CHRNA7	CHRNA7	Comprehensive Epilepsy Panel
+CHRNB2	CHRNB2	Childhood-Onset Epilepsy Panel
+CHRNB2	CHRNB2	Comprehensive Epilepsy Panel
+CISD2	CISD2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+CISD2	CISD2	Comprehensive Mitochondrial Nuclear Gene Panel
+CISD2	CISD2	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+CLCN1	CLCN1	Neuromuscular Disorders Panel
+CLCN5	CLCN5	CLCN5 Del/Dup (Females)
+CLCN5	CLCN5	CLCN5 Gene Sequencing
+CLDN1	CLDN1	Congenital Ichthyosis XomeDxSlice
+CLN3	CLN3	Progressive Myoclonic Epilepsy Panel
+CLN3	CLN3	Childhood-Onset Epilepsy Panel
+CLN3	CLN3	Infantile Epilepsy Panel
+CLN3	CLN3	Comprehensive Epilepsy Panel
+CLN5	CLN5	Progressive Myoclonic Epilepsy Panel
+CLN5	CLN5	Childhood-Onset Epilepsy Panel
+CLN5	CLN5	Infantile Epilepsy Panel
+CLN5	CLN5	Comprehensive Epilepsy Panel
+CLN6	CLN6	Progressive Myoclonic Epilepsy Panel
+CLN6	CLN6	Childhood-Onset Epilepsy Panel
+CLN6	CLN6	Infantile Epilepsy Panel
+CLN6	CLN6	Comprehensive Epilepsy Panel
+CLN8	CLN8	Progressive Myoclonic Epilepsy Panel
+CLN8	CLN8	Childhood-Onset Epilepsy Panel
+CLN8	CLN8	Infantile Epilepsy Panel
+CLN8	CLN8	Comprehensive Epilepsy Panel
+CLRN1	CLRN1	Usher Syndrome Del/Dup Panel
+CLRN1	CLRN1	Usher Syndrome Panel
+CNBP	CNBP	CNBP Repeat Analysis
+CNGA1	CNGA1	CNGA1 Del/Dup
+CNGA1	CNGA1	CNGA1 Gene Sequencing
+CNGA3	CNGA3	CNGA3 Del/Dup
+CNGA3	CNGA3	CNGA3 Gene Sequencing
+CNGB3	CNGB3	CNGB3 Del/Dup
+CNGB3	CNGB3	CNGB3 Gene Sequencing
+CNTN1	CNTN1	Neuromuscular Disorders Panel
+CNTNAP2	CNTNAP2	Rett/Angelman Syndrome Panel
+CNTNAP2	CNTNAP2	Childhood-Onset Epilepsy Panel
+CNTNAP2	CNTNAP2	Infantile Epilepsy Panel
+CNTNAP2	CNTNAP2	Comprehensive Epilepsy Panel
+CNTNAP2	CNTNAP2	COA5 (C2ORF64)
+CNTNAP2	CNTNAP2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+CNTNAP2	CNTNAP2	Comprehensive Mitochondrial Nuclear Gene Panel
+CNTNAP2	CNTNAP2	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+COL17A1	COL17A1	COL17A1 Del/Dup
+COL17A1	COL17A1	COL17A1 Gene Sequencing
+COL3A1	COL3A1	Marfan Syndrome/TAAD Del/Dup Panel
+COL3A1	COL3A1	Marfan/TAAD Sequencing & Del/Dup Panel
+COL3A1	COL3A1	Marfan Syndrome/TAAD Sequencing Panel
+COL4A5	COL4A5	COL4A5 Del/Dup
+COL4A5	COL4A5	COL4A5 Gene Sequencing
+COL5A1	COL5A1	Marfan Syndrome/TAAD Del/Dup Panel
+COL5A1	COL5A1	Marfan/TAAD Sequencing & Del/Dup Panel
+COL5A1	COL5A1	Marfan Syndrome/TAAD Sequencing Panel
+COL5A2	COL5A2	Marfan Syndrome/TAAD Del/Dup Panel
+COL5A2	COL5A2	Marfan/TAAD Sequencing & Del/Dup Panel
+COL5A2	COL5A2	Marfan Syndrome/TAAD Sequencing Panel
+COL6A1	COL6A1	Congenital Myopathies & Muscular Dystrophies Panel
+COL6A1	COL6A1	Neuromuscular Disorders Panel
+COL6A2	COL6A2	Congenital Myopathies & Muscular Dystrophies Panel
+COL6A2	COL6A2	Neuromuscular Disorders Panel
+COL6A3	COL6A3	Congenital Myopathies & Muscular Dystrophies Panel
+COL6A3	COL6A3	Neuromuscular Disorders Panel
+COL7A1	COL7A1	COL7A1 Del/Dup
+COL7A1	COL7A1	COL7A1 Gene Sequencing
+COMP	COMP	COMP Del/Dup
+COMP	COMP	COMP Gene Sequencing
+COQ2	COQ2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+COQ2	COQ2	Comprehensive Mitochondrial Nuclear Gene Panel
+COQ2	COQ2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+COQ2	COQ2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+COQ2	COQ2	CoEnzyme Q10 Deficiency Nuclear Gene Panel
+COQ6	COQ6	Combined Mito Genome Plus Mito Nuclear Gene Panel
+COQ6	COQ6	Comprehensive Mitochondrial Nuclear Gene Panel
+COQ6	COQ6	CoEnzyme Q10 Deficiency Nuclear Gene Panel
+COQ9	COQ9	Combined Mito Genome Plus Mito Nuclear Gene Panel
+COQ9	COQ9	Comprehensive Mitochondrial Nuclear Gene Panel
+COQ9	COQ9	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+COQ9	COQ9	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+COQ9	COQ9	CoEnzyme Q10 Deficiency Nuclear Gene Panel
+COX10	COX10	Combined Mito Genome Plus Mito Nuclear Gene Panel
+COX10	COX10	Comprehensive Mitochondrial Nuclear Gene Panel
+COX10	COX10	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+COX10	COX10	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+COX10	COX10	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+COX10	COX10	COX14 (C12ORF62)
+COX10	COX10	Combined Mito Genome Plus Mito Nuclear Gene Panel
+COX10	COX10	Comprehensive Mitochondrial Nuclear Gene Panel
+COX10	COX10	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+COX10	COX10	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+COX10	COX10	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+COX15	COX15	Combined Mito Genome Plus Mito Nuclear Gene Panel
+COX15	COX15	Comprehensive Mitochondrial Nuclear Gene Panel
+COX15	COX15	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+COX15	COX15	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+COX15	COX15	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+COX15	COX15	COX20 (FAM36A)
+COX15	COX15	Combined Mito Genome Plus Mito Nuclear Gene Panel
+COX15	COX15	Comprehensive Mitochondrial Nuclear Gene Panel
+COX15	COX15	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+COX15	COX15	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+COX6B1	COX6B1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+COX6B1	COX6B1	Comprehensive Mitochondrial Nuclear Gene Panel
+COX6B1	COX6B1	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+COX6B1	COX6B1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+COX6B1	COX6B1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+CPS1	CPS1	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+CPS1	CPS1	Reflex Del/Dup Testing after Hyperammonemia Panel
+CPT1A	CPT1A	Fatty Acid Oxidation Sequencing Panel
+CPT1A	CPT1A	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+CPT1A	CPT1A	CPT1A Del/Dup
+CPT1A	CPT1A	CPT1A Gene Sequencing
+CPT1A	CPT1A	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+CPT1A	CPT1A	Reflex Del/Dup Testing after Hyperammonemia Panel
+CPT2	CPT2	Fatty Acid Oxidation Sequencing Panel
+CPT2	CPT2	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+CPT2	CPT2	CPT2 Del/Dup
+CPT2	CPT2	CPT2 Gene Sequencing
+CPT2	CPT2	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+CPT2	CPT2	Reflex Del/Dup Testing after Hyperammonemia Panel
+CRB1	CRB1	CRB1 Del/Dup
+CRB1	CRB1	CRB1 Gene Sequencing
+CRB1	CRB1	LCA Tier 2
+CRB1	CRB1	LCA Tier 1
+CRB1	CRB1	arRP Del/Dup Panel
+CRB1	CRB1	arRP Sequencing Panel
+CREBBP	CREBBP	CREBBP Del/Dup
+CREBBP	CREBBP	CREBBP Remaining Exons Sequencing
+CREBBP	CREBBP	CREBBP Select Exons Sequencing & Del/Dup
+CREBBP	CREBBP	CREBBP Sequencing & Del/Dup
+CRX	CRX	CRX Del/Dup
+CRX	CRX	CRX Gene Sequencing
+CRYAB	CRYAB	Neuromuscular Disorders Panel
+CRYAB	CRYAB	Comprehensive Cardiomyopathy Panel
+CRYAB	CRYAB	Myofibrillar Myopathy Panel
+CSRP3	CSRP3	DCM/LVNC Sequencing Panel
+CSRP3	CSRP3	Comprehensive Cardiomyopathy Panel
+CSTB	CSTB	Progressive Myoclonic Epilepsy Panel
+CSTB	CSTB	Childhood-Onset Epilepsy Panel
+CSTB	CSTB	Comprehensive Epilepsy Panel
+CTSC	CTSC	CTSC Gene Sequencing
+CTSD	CTSD	Progressive Myoclonic Epilepsy Panel
+CTSD	CTSD	Childhood-Onset Epilepsy Panel
+CTSD	CTSD	Infantile Epilepsy Panel
+CTSD	CTSD	Comprehensive Epilepsy Panel
+CUL4B	CUL4B	Syndromic Macrocephaly/Overgrowth Panel
+CYBA	CYBA	CYBA Del/Dup
+CYBA	CYBA	CYBA Gene Sequencing
+CYBB	CYBB	CYBB Del/Dup
+CYBB	CYBB	CYBB Gene Sequencing
+CYBB	CYBB	CGD Tier 1
+CYP17A1	CYP17A1	Premature Ovarian Failure Sequencing Panel
+CYP17A1	CYP17A1	CYP17A1 Del/Dup
+CYP17A1	CYP17A1	CYP17A1 Gene Sequencing
+CYP19A1	CYP19A1	Premature Ovarian Failure Sequencing Panel
+CYP19A1	CYP19A1	CYP19A1 Del/Dup
+CYP19A1	CYP19A1	CYP19A1 Gene Sequencing
+CYP1B1	CYP1B1	CYP1B1 Del/Dup
+CYP1B1	CYP1B1	CYP1B1 Gene Sequencing
+CYP27B1	CYP27B1	CYP27B1 Select Exons Sequencing
+CYP4F22	CYP4F22	CYP4F22 Gene Sequencing
+CYP4F22	CYP4F22	Congenital Ichthyosis XomeDxSlice
+CYP4F22	CYP4F22	DBack To Top
+DAG1	DAG1	Syndromic Congenital Muscular Dystrophy Panel
+DAG1	DAG1	Neuromuscular Disorders Panel
+DARS2	DARS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+DARS2	DARS2	Comprehensive Mitochondrial Nuclear Gene Panel
+DARS2	DARS2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+DARS2	DARS2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+DBT	DBT	DBT Del/Dup
+DBT	DBT	DBT Gene Sequencing
+DBT	DBT	MSUD Sequencing panel
+DBT	DBT	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+DBT	DBT	Reflex Del/Dup Testing after Hyperammonemia Panel
+DCDC1	DCDC1	PAX6 Gene Sequencing & Del/Dup Panel
+DCDC1	DCDC1	DCLRE1C (ARTEMIS)
+DCDC1	DCDC1	Comprehensive SCID Panel
+DCDC1	DCDC1	DCLRE1C Athabascan mutation
+DCDC1	DCDC1	DCLRE1C Del/Dup
+DCDC1	DCDC1	DCLRE1C Gene Sequencing & Deletion
+DCDC1	DCDC1	B-negative SCID Panel
+DCX	DCX	Cortical Brain Malformations Panel
+DCX	DCX	Comprehensive Brain Malformations Panel
+DES	DES	Cardiomyopathies Del/Dup Panel
+DES	DES	Limb-Girdle Muscular Dystrophy Panel
+DES	DES	DCM/LVNC Sequencing Panel
+DES	DES	Neuromuscular Disorders Panel
+DES	DES	Comprehensive Cardiomyopathy Panel
+DES	DES	Myofibrillar Myopathy Panel
+DES	DES	DFNB31 (WHRN)
+DES	DES	Usher Syndrome Del/Dup Panel
+DES	DES	Usher Syndrome Panel
+DGUOK	DGUOK	Combined Mito Genome Plus Mito Nuclear Gene Panel
+DGUOK	DGUOK	Comprehensive Mitochondrial Nuclear Gene Panel
+DGUOK	DGUOK	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+DGUOK	DGUOK	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+DGUOK	DGUOK	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+DHCR7	DHCR7	DHCR7 Del/Dup
+DHCR7	DHCR7	DHCR7 Gene Sequencing
+DHCR7	DHCR7	Prenatal DHCR7 Gene Sequencing
+DHCR7	DHCR7	Microcephaly Panel
+DHH	DHH	DHH Del/Dup
+DHH	DHH	DHH Gene Sequencing
+DKC1	DKC1	DKC1 Del/Dup
+DKC1	DKC1	DKC1 Gene Sequencing
+DLAT	DLAT	Combined Mito Genome Plus Mito Nuclear Gene Panel
+DLAT	DLAT	Comprehensive Mitochondrial Nuclear Gene Panel
+DLAT	DLAT	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+DLAT	DLAT	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+DLD	DLD	Combined Mito Genome Plus Mito Nuclear Gene Panel
+DLD	DLD	Comprehensive Mitochondrial Nuclear Gene Panel
+DLD	DLD	DLD Del/Dup
+DLD	DLD	DLD Gene Sequencing
+DLD	DLD	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+DLD	DLD	Reflex Del/Dup Testing after Hyperammonemia Panel
+DLD	DLD	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+DLD	DLD	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+DMD	DMD	DMD Del/Dup
+DMD	DMD	DMD Gene Sequencing
+DMD	DMD	Neuromuscular Disorders Panel
+DMD	DMD	Comprehensive Cardiomyopathy Panel
+DMP1	DMP1	DMP1 Gene Sequencing
+DMPK	DMPK	DMPK Repeat Analysis
+DNAJB2	DNAJB2	Hereditary Neuropathy Panel
+DNAJB6	DNAJB6	Limb-Girdle Muscular Dystrophy Panel
+DNAJB6	DNAJB6	Neuromuscular Disorders Panel
+DNAJB6	DNAJB6	Myofibrillar Myopathy Panel
+DNAJC19	DNAJC19	Methylglutaconic Aciduria Nuclear Gene Panel
+DNAJC19	DNAJC19	Combined Mito Genome Plus Mito Nuclear Gene Panel
+DNAJC19	DNAJC19	Comprehensive Mitochondrial Nuclear Gene Panel
+DNAJC5	DNAJC5	Progressive Myoclonic Epilepsy Panel
+DNAJC5	DNAJC5	Comprehensive Epilepsy Panel
+DNM1L	DNM1L	Combined Mito Genome Plus Mito Nuclear Gene Panel
+DNM1L	DNM1L	Comprehensive Mitochondrial Nuclear Gene Panel
+DNM1L	DNM1L	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+DNM1L	DNM1L	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+DNM2	DNM2	Demyelinating CMT Panel
+DNM2	DNM2	Axonal CMT Panel
+DNM2	DNM2	Hereditary Neuropathy Panel
+DNM2	DNM2	Neuromuscular Disorders Panel
+DNMT1	DNMT1	Hereditary Neuropathy Panel
+DOCK8	DOCK8	DOCK8 Del/Dup
+DOCK8	DOCK8	DOCK8 Gene Sequencing
+DOCK8	DOCK8	DOCK8 Gene Sequencing and Del/Dup
+DOCK8	DOCK8	Hyper-IgE Syndromes Panel
+DPM1	DPM1	Syndromic Congenital Muscular Dystrophy Panel
+DPM1	DPM1	Neuromuscular Disorders Panel
+DPM2	DPM2	Syndromic Congenital Muscular Dystrophy Panel
+DPM2	DPM2	Neuromuscular Disorders Panel
+DPM3	DPM3	Syndromic Congenital Muscular Dystrophy Panel
+DPM3	DPM3	Neuromuscular Disorders Panel
+DSC2	DSC2	Comprehensive Arrhythmia Panel
+DSC2	DSC2	Comprehensive Cardiomyopathy Panel
+DSC2	DSC2	ARVC Del/Dup Panel
+DSC2	DSC2	ARVC Sequencing Panel
+DSG2	DSG2	Comprehensive Arrhythmia Panel
+DSG2	DSG2	Comprehensive Cardiomyopathy Panel
+DSG2	DSG2	ARVC Del/Dup Panel
+DSG2	DSG2	ARVC Sequencing Panel
+DSP	DSP	Comprehensive Arrhythmia Panel
+DSP	DSP	Comprehensive Cardiomyopathy Panel
+DSP	DSP	ARVC Del/Dup Panel
+DSP	DSP	ARVC Sequencing Panel
+DTNA	DTNA	Comprehensive Cardiomyopathy Panel
+DYNC1H1	DYNC1H1	Axonal CMT Panel
+DYNC1H1	DYNC1H1	Hereditary Neuropathy Panel
+DYNC1H1	DYNC1H1	Neuromuscular Disorders Panel
+DYSF	DYSF	Limb-Girdle Muscular Dystrophy Panel
+DYSF	DYSF	Neuromuscular Disorders Panel
+DYSF	DYSF	EBack To Top
+EARS2	EARS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+EARS2	EARS2	Comprehensive Mitochondrial Nuclear Gene Panel
+EARS2	EARS2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+EARS2	EARS2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+EBP	EBP	Congenital Ichthyosis XomeDxSlice
+EDA	EDA1	EDA1 Del/Dup
+EDA	EDA1	EDA1 Gene Sequencing & Del/Dup (Female)
+EDA	EDA1	EDA1 Gene Sequencing (males)
+EDAR	EDAR	EDAR Del/Dup
+EDAR	EDAR	EDAR Gene Sequencing
+EDARADD	EDARADD	EDARADD Gene Sequencing
+EFHC1	EFHC1	Childhood-Onset Epilepsy Panel
+EFHC1	EFHC1	Comprehensive Epilepsy Panel
+EFNB1	EFNB1	EFNB1 Del/Dup
+EFNB1	EFNB1	EFNB1 Gene Sequencing
+EGR2	EGR2	Demyelinating CMT Panel
+EGR2	EGR2	Hereditary Neuropathy Panel
+EGR2	EGR2	ELANE (ELA2)
+EGR2	EGR2	ELANE (ELA2) Gene Sequencing
+EGR2	EGR2	Periodic Fever Syndromes Panel (7 genes)
+ELN	ELN	ELN Gene Sequencing
+ELOVL4	ELOVL4	ELOVL4 Del/Dup
+ELOVL4	ELOVL4	ELOVL4 Tier 1
+ELOVL4	ELOVL4	ELOVL4 Tier 2
+ELOVL4	ELOVL4	Congenital Ichthyosis XomeDxSlice
+ELOVL4	ELOVL4	Stargardt Sequencing Panel
+ELOVL4	ELOVL4	Stargardt Del/Dup Panel
+ELP4	ELP4	PAX6 Gene Sequencing & Del/Dup Panel
+EMD	EMD	DCM/LVNC Sequencing Panel
+EMD	EMD	Neuromuscular Disorders Panel
+EMD	EMD	Comprehensive Cardiomyopathy Panel
+ENG	ENG	Hereditary Hemorrhagic Telangiectasia Panel
+ENG	ENG	Pulmonary Arterial Hypertension Panel
+EOMES	EOMES	Cortical Brain Malformations Panel
+EOMES	EOMES	Comprehensive Brain Malformations Panel
+EPCAM	EPCAM	Endometrial Cancer Panel
+EPCAM	EPCAM	Colorectal Cancer Panel
+EPCAM	EPCAM	Pancreatic Cancer Panel
+EPCAM	EPCAM	High/Moderate Risk Panel
+EPCAM	EPCAM	Breast/Ovarian Cancer Panel
+EPCAM	EPCAM	OncoGeneDx Custom Panel
+EPCAM	EPCAM	Comprehensive Cancer Panel
+EPCAM	EPCAM	Lynch/Colorectal High Risk Panel
+EPM2A	EPM2A	Progressive Myoclonic Epilepsy Panel
+EPM2A	EPM2A	Childhood-Onset Epilepsy Panel
+EPM2A	EPM2A	Comprehensive Epilepsy Panel
+ETFA	ETFA	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ETFA	ETFA	Comprehensive Mitochondrial Nuclear Gene Panel
+ETFA	ETFA	Fatty Acid Oxidation Sequencing Panel
+ETFA	ETFA	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+ETFA	ETFA	ETFA Del/Dup
+ETFA	ETFA	ETFA Gene Sequencing
+ETFA	ETFA	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+ETFA	ETFA	Reflex Del/Dup Testing after Hyperammonemia Panel
+ETFA	ETFA	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+ETFB	ETFB	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ETFB	ETFB	Comprehensive Mitochondrial Nuclear Gene Panel
+ETFB	ETFB	Fatty Acid Oxidation Sequencing Panel
+ETFB	ETFB	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+ETFB	ETFB	ETFB Del/Dup
+ETFB	ETFB	ETFB Gene Sequencing
+ETFB	ETFB	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+ETFB	ETFB	Reflex Del/Dup Testing after Hyperammonemia Panel
+ETFB	ETFB	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+ETFDH	ETFDH	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ETFDH	ETFDH	Comprehensive Mitochondrial Nuclear Gene Panel
+ETFDH	ETFDH	Fatty Acid Oxidation Sequencing Panel
+ETFDH	ETFDH	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+ETFDH	ETFDH	ETFDH Del/Dup
+ETFDH	ETFDH	ETFDH Gene Sequencing
+ETFDH	ETFDH	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+ETFDH	ETFDH	Reflex Del/Dup Testing after Hyperammonemia Panel
+ETFDH	ETFDH	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+ETFDH	ETFDH	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+ETFDH	ETFDH	CoEnzyme Q10 Deficiency Nuclear Gene Panel
+ETHE1	ETHE1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ETHE1	ETHE1	Comprehensive Mitochondrial Nuclear Gene Panel
+ETHE1	ETHE1	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+ETHE1	ETHE1	ETHE1 Del/Dup
+ETHE1	ETHE1	ETHE1 Gene Sequencing & Del/Dup
+ETHE1	ETHE1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+ETHE1	ETHE1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+EXT1	EXT1	EXT1 & EXT2 Sequencing & Del/Dup
+EXT1	EXT1	HME Tier 1
+EXT2	EXT2	HME Tier 2
+EXT2	EXT2	EXT1 & EXT2 Sequencing & Del/Dup
+EXT2	EXT2	HME Tier 1
+EYA1	EYA1	EYA1 Del/Dup
+EYA1	EYA1	EYA1 Gene Sequencing & Del/Dup
+EYS	EYS	arRP Del/Dup Panel
+EYS	EYS	arRP Sequencing Panel
+EZH2	EZH2	Syndromic Macrocephaly/Overgrowth Panel
+EZH2	EZH2	FBack To Top
+F12	F12	F12 Select Exons Sequencing
+FAH	FAH	FAH Del/Dup
+FAH	FAH	FAH Gene Sequencing
+FAH	FAH	FAH Remaining Exons Sequencing
+FAH	FAH	FAH Select Exons Sequencing
+FAM134B	FAM134B	Hereditary Neuropathy Panel
+FANCC	FANCC	Breast/Ovarian Cancer Panel
+FANCC	FANCC	OncoGeneDx Custom Panel
+FANCC	FANCC	Comprehensive Cancer Panel
+FARS2	FARS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+FARS2	FARS2	Comprehensive Mitochondrial Nuclear Gene Panel
+FARS2	FARS2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+FARS2	FARS2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+FARS2	FARS2	FAS (TNFRSF6)
+FARS2	FARS2	FAS (TNFRSF6) Gene Sequencing
+FASTKD2	FASTKD2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+FASTKD2	FASTKD2	Comprehensive Mitochondrial Nuclear Gene Panel
+FASTKD2	FASTKD2	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+FASTKD2	FASTKD2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+FBN1	FBN1	Marfan Syndrome/TAAD Del/Dup Panel
+FBN1	FBN1	Marfan/TAAD Sequencing & Del/Dup Panel
+FBN1	FBN1	Marfan Syndrome/TAAD Sequencing Panel
+FBN1	FBN1	FBN1 Gene Sequencing & Del/Dup
+FBN2	FBN2	Marfan Syndrome/TAAD Del/Dup Panel
+FBN2	FBN2	Marfan/TAAD Sequencing & Del/Dup Panel
+FBN2	FBN2	Marfan Syndrome/TAAD Sequencing Panel
+FBP1	FBP1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+FBP1	FBP1	Comprehensive Mitochondrial Nuclear Gene Panel
+FBP1	FBP1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+FGD4	FGD4	Demyelinating CMT Panel
+FGD4	FGD4	Hereditary Neuropathy Panel
+FGF23	FGF23	FGF23 Gene Sequencing
+FGF8	FGF8	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+FGFR1	FGFR1	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+FGFR1	FGFR1	FGFR1 Gene Sequencing
+FH	FH	Combined Mito Genome Plus Mito Nuclear Gene Panel
+FH	FH	Comprehensive Mitochondrial Nuclear Gene Panel
+FH	FH	FH Del/Dup
+FH	FH	FH Gene Sequencing
+FH	FH	FH Gene Sequencing & Del/Dup
+FH	FH	FH Remaining Exons Sequencing
+FH	FH	FH Select Exons Sequencing
+FH	FH	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+FH	FH	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+FHL1	FHL1	Neuromuscular Disorders Panel
+FHL1	FHL1	Myofibrillar Myopathy Panel
+FIG4	FIG4	Hereditary Neuropathy Panel
+FIGLA	FIGLA	Premature Ovarian Failure Sequencing Panel
+FKRP	FKRP	Syndromic Congenital Muscular Dystrophy Panel
+FKRP	FKRP	Congenital Myopathies & Muscular Dystrophies Panel
+FKRP	FKRP	Limb-Girdle Muscular Dystrophy Panel
+FKRP	FKRP	Cortical Brain Malformations Panel
+FKRP	FKRP	Comprehensive Brain Malformations Panel
+FKRP	FKRP	Neuromuscular Disorders Panel
+FKTN	FKTN	Syndromic Congenital Muscular Dystrophy Panel
+FKTN	FKTN	Congenital Myopathies & Muscular Dystrophies Panel
+FKTN	FKTN	Limb-Girdle Muscular Dystrophy Panel
+FKTN	FKTN	Cortical Brain Malformations Panel
+FKTN	FKTN	Comprehensive Brain Malformations Panel
+FKTN	FKTN	Neuromuscular Disorders Panel
+FKTN	FKTN	Comprehensive Cardiomyopathy Panel
+FLCN	FLCN	FLCN Del/Dup
+FLCN	FLCN	FLCN Gene Sequencing
+FLCN	FLCN	FLCN Gene Sequencing and Del/Dup
+FLCN	FLCN	Neuromuscular Disorders Panel
+FLG	FLG	FLG (Filaggrin) Hot Spots
+FLNA	FLNA	Marfan/TAAD Sequencing & Del/Dup Panel
+FLNA	FLNA	Marfan Syndrome/TAAD Sequencing Panel
+FLNA	FLNA	Cortical Brain Malformations Panel
+FLNA	FLNA	Comprehensive Brain Malformations Panel
+FLNC	FLNC	Myofibrillar Myopathy Panel
+FMR1	FMR1	FMR1 CGG Repeat Analysis
+FOLR1	FOLR1	Progressive Myoclonic Epilepsy Panel
+FOLR1	FOLR1	STAT Epilepsy Panel
+FOLR1	FOLR1	Childhood-Onset Epilepsy Panel
+FOLR1	FOLR1	Infantile Epilepsy Panel
+FOLR1	FOLR1	Comprehensive Epilepsy Panel
+FOXC1	FOXC1	FOXC1 Del/Dup
+FOXC1	FOXC1	FOXC1 Gene Sequencing
+FOXE3	FOXE3	FOXE3 Gene Sequencing
+FOXG1	FOXG1	Rett/Angelman Syndrome Panel
+FOXG1	FOXG1	Microcephaly Panel
+FOXG1	FOXG1	Childhood-Onset Epilepsy Panel
+FOXG1	FOXG1	Infantile Epilepsy Panel
+FOXG1	FOXG1	Comprehensive Epilepsy Panel
+FOXRED1	FOXRED1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+FOXRED1	FOXRED1	Comprehensive Mitochondrial Nuclear Gene Panel
+FOXRED1	FOXRED1	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+FOXRED1	FOXRED1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+FRMD7	FRMD7	FRMD7 Gene Sequencing
+FSHR	FSHR	Premature Ovarian Failure Sequencing Panel
+FUCA1	FUCA1	FUCA1 Del/Dup
+FUCA1	FUCA1	FUCA1 Gene Sequencing
+FZD4	FZD4	FZD4 Del/Dup
+FZD4	FZD4	FZD4 Gene Sequencing
+FZD4	FZD4	GBack To Top
+G6PC	G6PC	Combined Mito Genome Plus Mito Nuclear Gene Panel
+G6PC	G6PC	Comprehensive Mitochondrial Nuclear Gene Panel
+G6PC	G6PC	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+GAA	GAA	GAA Del/Dup
+GAA	GAA	GAA Gene Sequencing
+GAA	GAA	Neuromuscular Disorders Panel
+GABRA1	GABRA1	Childhood-Onset Epilepsy Panel
+GABRA1	GABRA1	Infantile Epilepsy Panel
+GABRA1	GABRA1	Comprehensive Epilepsy Panel
+GABRG2	GABRG2	Childhood-Onset Epilepsy Panel
+GABRG2	GABRG2	Infantile Epilepsy Panel
+GABRG2	GABRG2	Comprehensive Epilepsy Panel
+GALC	GALC	GALC Del/Dup
+GALC	GALC	GALC Gene Sequencing & Del/Dup
+GALK1	GALK1	GALK1 Del/Dup
+GALK1	GALK1	GALK1 Gene Sequencing
+GALNS	GALNS	GALNS Del/Dup
+GALNS	GALNS	GALNS Gene Sequencing
+GALT	GALT	GALT Del/Dup
+GALT	GALT	GALT Gene Sequencing & Del/Dup
+GAMT	GAMT	Childhood-Onset Epilepsy Panel
+GAMT	GAMT	Infantile Epilepsy Panel
+GAMT	GAMT	Comprehensive Epilepsy Panel
+GAN	GAN	Hereditary Neuropathy Panel
+GARS	GARS	Axonal CMT Panel
+GARS	GARS	Hereditary Neuropathy Panel
+GATAD1	GATAD1	Comprehensive Cardiomyopathy Panel
+GATM	GATM	Childhood-Onset Epilepsy Panel
+GATM	GATM	Comprehensive Epilepsy Panel
+GCDH	GCDH	GCDH Del/Dup
+GCDH	GCDH	GCDH Gene Sequencing
+GCH1	GCH1	GCH1 Del/Dup
+GCH1	GCH1	GCH1 Gene Sequencing
+GCH1	GCH1	GCH1 Gene Sequencing & Del/Dup
+GCK	GCK	MODY Sequencing Panel
+GDAP1	GDAP1	Demyelinating CMT Panel
+GDAP1	GDAP1	Axonal CMT Panel
+GDAP1	GDAP1	Hereditary Neuropathy Panel
+GDF9	GDF9	Premature Ovarian Failure Sequencing Panel
+GFAP	GFAP	GFAP Gene Sequencing
+GFER	GFER	Combined Mito Genome Plus Mito Nuclear Gene Panel
+GFER	GFER	Comprehensive Mitochondrial Nuclear Gene Panel
+GFER	GFER	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+GFER	GFER	GFM1 (EFG1)
+GFER	GFER	Combined Mito Genome Plus Mito Nuclear Gene Panel
+GFER	GFER	Comprehensive Mitochondrial Nuclear Gene Panel
+GFER	GFER	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+GFER	GFER	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+GFM2	GFM2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+GFM2	GFM2	Comprehensive Mitochondrial Nuclear Gene Panel
+GFM2	GFM2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+GJB1	GJB1	Demyelinating CMT Panel
+GJB1	GJB1	Axonal CMT Panel
+GJB1	GJB1	Core CMT Panel
+GJB1	GJB1	Hereditary Neuropathy Panel
+GJB1	GJB1	GJB2 (Cx26)
+GJB1	GJB1	GJB2 Gene Sequencing
+GJB1	GJB1	Congenital Ichthyosis XomeDxSlice
+GJB1	GJB1	GJB3 (Cx31)
+GJB1	GJB1	Connexin Gene Testing
+GJB1	GJB1	Congenital Ichthyosis XomeDxSlice
+GJB1	GJB1	GJB4 (Cx30.3)
+GJB1	GJB1	Connexin Gene Testing
+GJB1	GJB1	Congenital Ichthyosis XomeDxSlice
+GJB1	GJB1	GJB6 (Cx30)
+GJB1	GJB1	GJB6 Gene Sequencing
+GJB1	GJB1	Congenital Ichthyosis XomeDxSlice
+GK	GK	GK Del/Dup
+GK	GK	GK Gene Sequencing
+GLA	GLA	HCM Sequencing Panel
+GLA	GLA	GLA Del/Dup (Females)
+GLA	GLA	GLA Gene Sequencing
+GLA	GLA	Cardiomyopathies Del/Dup Panel
+GLA	GLA	Hereditary Neuropathy Panel
+GLA	GLA	Comprehensive Cardiomyopathy Panel
+GLB1	GLB1	GLB1 Del/Dup
+GLB1	GLB1	GLB1 Gene Sequencing
+GLI3	GLI3	Syndromic Macrocephaly/Overgrowth Panel
+GLI3	GLI3	GLI3 Gene Sequencing & Del/Dup
+GLI3	GLI3	GLI3 Remaining Exons Sequencing & Del/Dup
+GLI3	GLI3	GLI3 Select Exons Sequencing
+GLUD1	GLUD1	Fatty Acid Oxidation Sequencing Panel
+GLUD1	GLUD1	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+GLUD1	GLUD1	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+GLUD1	GLUD1	Reflex Del/Dup Testing after Hyperammonemia Panel
+GMPPB	GMPPB	Syndromic Congenital Muscular Dystrophy Panel
+GMPPB	GMPPB	Limb-Girdle Muscular Dystrophy Panel
+GMPPB	GMPPB	Neuromuscular Disorders Panel
+GNAT1	GNAT1	GNAT1 Gene Sequencing
+GNE	GNE	GNE (M712T) Mutation Analysis
+GNE	GNE	GNE Del/Dup
+GNE	GNE	Neuromuscular Disorders Panel
+GNRH1	GNRH1	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+GNRHR	GNRHR	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+GNS	GNS	GNS Del/Dup
+GNS	GNS	GNS Gene Sequencing & Del/Dup
+GNS	GNS	Sanfilippo/MPSIII Sequencing Panel
+GOSR2	GOSR2	Progressive Myoclonic Epilepsy Panel
+GOSR2	GOSR2	Childhood-Onset Epilepsy Panel
+GOSR2	GOSR2	Comprehensive Epilepsy Panel
+GPC3	GPC3	Syndromic Macrocephaly/Overgrowth Panel
+GPC3	GPC3	GPC3 Del/Dup
+GPC3	GPC3	GPC3 Gene Sequencing & Del/Dup (Females)
+GPC3	GPC3	GPC3 Gene Sequencing (Males)
+GPD1L	GPD1L	Comprehensive Arrhythmia Panel
+GPD1L	GPD1L	BrS Sequencing Panel
+GPD1L	GPD1L	Other Arrhythmic Disorders Del/Dup Panel
+ADGRG1	GPR56	Cortical Brain Malformations Panel
+ADGRG1	GPR56	Comprehensive Brain Malformations Panel
+ADGRV1	GPR98	Usher Syndrome Del/Dup Panel
+ADGRV1	GPR98	Usher Syndrome Panel
+GRIN2A	GRIN2A	Childhood-Onset Epilepsy Panel
+GRIN2A	GRIN2A	Infantile Epilepsy Panel
+GRIN2A	GRIN2A	Comprehensive Epilepsy Panel
+GRIN2B	GRIN2B	Infantile Epilepsy Panel
+GRIN2B	GRIN2B	Comprehensive Epilepsy Panel
+GRM6	GRM6	GRM6 Gene Sequencing
+GUCA1A	GUCA1A	GUCA1A Del/Dup
+GUCA1A	GUCA1A	GUCA1A Gene Sequencing
+GUCY2D	GUCY2D	GUCY2D Del/Dup
+GUCY2D	GUCY2D	GUCY2D Gene Sequencing
+GUCY2D	GUCY2D	GUCY2D Select Exons Sequencing
+GUCY2D	GUCY2D	LCA Tier 4
+GUCY2D	GUCY2D	LCA Tier 1
+GYS2	GYS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+GYS2	GYS2	Comprehensive Mitochondrial Nuclear Gene Panel
+GYS2	GYS2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+GYS2	GYS2	HBack To Top
+HADH	HADH	HADH Del/Dup
+HADH	HADH	HADH Gene Sequencing
+HADHA	HADHA	Fatty Acid Oxidation Sequencing Panel
+HADHA	HADHA	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+HADHA	HADHA	HADHA Common Mutation (c.1528 G>C)
+HADHA	HADHA	HADHA Del/Dup
+HADHA	HADHA	HADHA Gene Sequencing
+HADHA	HADHA	HADHA/HADHB Gene Sequencing
+HADHA	HADHA	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+HADHA	HADHA	Reflex Del/Dup Testing after Hyperammonemia Panel
+HADHB	HADHB	Fatty Acid Oxidation Sequencing Panel
+HADHB	HADHB	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+HADHB	HADHB	HADHB Del/Dup
+HADHB	HADHB	HADHB Gene Sequencing
+HADHB	HADHB	HADHA/HADHB Gene Sequencing
+HADHB	HADHB	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+HADHB	HADHB	Reflex Del/Dup Testing after Hyperammonemia Panel
+HARS2	HARS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+HARS2	HARS2	Comprehensive Mitochondrial Nuclear Gene Panel
+HAX1	HAX1	HAX1 Del/Dup
+HAX1	HAX1	HAX1 Gene Sequencing
+HCN4	HCN4	Comprehensive Arrhythmia Panel
+HESX1	HESX1	HESX1 Del/Dup
+HESX1	HESX1	HESX1 Gene Sequencing
+HEXA	HEXA	HEXA Del/Dup
+HEXA	HEXA	HEXA Gene Sequencing
+HEXB	HEXB	HEXB Del/Dup
+HEXB	HEXB	HEXB Gene Sequencing & Del/Dup
+HGSNAT	HGSNAT	HGSNAT Del/Dup
+HGSNAT	HGSNAT	HGSNAT Gene Sequencing
+HGSNAT	HGSNAT	Sanfilippo/MPSIII Sequencing Panel
+HLCS	HLCS	Combined Mito Genome Plus Mito Nuclear Gene Panel
+HLCS	HLCS	Comprehensive Mitochondrial Nuclear Gene Panel
+HLCS	HLCS	HLCS Del/Dup
+HLCS	HLCS	HLCS Gene Sequencing
+HLCS	HLCS	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+HLCS	HLCS	Reflex Del/Dup Testing after Hyperammonemia Panel
+HLCS	HLCS	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+HLCS	HLCS	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+HMGCL	HMGCL	Fatty Acid Oxidation Sequencing Panel
+HMGCL	HMGCL	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+HMGCL	HMGCL	HMGCL Del/Dup
+HMGCL	HMGCL	HMGCL Exon 2 Sequencing
+HMGCL	HMGCL	HMGCL Gene Sequencing
+HMGCL	HMGCL	HMGCL Remaining Exons Sequencing
+HMGCL	HMGCL	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+HMGCL	HMGCL	Reflex Del/Dup Testing after Hyperammonemia Panel
+HMGCS2	HMGCS2	Fatty Acid Oxidation Sequencing Panel
+HMGCS2	HMGCS2	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+HMGCS2	HMGCS2	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+HMGCS2	HMGCS2	Reflex Del/Dup Testing after Hyperammonemia Panel
+HNF1A	HNF1A	MODY Sequencing Panel
+HNF1B	HNF1B	MODY Sequencing Panel
+HNF4A	HNF4A	MODY Sequencing Panel
+HOXD13	HOXD13	HOXD13 Del/Dup
+HOXD13	HOXD13	HOXD13 Gene Sequencing
+HPD	HPD	HPD Del/Dup
+HPD	HPD	HPD Gene Sequencing
+HPS1	HPS1	HPS1 & HPS3 Mutation Analysis (Puerto Rican)
+HPS3	HPS3	HPS3 Mutation Analysis (Ashkenazi Jewish)
+HPS3	HPS3	HPS1 & HPS3 Mutation Analysis (Puerto Rican)
+HRAS	HRAS	Prenatal Noonan Spectrum Disorders Panel
+HRAS	HRAS	Noonan and RASopathies Panel
+HRAS	HRAS	HRAS Gene Sequencing
+HRAS	HRAS	Comprehensive Cardiomyopathy Panel
+HSD17B10	HSD17B10	HSD17B10 Del/Dup (Females)
+HSD17B10	HSD17B10	HSD17B10 Gene Sequencing
+HSPB1	HSPB1	Axonal CMT Panel
+HSPB1	HSPB1	Hereditary Neuropathy Panel
+HSPB8	HSPB8	Axonal CMT Panel
+HSPB8	HSPB8	Hereditary Neuropathy Panel
+HSPD1	HSPD1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+HSPD1	HSPD1	Comprehensive Mitochondrial Nuclear Gene Panel
+HSPD1	HSPD1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+HSPD1	HSPD1	IBack To Top
+IER3IP1	IER3IP1	Microcephaly Panel
+IGHMBP2	IGHMBP2	IGHMBP2 Del/Dup
+IGHMBP2	IGHMBP2	IGHMBP2 Gene Sequencing
+IGHMBP2	IGHMBP2	Hereditary Neuropathy Panel
+IGHMBP2	IGHMBP2	Neuromuscular Disorders Panel
+IKBKAP	IKBKAP	Hereditary Neuropathy Panel
+IKBKAP	IKBKAP	IKBKG (NEMO)
+IKBKAP	IKBKAP	IKBKG (NEMO) Common Deletion (Female)
+IKBKAP	IKBKAP	IKBKG (NEMO) Gene Sequencing & Del/Dup
+IKBKAP	IKBKAP	IKBKG (NEMO) Gene Sequencing (HED)
+IKBKAP	IKBKAP	IKBKG (NEMO) Gene Sequencing (IP)
+IL2RG	IL2RG	B-positive SCID Panel
+IL2RG	IL2RG	Comprehensive SCID Panel
+IL2RG	IL2RG	IL2RG Del/Dup
+IL2RG	IL2RG	IL2RG Gene Sequencing
+IL7R	IL7R	B-positive SCID Panel
+IL7R	IL7R	Comprehensive SCID Panel
+IL7R	IL7R	IL7R Del/Dup
+IL7R	IL7R	IL7R Gene Sequencing
+ILK	ILK	Comprehensive Cardiomyopathy Panel
+IMPDH1	IMPDH1	adRP Tier 3
+IMPDH1	IMPDH1	IMPDH1 Gene Sequencing
+IMPDH1	IMPDH1	adRP Tier 1
+INPP5E	INPP5E	Joubert Syndrome and Related Disorders Panel
+INPP5E	INPP5E	Comprehensive Brain Malformations Panel
+IRAK4	IRAK4	IRAK4 Del/Dup
+IRAK4	IRAK4	IRAK4 Gene Sequencing
+IRF6	IRF6	IRF6 Del/Dup
+IRF6	IRF6	IRF6 Exon 4 Sequencing
+IRF6	IRF6	IRF6 Gene Sequencing
+ISCU	ISCU	Combined Mito Genome Plus Mito Nuclear Gene Panel
+ISCU	ISCU	Comprehensive Mitochondrial Nuclear Gene Panel
+ISCU	ISCU	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+ISPD	ISPD	Syndromic Congenital Muscular Dystrophy Panel
+ISPD	ISPD	Neuromuscular Disorders Panel
+ITGA6	ITGA6	ITGA6 Gene Sequencing
+ITGA7	ITGA7	Syndromic Congenital Muscular Dystrophy Panel
+ITGA7	ITGA7	Congenital Myopathies & Muscular Dystrophies Panel
+ITGA7	ITGA7	Neuromuscular Disorders Panel
+ITGB2	ITGB2	ITGB2 Del/Dup
+ITGB2	ITGB2	ITGB2 Gene Sequencing
+ITGB4	ITGB4	ITGB4 Gene Sequencing
+IVD	IVD	IVD Del/Dup
+IVD	IVD	IVD Gene Sequencing
+IVD	IVD	IVD Tier 1
+IVD	IVD	IVD Tier 2
+IVD	IVD	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+IVD	IVD	Reflex Del/Dup Testing after Hyperammonemia Panel
+NIPAL4	NIPAL4	Ichthyin(NIPAL4) Gene Sequencing
+NIPAL4	NIPAL4	Congenital Ichthyosis XomeDxSlice
+NIPAL4	NIPAL4	JBack To Top
+JAG1	JAG1	JAG1 Del/Dup
+JAG1	JAG1	JAG1 Gene Sequencing & Del/Dup
+JAG1	JAG1	JAG1 Tier 1
+JAG1	JAG1	JAG1 Tier 2
+JAK3	JAK3	B-positive SCID Panel
+JAK3	JAK3	Comprehensive SCID Panel
+JAK3	JAK3	JAK3 Del/Dup
+JAK3	JAK3	JAK3 Gene Sequencing
+JPH2	JPH2	Comprehensive Cardiomyopathy Panel
+JUP	JUP	Comprehensive Arrhythmia Panel
+JUP	JUP	Comprehensive Cardiomyopathy Panel
+JUP	JUP	ARVC Del/Dup Panel
+JUP	JUP	ARVC Sequencing Panel
+JUP	JUP	KBack To Top
+ANOS1	KAL1	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+ANOS1	KAL1	KAL1 Del/Dup
+ANOS1	KAL1	KAL1 Gene Sequencing
+KANSL1	KANSL1	Childhood-Onset Epilepsy Panel
+KANSL1	KANSL1	Infantile Epilepsy Panel
+KANSL1	KANSL1	Comprehensive Epilepsy Panel
+KBTBD13	KBTBD13	Congenital Myopathies & Muscular Dystrophies Panel
+KBTBD13	KBTBD13	Neuromuscular Disorders Panel
+KCNE1	KCNE1	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+KCNE1	KCNE1	LQTS Del/Dup Panel
+KCNE1	KCNE1	LQTS Sequencing Panel
+KCNE1	KCNE1	LQTS Gene Sequencing & Del/Dup Panel
+KCNE1	KCNE1	Comprehensive Arrhythmia Panel
+KCNE2	KCNE2	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+KCNE2	KCNE2	LQTS Del/Dup Panel
+KCNE2	KCNE2	LQTS Sequencing Panel
+KCNE2	KCNE2	LQTS Gene Sequencing & Del/Dup Panel
+KCNE2	KCNE2	Comprehensive Arrhythmia Panel
+KCNE3	KCNE3	Comprehensive Arrhythmia Panel
+KCNE3	KCNE3	BrS Sequencing Panel
+KCNH2	KCNH2	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+KCNH2	KCNH2	LQTS Del/Dup Panel
+KCNH2	KCNH2	LQTS Sequencing Panel
+KCNH2	KCNH2	LQTS Gene Sequencing & Del/Dup Panel
+KCNH2	KCNH2	Comprehensive Arrhythmia Panel
+KCNH2	KCNH2	SQTS Sequencing Panel
+KCNJ10	KCNJ10	Infantile Epilepsy Panel
+KCNJ10	KCNJ10	Comprehensive Epilepsy Panel
+KCNJ2	KCNJ2	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+KCNJ2	KCNJ2	LQTS Del/Dup Panel
+KCNJ2	KCNJ2	LQTS Sequencing Panel
+KCNJ2	KCNJ2	LQTS Gene Sequencing & Del/Dup Panel
+KCNJ2	KCNJ2	Comprehensive Arrhythmia Panel
+KCNJ2	KCNJ2	SQTS Sequencing Panel
+KCNJ2	KCNJ2	CPVT Sequencing Panel
+KCNJ5	KCNJ5	Comprehensive Arrhythmia Panel
+KCNJ8	KCNJ8	Comprehensive Arrhythmia Panel
+KCNQ1	KCNQ1	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+KCNQ1	KCNQ1	LQTS Del/Dup Panel
+KCNQ1	KCNQ1	LQTS Sequencing Panel
+KCNQ1	KCNQ1	LQTS Gene Sequencing & Del/Dup Panel
+KCNQ1	KCNQ1	Comprehensive Arrhythmia Panel
+KCNQ1	KCNQ1	SQTS Sequencing Panel
+KCNQ2	KCNQ2	STAT Epilepsy Panel
+KCNQ2	KCNQ2	Infantile Epilepsy Panel
+KCNQ2	KCNQ2	Comprehensive Epilepsy Panel
+KCNQ3	KCNQ3	STAT Epilepsy Panel
+KCNQ3	KCNQ3	Infantile Epilepsy Panel
+KCNQ3	KCNQ3	Comprehensive Epilepsy Panel
+KCTD7	KCTD7	Progressive Myoclonic Epilepsy Panel
+KCTD7	KCTD7	Childhood-Onset Epilepsy Panel
+KCTD7	KCTD7	Infantile Epilepsy Panel
+KCTD7	KCTD7	Comprehensive Epilepsy Panel
+KIF1A	KIF1A	Hereditary Neuropathy Panel
+KIF7	KIF7	Joubert Syndrome and Related Disorders Panel
+KIF7	KIF7	Comprehensive Brain Malformations Panel
+KISS1	KISS1	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+KISS1R	KISS1R	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+KLHL40	KLHL40	Neuromuscular Disorders Panel
+KMT2D	KMT2D	KMT2D Del/Dup
+KMT2D	KMT2D	KMT2D Gene Sequencing
+KRAS	KRAS	Prenatal Noonan Spectrum Disorders Panel
+KRAS	KRAS	Noonan and RASopathies Panel
+KRAS	KRAS	Comprehensive Cardiomyopathy Panel
+KRIT1	KRIT1	CCM Tier 1
+KRIT1	KRIT1	Cerebral Cavernous Malformations (CCM) Panel
+KRIT1	KRIT1	CCM Del/Dup Panel
+KRIT1	KRIT1	CCM Tier 2
+KRT1	KRT1	KRT1 Gene Sequencing
+KRT1	KRT1	KRT1 Gene Sequencing (EI)
+KRT1	KRT1	KRT1, KRT10 Hot Spots
+KRT1	KRT1	Congenital Ichthyosis XomeDxSlice
+KRT10	KRT10	KRT10 Gene Sequencing
+KRT10	KRT10	KRT1, KRT10 Hot Spots
+KRT10	KRT10	Congenital Ichthyosis XomeDxSlice
+KRT13	KRT13	KRT13 Gene Sequencing
+KRT13	KRT13	KRT4, KRT13 Hot Spots
+KRT14	KRT14	KRT14 Gene Sequencing
+KRT14	KRT14	KRT5/14 Hot Spots
+KRT16	KRT16	KRT16 Hot Spots
+KRT16	KRT16	KRT6A, KRT16 Hot Spots
+KRT17	KRT17	KRT17 Hot Spots
+KRT17	KRT17	KRT6B, KRT17 Hot Spots
+KRT2	KRT2	KRT2 Hot Spots
+KRT2	KRT2	Congenital Ichthyosis XomeDxSlice
+KRT4	KRT4	KRT4 Gene Sequencing
+KRT4	KRT4	KRT4, KRT13 Hot Spots
+KRT5	KRT5	KRT5 Gene Sequencing
+KRT5	KRT5	KRT5/14 Hot Spots
+KRT6A	KRT6A	KRT6A Gene Sequencing
+KRT6A	KRT6A	KRT6A, KRT16 Hot Spots
+KRT6B	KRT6B	KRT6B Gene Sequencing
+KRT6B	KRT6B	KRT6B, KRT17 Hot Spots
+KRT9	KRT9	KRT9 Hot Spots
+KRT9	KRT9	Congenital Ichthyosis XomeDxSlice
+KRT9	KRT9	LBack To Top
+L1CAM	L1CAM	L1CAM Del/Dup
+L1CAM	L1CAM	L1CAM Gene Sequencing (Males)
+L1CAM	L1CAM	Prenatal L1CAM Gene Sequencing & Del/Dup (Females)
+L1CAM	L1CAM	Prenatal L1CAM Gene Sequencing (Males)
+LAMA2	LAMA2	Congenital Myopathies & Muscular Dystrophies Panel
+LAMA2	LAMA2	Neuromuscular Disorders Panel
+LAMA3	LAMA3	LAMA3 Del/Dup
+LAMA3	LAMA3	LAMA3 Gene Sequencing
+LAMA4	LAMA4	Comprehensive Cardiomyopathy Panel
+LAMB3	LAMB3	LAMB3 Del/Dup
+LAMB3	LAMB3	LAMB3 Gene Sequencing
+LAMC2	LAMC2	LAMC2 Del/Dup
+LAMC2	LAMC2	LAMC2 Gene Sequencing
+LAMC3	LAMC3	Cortical Brain Malformations Panel
+LAMC3	LAMC3	Comprehensive Brain Malformations Panel
+LAMP2	LAMP2	HCM Sequencing Panel
+LAMP2	LAMP2	Cardiomyopathies Del/Dup Panel
+LAMP2	LAMP2	DCM/LVNC Sequencing Panel
+LAMP2	LAMP2	Neuromuscular Disorders Panel
+LAMP2	LAMP2	Comprehensive Cardiomyopathy Panel
+LARGE	LARGE	Syndromic Congenital Muscular Dystrophy Panel
+LARGE	LARGE	Cortical Brain Malformations Panel
+LARGE	LARGE	Comprehensive Brain Malformations Panel
+LARGE	LARGE	Neuromuscular Disorders Panel
+LARS	LARS	Combined Mito Genome Plus Mito Nuclear Gene Panel
+LARS	LARS	Comprehensive Mitochondrial Nuclear Gene Panel
+LARS	LARS	LDB3 (ZASP)
+LARS	LARS	Cardiomyopathies Del/Dup Panel
+LARS	LARS	DCM/LVNC Sequencing Panel
+LARS	LARS	Neuromuscular Disorders Panel
+LARS	LARS	Comprehensive Cardiomyopathy Panel
+LARS	LARS	Myofibrillar Myopathy Panel
+LGI1	LGI1	Childhood-Onset Epilepsy Panel
+LGI1	LGI1	Comprehensive Epilepsy Panel
+LHCGR	LHCGR	Premature Ovarian Failure Sequencing Panel
+LIAS	LIAS	Combined Mito Genome Plus Mito Nuclear Gene Panel
+LIAS	LIAS	Comprehensive Mitochondrial Nuclear Gene Panel
+LIAS	LIAS	Infantile Epilepsy Panel
+LIAS	LIAS	Comprehensive Epilepsy Panel
+LIAS	LIAS	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+LIAS	LIAS	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+LIG4	LIG4	Comprehensive SCID Panel
+LIG4	LIG4	B-negative SCID Panel
+LIPA	LIPA	LIPA Del/Dup
+LIPA	LIPA	LIPA Gene Sequencing
+LIPN	LIPN	Congenital Ichthyosis XomeDxSlice
+LITAF	LITAF	Demyelinating CMT Panel
+LITAF	LITAF	Hereditary Neuropathy Panel
+LMBR1	LMBR1	ZRS Del/Dup Analysis (Intron 5 of LMBR1 Gene)
+LMBR1	LMBR1	ZRS Sequence Analysis (Intron 5 of LMBR1 Gene)
+LMBRD1	LMBRD1	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+LMBRD1	LMBRD1	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+LMNA	LMNA	Syndromic Congenital Muscular Dystrophy Panel
+LMNA	LMNA	Axonal CMT Panel
+LMNA	LMNA	Congenital Myopathies & Muscular Dystrophies Panel
+LMNA	LMNA	Cardiomyopathies Del/Dup Panel
+LMNA	LMNA	Limb-Girdle Muscular Dystrophy Panel
+LMNA	LMNA	DCM/LVNC Sequencing Panel
+LMNA	LMNA	Hereditary Neuropathy Panel
+LMNA	LMNA	Neuromuscular Disorders Panel
+LMNA	LMNA	Comprehensive Cardiomyopathy Panel
+LOR	LOR	Congenital Ichthyosis XomeDxSlice
+LPIN2	LPIN2	Periodic Fever Syndromes Panel (7 genes)
+LRP5	LRP5	LRP5 Del/Dup
+LRP5	LRP5	LRP5 Gene Sequencing
+LRPPRC	LRPPRC	Combined Mito Genome Plus Mito Nuclear Gene Panel
+LRPPRC	LRPPRC	Comprehensive Mitochondrial Nuclear Gene Panel
+LRPPRC	LRPPRC	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+LRPPRC	LRPPRC	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+LRPPRC	LRPPRC	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+LRSAM1	LRSAM1	Axonal CMT Panel
+LRSAM1	LRSAM1	Hereditary Neuropathy Panel
+LRSAM1	LRSAM1	MBack To Top
+MAGI2	MAGI2	Childhood-Onset Epilepsy Panel
+MAGI2	MAGI2	Infantile Epilepsy Panel
+MAGI2	MAGI2	Comprehensive Epilepsy Panel
+MAP2K1	MAP2K1	Prenatal Noonan Spectrum Disorders Panel
+MAP2K1	MAP2K1	Noonan and RASopathies Panel
+MAP2K1	MAP2K1	MAP2K1 Del/Dup
+MAP2K1	MAP2K1	Comprehensive Cardiomyopathy Panel
+MAP2K2	MAP2K2	Prenatal Noonan Spectrum Disorders Panel
+MAP2K2	MAP2K2	Noonan and RASopathies Panel
+MAP2K2	MAP2K2	MAP2K2 Del/Dup
+MAP2K2	MAP2K2	Comprehensive Cardiomyopathy Panel
+MARS2	MARS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MARS2	MARS2	Comprehensive Mitochondrial Nuclear Gene Panel
+MARS2	MARS2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+MAT1A	MAT1A	MAT1A Del/Dup
+MAT1A	MAT1A	MAT1A Gene Sequencing
+MBD5	MBD5	Rett/Angelman Syndrome Panel
+MBD5	MBD5	Childhood-Onset Epilepsy Panel
+MBD5	MBD5	Infantile Epilepsy Panel
+MBD5	MBD5	Comprehensive Epilepsy Panel
+MBTPS2	MBTPS2	MBTPS2 Gene Sequencing
+MCCC1	MCCC1	MCCC1 Del/Dup
+MCCC1	MCCC1	MCCC1 Gene Sequencing
+MCCC1	MCCC1	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+MCCC1	MCCC1	Reflex Del/Dup Testing after Hyperammonemia Panel
+MCCC2	MCCC2	MCCC2 Del/Dup
+MCCC2	MCCC2	MCCC2 Gene Sequencing
+MCCC2	MCCC2	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+MCCC2	MCCC2	Reflex Del/Dup Testing after Hyperammonemia Panel
+MCEE	MCEE	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+MCEE	MCEE	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+MCOLN1	MCOLN1	MCOLN1 Del/Dup
+MCOLN1	MCOLN1	MCOLN1 Gene Sequencing
+MCPH1	MCPH1	Microcephaly Panel
+MECP2	MECP2	Rett/Angelman Syndrome Panel
+MECP2	MECP2	STAT Epilepsy Panel
+MECP2	MECP2	MECP2 Gene Sequencing & Del/Dup
+MECP2	MECP2	Microcephaly Panel
+MECP2	MECP2	Childhood-Onset Epilepsy Panel
+MECP2	MECP2	Infantile Epilepsy Panel
+MECP2	MECP2	Comprehensive Epilepsy Panel
+MED12	MED12	Syndromic Macrocephaly/Overgrowth Panel
+MED12	MED12	Marfan/TAAD Sequencing & Del/Dup Panel
+MED12	MED12	Marfan Syndrome/TAAD Sequencing Panel
+MED25	MED25	Axonal CMT Panel
+MED25	MED25	Hereditary Neuropathy Panel
+MEF2C	MEF2C	Rett/Angelman Syndrome Panel
+MEF2C	MEF2C	STAT Epilepsy Panel
+MEF2C	MEF2C	Childhood-Onset Epilepsy Panel
+MEF2C	MEF2C	Infantile Epilepsy Panel
+MEF2C	MEF2C	Comprehensive Epilepsy Panel
+MEFV	MEFV	MEFV Select Exons Sequencing
+MEFV	MEFV	Periodic Fever Syndromes Panel (7 genes)
+MEGF10	MEGF10	Congenital Myopathies & Muscular Dystrophies Panel
+MEGF10	MEGF10	Neuromuscular Disorders Panel
+MEN1	MEN1	MEN1 Del/Dup
+MEN1	MEN1	MEN1 Gene Sequencing
+MEN1	MEN1	MEN1 Gene Sequencing and Del/Dup
+MFN2	MFN2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MFN2	MFN2	Comprehensive Mitochondrial Nuclear Gene Panel
+MFN2	MFN2	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+MFN2	MFN2	Axonal CMT Panel
+MFN2	MFN2	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+MFN2	MFN2	Core CMT Panel
+MFN2	MFN2	Hereditary Neuropathy Panel
+MFN2	MFN2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+MFSD8	MFSD8	Progressive Myoclonic Epilepsy Panel
+MFSD8	MFSD8	Childhood-Onset Epilepsy Panel
+MFSD8	MFSD8	Infantile Epilepsy Panel
+MFSD8	MFSD8	Comprehensive Epilepsy Panel
+MKS1	MKS1	Joubert Syndrome and Related Disorders Panel
+MKS1	MKS1	Comprehensive Brain Malformations Panel
+MLH1	MLH1	Endometrial Cancer Panel
+MLH1	MLH1	Colorectal Cancer Panel
+MLH1	MLH1	Pancreatic Cancer Panel
+MLH1	MLH1	High/Moderate Risk Panel
+MLH1	MLH1	Breast/Ovarian Cancer Panel
+MLH1	MLH1	OncoGeneDx Custom Panel
+MLH1	MLH1	Comprehensive Cancer Panel
+MLH1	MLH1	Lynch/Colorectal High Risk Panel
+MLYCD	MLYCD	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+MLYCD	MLYCD	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+MLYCD	MLYCD	MLYCD Del/Dup
+MLYCD	MLYCD	MLYCD Gene Sequencing
+MMAA	MMAA	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+MMAA	MMAA	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+MMAA	MMAA	MMAA Del/Dup
+MMAA	MMAA	MMAA Gene Sequencing
+MMAA	MMAA	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+MMAA	MMAA	Reflex Del/Dup Testing after Hyperammonemia Panel
+MMAB	MMAB	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+MMAB	MMAB	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+MMAB	MMAB	MMAB Del/Dup
+MMAB	MMAB	MMAB Gene Sequencing
+MMAB	MMAB	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+MMAB	MMAB	Reflex Del/Dup Testing after Hyperammonemia Panel
+MMACHC	MMACHC	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+MMACHC	MMACHC	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+MMACHC	MMACHC	MMACHC Del/Dup
+MMACHC	MMACHC	MMACHC Gene Sequencing
+MMACHC	MMACHC	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+MMACHC	MMACHC	Reflex Del/Dup Testing after Hyperammonemia Panel
+MMACHC	MMACHC	MMADHC (C2ORF25)
+MMACHC	MMACHC	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+MMACHC	MMACHC	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+MMACHC	MMACHC	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+MMACHC	MMACHC	Reflex Del/Dup Testing after Hyperammonemia Panel
+MMACHC	MMACHC	MPC1 (BRP44L)
+MMACHC	MMACHC	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MMACHC	MMACHC	Comprehensive Mitochondrial Nuclear Gene Panel
+MMACHC	MMACHC	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+MPL	MPL	MPL Del/Dup
+MPL	MPL	MPL Gene Sequencing
+MPV17	MPV17	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MPV17	MPV17	Comprehensive Mitochondrial Nuclear Gene Panel
+MPV17	MPV17	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+MPV17	MPV17	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+MPZ	MPZ	Demyelinating CMT Panel
+MPZ	MPZ	Axonal CMT Panel
+MPZ	MPZ	Core CMT Panel
+MPZ	MPZ	Hereditary Neuropathy Panel
+MRPL44	MRPL44	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MRPL44	MRPL44	Comprehensive Mitochondrial Nuclear Gene Panel
+MRPS16	MRPS16	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MRPS16	MRPS16	Comprehensive Mitochondrial Nuclear Gene Panel
+MRPS16	MRPS16	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+MRPS22	MRPS22	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MRPS22	MRPS22	Comprehensive Mitochondrial Nuclear Gene Panel
+MRPS22	MRPS22	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+MSH2	MSH2	Endometrial Cancer Panel
+MSH2	MSH2	Colorectal Cancer Panel
+MSH2	MSH2	Pancreatic Cancer Panel
+MSH2	MSH2	MSH2 Exons 1-7 Inversion Analysis
+MSH2	MSH2	High/Moderate Risk Panel
+MSH2	MSH2	Breast/Ovarian Cancer Panel
+MSH2	MSH2	OncoGeneDx Custom Panel
+MSH2	MSH2	Comprehensive Cancer Panel
+MSH2	MSH2	Lynch/Colorectal High Risk Panel
+MSH6	MSH6	Endometrial Cancer Panel
+MSH6	MSH6	Colorectal Cancer Panel
+MSH6	MSH6	Pancreatic Cancer Panel
+MSH6	MSH6	High/Moderate Risk Panel
+MSH6	MSH6	Breast/Ovarian Cancer Panel
+MSH6	MSH6	OncoGeneDx Custom Panel
+MSH6	MSH6	Comprehensive Cancer Panel
+MSH6	MSH6	Lynch/Colorectal High Risk Panel
+MTFMT	MTFMT	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MTFMT	MTFMT	Comprehensive Mitochondrial Nuclear Gene Panel
+MTFMT	MTFMT	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+MTFMT	MTFMT	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+MTM1	MTM1	Neuromuscular Disorders Panel
+MTMR2	MTMR2	Demyelinating CMT Panel
+MTMR2	MTMR2	Hereditary Neuropathy Panel
+ND1	MTND1	DCM/LVNC Sequencing Panel
+ND1	MTND1	Comprehensive Cardiomyopathy Panel
+ND5	MTND5	DCM/LVNC Sequencing Panel
+ND5	MTND5	Comprehensive Cardiomyopathy Panel
+ND6	MTND6	DCM/LVNC Sequencing Panel
+ND6	MTND6	Comprehensive Cardiomyopathy Panel
+MTO1	MTO1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MTO1	MTO1	Comprehensive Mitochondrial Nuclear Gene Panel
+MTO1	MTO1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+MTPAP	MTPAP	Combined Mito Genome Plus Mito Nuclear Gene Panel
+MTPAP	MTPAP	Comprehensive Mitochondrial Nuclear Gene Panel
+MTPAP	MTPAP	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+MTPAP	MTPAP	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+MTR	MTR	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+MTR	MTR	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+MTRR	MTRR	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+MTRR	MTRR	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+MTRR	MTRR	MTTD Mitochondrial
+MTRR	MTRR	DCM/LVNC Sequencing Panel
+MTRR	MTRR	Comprehensive Cardiomyopathy Panel
+TRNG	MTTG	HCM Sequencing Panel
+TRNG	MTTG	Comprehensive Cardiomyopathy Panel
+TRNH	MTTH	DCM/LVNC Sequencing Panel
+TRNH	MTTH	Comprehensive Cardiomyopathy Panel
+TRNI	MTTI	HCM Sequencing Panel
+TRNI	MTTI	DCM/LVNC Sequencing Panel
+TRNI	MTTI	Comprehensive Cardiomyopathy Panel
+TRNK	MTTK	HCM Sequencing Panel
+TRNK	MTTK	DCM/LVNC Sequencing Panel
+TRNK	MTTK	Comprehensive Cardiomyopathy Panel
+TRNL1	MTTL1	DCM/LVNC Sequencing Panel
+TRNL1	MTTL1	Comprehensive Cardiomyopathy Panel
+TRNL2	MTTL2	DCM/LVNC Sequencing Panel
+TRNL2	MTTL2	Comprehensive Cardiomyopathy Panel
+TRNM	MTTM	DCM/LVNC Sequencing Panel
+TRNM	MTTM	Comprehensive Cardiomyopathy Panel
+TRNQ	MTTQ	HCM Sequencing Panel
+TRNQ	MTTQ	DCM/LVNC Sequencing Panel
+TRNQ	MTTQ	Comprehensive Cardiomyopathy Panel
+TRNS1	MTTS1	DCM/LVNC Sequencing Panel
+TRNS1	MTTS1	Comprehensive Cardiomyopathy Panel
+TRNS2	MTTS2	DCM/LVNC Sequencing Panel
+TRNS2	MTTS2	Comprehensive Cardiomyopathy Panel
+MUT	MUT	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+MUT	MUT	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+MUT	MUT	MUT Del/Dup
+MUT	MUT	MUT Exon 2 Sequencing
+MUT	MUT	MUT Gene Sequencing
+MUT	MUT	MUT Remaining Exons Sequencing
+MUT	MUT	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+MUT	MUT	Reflex Del/Dup Testing after Hyperammonemia Panel
+MUTYH	MUTYH	Endometrial Cancer Panel
+MUTYH	MUTYH	Colorectal Cancer Panel
+MUTYH	MUTYH	High/Moderate Risk Panel
+MUTYH	MUTYH	OncoGeneDx Custom Panel
+MUTYH	MUTYH	Comprehensive Cancer Panel
+MUTYH	MUTYH	Lynch/Colorectal High Risk Panel
+MVK	MVK	MVK Del/Dup
+MVK	MVK	MVK Remaining Exons
+MVK	MVK	MVK Select Exons
+MVK	MVK	Periodic Fever Syndromes Panel (7 genes)
+MYBPC3	MYBPC3	HCM Sequencing Panel
+MYBPC3	MYBPC3	Cardiomyopathies Del/Dup Panel
+MYBPC3	MYBPC3	DCM/LVNC Sequencing Panel
+MYBPC3	MYBPC3	Comprehensive Cardiomyopathy Panel
+MYCN	MYCN	MYCN Del/Dup
+MYCN	MYCN	MYCN Gene Sequencing
+MYCN	MYCN	Microcephaly Panel
+MYH11	MYH11	Marfan Syndrome/TAAD Del/Dup Panel
+MYH11	MYH11	Marfan/TAAD Sequencing & Del/Dup Panel
+MYH11	MYH11	Marfan Syndrome/TAAD Sequencing Panel
+MYH7	MYH7	HCM Sequencing Panel
+MYH7	MYH7	Cardiomyopathies Del/Dup Panel
+MYH7	MYH7	DCM/LVNC Sequencing Panel
+MYH7	MYH7	Neuromuscular Disorders Panel
+MYH7	MYH7	Comprehensive Cardiomyopathy Panel
+MYL2	MYL2	HCM Sequencing Panel
+MYL2	MYL2	Cardiomyopathies Del/Dup Panel
+MYL2	MYL2	Comprehensive Cardiomyopathy Panel
+MYL3	MYL3	HCM Sequencing Panel
+MYL3	MYL3	Cardiomyopathies Del/Dup Panel
+MYL3	MYL3	Comprehensive Cardiomyopathy Panel
+MYLK2	MYLK2	Comprehensive Cardiomyopathy Panel
+MYO7A	MYO7A	Usher Syndrome Del/Dup Panel
+MYO7A	MYO7A	Usher Syndrome Panel
+MYOC	MYOC	MYOC Del/Dup
+MYOC	MYOC	MYOC Gene Sequencing
+MYOT	MYOT	Limb-Girdle Muscular Dystrophy Panel
+MYOT	MYOT	Neuromuscular Disorders Panel
+MYOT	MYOT	Myofibrillar Myopathy Panel
+MYOZ2	MYOZ2	Comprehensive Cardiomyopathy Panel
+MYPN	MYPN	Comprehensive Cardiomyopathy Panel
+MYPN	MYPN	NBack To Top
+NAGLU	NAGLU	NAGLU Del/Dup
+NAGLU	NAGLU	NAGLU Gene Sequencing
+NAGLU	NAGLU	Sanfilippo/MPSIII Sequencing Panel
+NAGS	NAGS	NAGS Del/Dup
+NAGS	NAGS	NAGS Gene Sequencing
+NAGS	NAGS	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+NAGS	NAGS	Reflex Del/Dup Testing after Hyperammonemia Panel
+NBN	NBN	Breast/Ovarian Cancer Panel
+NBN	NBN	OncoGeneDx Custom Panel
+NBN	NBN	Comprehensive Cancer Panel
+NBN	NBN	NCF1 (Exon 2)
+NBN	NBN	NCF1 (Exon 2) Gene Sequencing
+NBN	NBN	CGD Tier 1
+NCF2	NCF2	NCF2 Del/Dup
+NCF2	NCF2	NCF2 Gene Sequencing
+NDE1	NDE1	Cortical Brain Malformations Panel
+NDE1	NDE1	Comprehensive Brain Malformations Panel
+NDP	NDP	NDP Del/Dup
+NDP	NDP	NDP Gene Sequencing
+NDP	NDP	NDP Gene Sequencing & Del/Dup (Females)
+NDRG1	NDRG1	Demyelinating CMT Panel
+NDRG1	NDRG1	Hereditary Neuropathy Panel
+NDUFA1	NDUFA1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFA1	NDUFA1	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFA1	NDUFA1	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFA1	NDUFA1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFA10	NDUFA10	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFA10	NDUFA10	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFA10	NDUFA10	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFA10	NDUFA10	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFA11	NDUFA11	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFA11	NDUFA11	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFA11	NDUFA11	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFA11	NDUFA11	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFA11	NDUFA11	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFA12	NDUFA12	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFA12	NDUFA12	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFA12	NDUFA12	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFA12	NDUFA12	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFA2	NDUFA2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFA2	NDUFA2	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFA2	NDUFA2	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFA2	NDUFA2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFA9	NDUFA9	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFA9	NDUFA9	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFA9	NDUFA9	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFA9	NDUFA9	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFA9	NDUFA9	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFAF1	NDUFAF1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFAF1	NDUFAF1	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFAF1	NDUFAF1	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFAF1	NDUFAF1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFAF2	NDUFAF2	NDUFAF3 (C3ORF60)
+NDUFAF2	NDUFAF2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFAF2	NDUFAF2	NDUFAF4 (C6ORF66)
+NDUFAF2	NDUFAF2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFAF2	NDUFAF2	NDUFAF7 (C2ORF56)
+NDUFAF2	NDUFAF2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFAF2	NDUFAF2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFB3	NDUFB3	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFB3	NDUFB3	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFB3	NDUFB3	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFB9	NDUFB9	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFB9	NDUFB9	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFB9	NDUFB9	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFS1	NDUFS1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFS1	NDUFS1	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFS1	NDUFS1	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+NDUFS1	NDUFS1	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFS1	NDUFS1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFS1	NDUFS1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFS2	NDUFS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFS2	NDUFS2	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFS2	NDUFS2	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFS2	NDUFS2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFS2	NDUFS2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFS3	NDUFS3	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFS3	NDUFS3	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFS3	NDUFS3	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFS3	NDUFS3	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFS3	NDUFS3	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFS4	NDUFS4	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFS4	NDUFS4	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFS4	NDUFS4	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFS4	NDUFS4	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFS4	NDUFS4	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFS6	NDUFS6	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFS6	NDUFS6	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFS6	NDUFS6	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFS6	NDUFS6	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFS6	NDUFS6	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFS7	NDUFS7	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFS7	NDUFS7	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFS7	NDUFS7	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFS7	NDUFS7	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFS7	NDUFS7	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFS8	NDUFS8	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFS8	NDUFS8	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFS8	NDUFS8	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFS8	NDUFS8	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFS8	NDUFS8	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFV1	NDUFV1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFV1	NDUFV1	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFV1	NDUFV1	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFV1	NDUFV1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NDUFV1	NDUFV1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NDUFV2	NDUFV2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NDUFV2	NDUFV2	Comprehensive Mitochondrial Nuclear Gene Panel
+NDUFV2	NDUFV2	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NDUFV2	NDUFV2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NEB	NEB	NEB Exon 55 Deletion
+NEB	NEB	Congenital Myopathies & Muscular Dystrophies Panel
+NEB	NEB	ACTA1 Gene Sequencing & NEB Mutation Analysis
+NEB	NEB	Neuromuscular Disorders Panel
+NEBL	NEBL	Comprehensive Cardiomyopathy Panel
+NEFL	NEFL	Demyelinating CMT Panel
+NEFL	NEFL	Axonal CMT Panel
+NEFL	NEFL	Hereditary Neuropathy Panel
+NEU1	NEU1	NEU1 Del/Dup
+NEU1	NEU1	NEU1 Gene Sequencing
+NEXN	NEXN	DCM/LVNC Sequencing Panel
+NEXN	NEXN	Comprehensive Cardiomyopathy Panel
+NFIX	NFIX	Syndromic Macrocephaly/Overgrowth Panel
+NFU1	NFU1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NFU1	NFU1	Comprehensive Mitochondrial Nuclear Gene Panel
+NFU1	NFU1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+NFU1	NFU1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+NGF	NGF	Hereditary Neuropathy Panel
+NHEJ1	NHEJ1	Comprehensive SCID Panel
+NHEJ1	NHEJ1	B-negative SCID Panel
+NHLRC1	NHLRC1	Progressive Myoclonic Epilepsy Panel
+NHLRC1	NHLRC1	Childhood-Onset Epilepsy Panel
+NHLRC1	NHLRC1	Comprehensive Epilepsy Panel
+NIPBL	NIPBL	NIPBL Del/Dup
+NIPBL	NIPBL	NIPBL Remaining Exons Sequencing
+NIPBL	NIPBL	NIPBL Select Exons Sequencing
+NIPBL	NIPBL	Prenatal NIPBL Gene Sequencing and Del/Dup
+NIPBL	NIPBL	Microcephaly Panel
+NIPBL	NIPBL	NIPBL and SMC1A Sequencing and Del/Dup Panel
+NKX2-5	NKX2.5	Comprehensive Arrhythmia Panel
+NKX2-5	NKX2.5	NLRP3 (CIAS1)
+NKX2-5	NKX2.5	NLRP3 Exon 3 Sequencing
+NKX2-5	NKX2.5	Periodic Fever Syndromes Panel (7 genes)
+NOBOX	NOBOX	Premature Ovarian Failure Sequencing Panel
+NPC1	NPC1	NPC1 Del/Dup
+NPC1	NPC1	NPC1 Gene Sequencing
+NPC1	NPC1	NPC1/NPC2 Gene Sequencing
+NPC2	NPC2	NPC2 Del/Dup
+NPC2	NPC2	NPC2 Gene Sequencing
+NPC2	NPC2	NPC1/NPC2 Gene Sequencing
+NPHP1	NPHP1	Joubert Syndrome and Related Disorders Panel
+NPHP1	NPHP1	Comprehensive Brain Malformations Panel
+NR0B1	NR0B1	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+NR0B1	NR0B1	NR0B1 (DAX1) Del/Dup
+NR0B1	NR0B1	NR0B1 (DAX1) Gene Sequencing
+NR0B1	NR0B1	Prenatal NR0B1 Gene Sequencing
+NR2E3	NR2E3	NR2E3 Gene Sequencing
+NR5A1	NR5A1	Premature Ovarian Failure Sequencing Panel
+NR5A1	NR5A1	NR5A1 Del/Dup
+NR5A1	NR5A1	NR5A1 Gene Sequencing
+NR5A1	NR5A1	Prenatal NR5A1 Gene Sequencing
+NRAS	NRAS	Prenatal Noonan Spectrum Disorders Panel
+NRAS	NRAS	Noonan and RASopathies Panel
+NRAS	NRAS	CBL/NRAS Gene Sequencing
+NRAS	NRAS	Comprehensive Cardiomyopathy Panel
+NRXN1	NRXN1	Rett/Angelman Syndrome Panel
+NRXN1	NRXN1	Childhood-Onset Epilepsy Panel
+NRXN1	NRXN1	Infantile Epilepsy Panel
+NRXN1	NRXN1	Comprehensive Epilepsy Panel
+NSD1	NSD1	Syndromic Macrocephaly/Overgrowth Panel
+NSD1	NSD1	NSD1 Del/Dup
+NSD1	NSD1	NSD1 Gene Sequencing & Del/Dup
+NSD1	NSD1	NSMF (NELF)
+NSD1	NSD1	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+NTRK1	NTRK1	NTRK1 Del/Dup
+NTRK1	NTRK1	NTRK1 Gene Sequencing
+NTRK1	NTRK1	Hereditary Neuropathy Panel
+NUBPL	NUBPL	Combined Mito Genome Plus Mito Nuclear Gene Panel
+NUBPL	NUBPL	Comprehensive Mitochondrial Nuclear Gene Panel
+NUBPL	NUBPL	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+NYX	NYX	NYX Gene Sequencing
+NYX	NYX	OBack To Top
+OCLN	OCLN	Cortical Brain Malformations Panel
+OCLN	OCLN	Comprehensive Brain Malformations Panel
+OCRL	OCRL	OCRL Del/Dup (Females)
+OCRL	OCRL	OCRL Gene Sequencing
+OCRL	OCRL	OFD1 (CXORF5)
+OCRL	OCRL	OFD1 (CXORF5) Del/Dup
+OCRL	OCRL	OFD1 Remaining Exons Sequencing
+OCRL	OCRL	OFD1 Select Exons Sequencing
+OPA1	OPA1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+OPA1	OPA1	Comprehensive Mitochondrial Nuclear Gene Panel
+OPA1	OPA1	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+OPA1	OPA1	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+OPA1	OPA1	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+OPA3	OPA3	Methylglutaconic Aciduria Nuclear Gene Panel
+OPA3	OPA3	Combined Mito Genome Plus Mito Nuclear Gene Panel
+OPA3	OPA3	Comprehensive Mitochondrial Nuclear Gene Panel
+OPA3	OPA3	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+OPA3	OPA3	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+OPA3	OPA3	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+OPHN1	OPHN1	Comprehensive Brain Malformations Panel
+OPHN1	OPHN1	Pontocerebellar Hypoplasia Panel
+OPTN	OPTN	OPTN Del/Dup
+OPTN	OPTN	OPTN Gene Sequencing
+OTC	OTC	OTC Del/Dup
+OTC	OTC	OTC Gene Sequencing & Del/Dup (Females)
+OTC	OTC	OTC Gene Sequencing (Males)
+OTC	OTC	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+OTC	OTC	Reflex Del/Dup Testing after Hyperammonemia Panel
+OTX2	OTX2	OTX2 Del/Dup
+OTX2	OTX2	OTX2 Gene Sequencing
+OTX2	OTX2	Prenatal Anophthalmia/Microphthalmia Panel & Del/Dup
+OTX2	OTX2	PBack To Top
+PABPN1	PABPN1	PABPN1 Repeat Analysis
+PAFAH1B1	PAFAH1B1	Cortical Brain Malformations Panel
+PAFAH1B1	PAFAH1B1	Comprehensive Brain Malformations Panel
+PAH	PAH	PAH Del/Dup
+PAH	PAH	PAH Gene Sequencing
+PALB2	PALB2	Pancreatic Cancer Panel
+PALB2	PALB2	High/Moderate Risk Panel
+PALB2	PALB2	Breast/Ovarian Cancer Panel
+PALB2	PALB2	OncoGeneDx Custom Panel
+PALB2	PALB2	Comprehensive Cancer Panel
+PALB2	PALB2	Breast Cancer High Risk Panel and PALB2
+PALB2	PALB2	Breast Cancer High/Moderate Risk Panel
+PAX2	PAX2	PAX2 Del/Dup
+PAX2	PAX2	PAX2 Gene Sequencing
+PAX2	PAX2	PAX2 Tier 1
+PAX2	PAX2	PAX2 Tier 2
+PAX6	PAX6	PAX6 Del/Dup
+PAX6	PAX6	PAX6 Gene Sequencing & Del/Dup Panel
+PC	PC	Combined Mito Genome Plus Mito Nuclear Gene Panel
+PC	PC	Comprehensive Mitochondrial Nuclear Gene Panel
+PC	PC	PC Del/Dup
+PC	PC	PC Gene Sequencing
+PC	PC	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+PC	PC	Reflex Del/Dup Testing after Hyperammonemia Panel
+PC	PC	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+PC	PC	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+PCCA	PCCA	PCCA Del/Dup
+PCCA	PCCA	PCCA Gene Sequencing
+PCCA	PCCA	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+PCCA	PCCA	Reflex Del/Dup Testing after Hyperammonemia Panel
+PCCB	PCCB	PCCB Del/Dup
+PCCB	PCCB	PCCB Gene Sequencing
+PCCB	PCCB	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+PCCB	PCCB	Reflex Del/Dup Testing after Hyperammonemia Panel
+PCDH15	PCDH15	Usher Syndrome Del/Dup Panel
+PCDH15	PCDH15	Usher Syndrome Panel
+PCDH19	PCDH19	STAT Epilepsy Panel
+PCDH19	PCDH19	Childhood-Onset Epilepsy Panel
+PCDH19	PCDH19	Infantile Epilepsy Panel
+PCDH19	PCDH19	Comprehensive Epilepsy Panel
+PCNT	PCNT	Microcephaly Panel
+PDCD10	PDCD10	PDCD10 Del/Dup
+PDCD10	PDCD10	PDCD10 Gene Sequencing
+PDCD10	PDCD10	Cerebral Cavernous Malformations (CCM) Panel
+PDCD10	PDCD10	CCM Del/Dup Panel
+PDCD10	PDCD10	CCM Tier 2
+PDE6A	PDE6A	arRP Sequencing Panel
+PDE6B	PDE6B	PDE6B Del/Dup
+PDE6B	PDE6B	PDE6B Gene Sequencing
+PDE6B	PDE6B	arRP Del/Dup Panel
+PDE6B	PDE6B	arRP Sequencing Panel
+PDHA1	PDHA1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+PDHA1	PDHA1	Comprehensive Mitochondrial Nuclear Gene Panel
+PDHA1	PDHA1	PDHA1 Del/Dup (Females)
+PDHA1	PDHA1	PDHA1 Gene Sequencing
+PDHA1	PDHA1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+PDHA1	PDHA1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+PDHB	PDHB	Combined Mito Genome Plus Mito Nuclear Gene Panel
+PDHB	PDHB	Comprehensive Mitochondrial Nuclear Gene Panel
+PDHB	PDHB	PDHB Del/Dup
+PDHB	PDHB	PDHB Gene Sequencing
+PDHB	PDHB	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+PDHB	PDHB	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+PDHX	PDHX	Combined Mito Genome Plus Mito Nuclear Gene Panel
+PDHX	PDHX	Comprehensive Mitochondrial Nuclear Gene Panel
+PDHX	PDHX	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+PDHX	PDHX	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+PDK3	PDK3	Hereditary Neuropathy Panel
+PDLIM3	PDLIM3	Comprehensive Cardiomyopathy Panel
+PDP1	PDP1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+PDP1	PDP1	Comprehensive Mitochondrial Nuclear Gene Panel
+PDP1	PDP1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+PDP1	PDP1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+PDSS1	PDSS1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+PDSS1	PDSS1	Comprehensive Mitochondrial Nuclear Gene Panel
+PDSS1	PDSS1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+PDSS1	PDSS1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+PDSS1	PDSS1	CoEnzyme Q10 Deficiency Nuclear Gene Panel
+PDSS2	PDSS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+PDSS2	PDSS2	Comprehensive Mitochondrial Nuclear Gene Panel
+PDSS2	PDSS2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+PDSS2	PDSS2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+PDSS2	PDSS2	CoEnzyme Q10 Deficiency Nuclear Gene Panel
+PDX1	PDX1	MODY Sequencing Panel
+PEPD	PEPD	PEPD Gene Sequencing
+PEX7	PEX7	Congenital Ichthyosis XomeDxSlice
+PHEX	PHEX	PHEX Del/Dup
+PHEX	PHEX	PHEX Gene Sequencing & Del/Dup (Females)
+PHEX	PHEX	PHEX Gene Sequencing (Males)
+PHF6	PHF6	Syndromic Macrocephaly/Overgrowth Panel
+PHYH	PHYH	Congenital Ichthyosis XomeDxSlice
+PITX2	PITX2	PITX2 Del/Dup
+PITX2	PITX2	PITX2 Gene Sequencing
+PKP2	PKP2	Comprehensive Arrhythmia Panel
+PKP2	PKP2	Comprehensive Cardiomyopathy Panel
+PKP2	PKP2	ARVC Del/Dup Panel
+PKP2	PKP2	ARVC Sequencing Panel
+PLEC	PLEC1	PLEC1 Remaining Exons Sequencing
+PLEC	PLEC1	PLEC1 Select Exons Sequencing
+PLEC	PLEC1	Neuromuscular Disorders Panel
+PLEKHG5	PLEKHG5	Hereditary Neuropathy Panel
+PLEKHG5	PLEKHG5	Neuromuscular Disorders Panel
+PLN	PLN	Cardiomyopathies Del/Dup Panel
+PLN	PLN	DCM/LVNC Sequencing Panel
+PLN	PLN	Comprehensive Cardiomyopathy Panel
+PMP22	PMP22	Demyelinating CMT Panel
+PMP22	PMP22	PMP22 Del/Dup
+PMP22	PMP22	PMP22 Gene Sequencing
+PMP22	PMP22	Core CMT Panel
+PMP22	PMP22	Hereditary Neuropathy Panel
+PMS2	PMS2	Endometrial Cancer Panel
+PMS2	PMS2	Colorectal Cancer Panel
+PMS2	PMS2	Pancreatic Cancer Panel
+PMS2	PMS2	High/Moderate Risk Panel
+PMS2	PMS2	Breast/Ovarian Cancer Panel
+PMS2	PMS2	OncoGeneDx Custom Panel
+PMS2	PMS2	Comprehensive Cancer Panel
+PMS2	PMS2	Lynch/Colorectal High Risk Panel
+PNKP	PNKP	Childhood-Onset Epilepsy Panel
+PNKP	PNKP	Infantile Epilepsy Panel
+PNKP	PNKP	Comprehensive Epilepsy Panel
+PNP	PNP	B-positive SCID Panel
+PNP	PNP	Comprehensive SCID Panel
+PNPLA1	PNPLA1	Congenital Ichthyosis XomeDxSlice
+PNPLA2	PNPLA2	Congenital Ichthyosis XomeDxSlice
+PNPO	PNPO	STAT Epilepsy Panel
+PNPO	PNPO	Infantile Epilepsy Panel
+PNPO	PNPO	Comprehensive Epilepsy Panel
+PNPT1	PNPT1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+PNPT1	PNPT1	Comprehensive Mitochondrial Nuclear Gene Panel
+PNPT1	PNPT1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+POLG	POLG	Methylglutaconic Aciduria Nuclear Gene Panel
+POLG	POLG	Combined Mito Genome Plus Mito Nuclear Gene Panel
+POLG	POLG	Comprehensive Mitochondrial Nuclear Gene Panel
+POLG	POLG	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+POLG	POLG	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+POLG	POLG	STAT Epilepsy Panel
+POLG	POLG	POLG Del/Dup
+POLG	POLG	POLG Gene Sequencing
+POLG	POLG	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+POLG	POLG	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+POLG	POLG	Childhood-Onset Epilepsy Panel
+POLG	POLG	Infantile Epilepsy Panel
+POLG	POLG	Comprehensive Epilepsy Panel
+POLG	POLG	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+POLG2	POLG2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+POLG2	POLG2	Comprehensive Mitochondrial Nuclear Gene Panel
+POLG2	POLG2	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+POLG2	POLG2	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+POMGNT1	POMGNT1	Syndromic Congenital Muscular Dystrophy Panel
+POMGNT1	POMGNT1	Limb-Girdle Muscular Dystrophy Panel
+POMGNT1	POMGNT1	Cortical Brain Malformations Panel
+POMGNT1	POMGNT1	Comprehensive Brain Malformations Panel
+POMGNT1	POMGNT1	Neuromuscular Disorders Panel
+POMP	POMP	Congenital Ichthyosis XomeDxSlice
+POMT1	POMT1	Syndromic Congenital Muscular Dystrophy Panel
+POMT1	POMT1	Limb-Girdle Muscular Dystrophy Panel
+POMT1	POMT1	Cortical Brain Malformations Panel
+POMT1	POMT1	Comprehensive Brain Malformations Panel
+POMT1	POMT1	Neuromuscular Disorders Panel
+POMT2	POMT2	Syndromic Congenital Muscular Dystrophy Panel
+POMT2	POMT2	Limb-Girdle Muscular Dystrophy Panel
+POMT2	POMT2	Cortical Brain Malformations Panel
+POMT2	POMT2	Comprehensive Brain Malformations Panel
+POMT2	POMT2	Neuromuscular Disorders Panel
+POR	POR	Premature Ovarian Failure Sequencing Panel
+POR	POR	POR Del/Dup
+POR	POR	POR Gene Sequencing
+POR	POR	Prenatal POR Gene Sequencing
+PORCN	PORCN	PORCN Del/Dup
+PORCN	PORCN	PORCN Gene Sequencing & Del/Dup
+PPT1	PPT1	Progressive Myoclonic Epilepsy Panel
+PPT1	PPT1	Childhood-Onset Epilepsy Panel
+PPT1	PPT1	Infantile Epilepsy Panel
+PPT1	PPT1	Comprehensive Epilepsy Panel
+PQBP1	PQBP1	Cortical Brain Malformations Panel
+PQBP1	PQBP1	Comprehensive Brain Malformations Panel
+PRICKLE1	PRICKLE1	Progressive Myoclonic Epilepsy Panel
+PRICKLE1	PRICKLE1	Childhood-Onset Epilepsy Panel
+PRICKLE1	PRICKLE1	Comprehensive Epilepsy Panel
+PRKAG2	PRKAG2	HCM Sequencing Panel
+PRKAG2	PRKAG2	Cardiomyopathies Del/Dup Panel
+PRKAG2	PRKAG2	Comprehensive Cardiomyopathy Panel
+PRKAR1A	PRKAR1A	PRKAR1A Del/Dup
+PRKAR1A	PRKAR1A	PRKAR1A Gene Sequencing
+PRKAR1A	PRKAR1A	PRKAR1A Gene Sequencing & Del/Dup
+PROK2	PROK2	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+PROKR2	PROKR2	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+PRPF3	PRPF3	PRPF3 Del/Dup
+PRPF3	PRPF3	PRPF3 Gene Sequencing
+PRPF31	PRPF31	adRP Tier 2
+PRPF31	PRPF31	PRPF31 Del/Dup
+PRPF8	PRPF8	PRPF8 Select Exons Sequencing
+PRPF8DEL/DUP	PRPF8Del/Dup	adRP Tier 1
+PRPS1	PRPS1	Demyelinating CMT Panel
+PRPS1	PRPS1	Axonal CMT Panel
+PRPS1	PRPS1	Hereditary Neuropathy Panel
+PRRT2	PRRT2	PRRT2 Gene Sequencing
+PRRT2	PRRT2	Infantile Epilepsy Panel
+PRRT2	PRRT2	Comprehensive Epilepsy Panel
+PRX	PRX	Demyelinating CMT Panel
+PRX	PRX	Hereditary Neuropathy Panel
+PSAP	PSAP	PSAP Del/Dup
+PSAP	PSAP	PSAP Gene Sequencing
+PSMC3IP	PSMC3IP	Premature Ovarian Failure Sequencing Panel
+PSTPIP1	PSTPIP1	PSTPIP1 Remaining Exons Sequencing
+PSTPIP1	PSTPIP1	PSTPIP1 Select Exons Sequencing
+PSTPIP1	PSTPIP1	Periodic Fever Syndromes Panel (7 genes)
+PTCH1	PTCH1	Syndromic Macrocephaly/Overgrowth Panel
+PTCH1	PTCH1	PTCH1 Gene Sequencing & Del/Dup
+PTEN	PTEN	Syndromic Macrocephaly/Overgrowth Panel
+PTEN	PTEN	Endometrial Cancer Panel
+PTEN	PTEN	Colorectal Cancer Panel
+PTEN	PTEN	PTEN Del/Dup
+PTEN	PTEN	PTEN Gene Sequencing and Del/Dup
+PTEN	PTEN	PTEN Promoter Sequencing
+PTEN	PTEN	PTEN Promoter Sequencing and Del/Dup
+PTEN	PTEN	High/Moderate Risk Panel
+PTEN	PTEN	Breast/Ovarian Cancer Panel
+PTEN	PTEN	OncoGeneDx Custom Panel
+PTEN	PTEN	Comprehensive Cancer Panel
+PTEN	PTEN	Breast Cancer High Risk Panel
+PTEN	PTEN	Breast Cancer High Risk Panel and PALB2
+PTEN	PTEN	Breast Cancer High/Moderate Risk Panel
+PTPN11	PTPN11	Prenatal Noonan Spectrum Disorders Panel
+PTPN11	PTPN11	Noonan and RASopathies Panel
+PTPN11	PTPN11	PTPN11 Del/Dup
+PTPN11	PTPN11	PTPN11 Gene Sequencing
+PTPN11	PTPN11	Comprehensive Cardiomyopathy Panel
+PTPRC	PTPRC	B-positive SCID Panel
+PTPRC	PTPRC	Comprehensive SCID Panel
+PTS	PTS	PTS Del/Dup
+PTS	PTS	PTS Gene Sequencing
+PUS1	PUS1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+PUS1	PUS1	Comprehensive Mitochondrial Nuclear Gene Panel
+PUS1	PUS1	PUS1 Del/Dup
+PUS1	PUS1	PUS1 Gene Sequencing
+PUS1	PUS1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+PYGM	PYGM	PYGM Del/Dup
+PYGM	PYGM	PYGM Gene Sequencing
+PYGM	PYGM	QBack To Top
+QDPR	QDPR	QDPR Del/Dup
+QDPR	QDPR	QDPR Gene Sequencing
+QDPR	QDPR	RBack To Top
+RAB18	RAB18	Microcephaly Panel
+RAB3GAP1	RAB3GAP1	Microcephaly Panel
+RAB3GAP2	RAB3GAP2	Microcephaly Panel
+RAB7A	RAB7A	Axonal CMT Panel
+RAB7A	RAB7A	Hereditary Neuropathy Panel
+RAC2	RAC2	Comprehensive SCID Panel
+RAC2	RAC2	B-negative SCID Panel
+RAD51C	RAD51C	Breast/Ovarian Cancer Panel
+RAD51C	RAD51C	OncoGeneDx Custom Panel
+RAD51C	RAD51C	Comprehensive Cancer Panel
+RAD51D	RAD51D	Breast/Ovarian Cancer Panel
+RAD51D	RAD51D	OncoGeneDx Custom Panel
+RAD51D	RAD51D	Comprehensive Cancer Panel
+RAF1	RAF1	Prenatal Noonan Spectrum Disorders Panel
+RAF1	RAF1	Noonan and RASopathies Panel
+RAF1	RAF1	RAF1 Del/Dup
+RAF1	RAF1	Comprehensive Cardiomyopathy Panel
+RAG1	RAG1	Comprehensive SCID Panel
+RAG1	RAG1	RAG1 Del/Dup
+RAG1	RAG1	RAG1/RAG2 Gene Sequencing
+RAG1	RAG1	B-negative SCID Panel
+RAG2	RAG2	Comprehensive SCID Panel
+RAG2	RAG2	RAG2 Del/Dup
+RAG2	RAG2	RAG1/RAG2 Gene Sequencing
+RAG2	RAG2	B-negative SCID Panel
+RAI1	RAI1	RAI1 Del/Dup
+RAI1	RAI1	RAI1 Gene Sequencing & Del/Dup
+RANGRF	RANGRF	Comprehensive Arrhythmia Panel
+RARS2	RARS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+RARS2	RARS2	Comprehensive Mitochondrial Nuclear Gene Panel
+RARS2	RARS2	Comprehensive Brain Malformations Panel
+RARS2	RARS2	Pontocerebellar Hypoplasia Panel
+RARS2	RARS2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+RASA1	RASA1	Hereditary Hemorrhagic Telangiectasia Panel
+RAX	RAX	RAX Gene Sequencing
+RBBP8	RBBP8	Microcephaly Panel
+RBM20	RBM20	DCM/LVNC Sequencing Panel
+RBM20	RBM20	Comprehensive Cardiomyopathy Panel
+RDH5	RDH5	RDH5 Del/Dup
+RDH5	RDH5	RDH5 Gene Sequencing
+RDH5	RDH5	RDS (PRPH2)
+RDH5	RDH5	RDS (PRPH2) Del/Dup
+RDH5	RDH5	RDS (PRPH2) Gene Sequencing
+RDH5	RDH5	Cone-Rod Dystrophy Sequencing Panel
+RDH5	RDH5	Stargardt Sequencing Panel
+RDH5	RDH5	Stargardt Del/Dup Panel
+RDH5	RDH5	adRP Tier 1
+RDH5	RDH5	REEP1 (C2ORF23)
+RDH5	RDH5	Combined Mito Genome Plus Mito Nuclear Gene Panel
+RDH5	RDH5	Comprehensive Mitochondrial Nuclear Gene Panel
+RDH5	RDH5	Hereditary Neuropathy Panel
+RELN	RELN	Cortical Brain Malformations Panel
+RELN	RELN	Comprehensive Brain Malformations Panel
+RET	RET	RET Del/Dup
+RET	RET	RET Gene Sequencing
+RET	RET	RET Remaining Exons Sequencing (HSCR)
+RET	RET	RET Remaining Exons Sequencing (MEN2A & MEN2B)
+RET	RET	RET Remaining Exons Sequencing (MEN2A)
+RET	RET	RET Remaining Exons Sequencing (MEN2B)
+RET	RET	RET Select Exons Sequencing (HSCR)
+RET	RET	RET Select Exons Sequencing (MEN2A)
+RET	RET	RET Select Exons Sequencing (MEN2B)
+RHO	RHO	RHO Del/Dup
+RHO	RHO	RHO Gene Sequencing
+RHO	RHO	adRP Tier 1
+RIT1	RIT1	Prenatal Noonan Spectrum Disorders Panel
+RIT1	RIT1	Noonan and RASopathies Panel
+RIT1	RIT1	RIT1 Gene Sequencing
+RLBP1	RLBP1	RLBP1 (BRD) Hot Spots
+RLBP1	RLBP1	RLBP1 (NFRCD) Hot Spots
+RLBP1	RLBP1	RLBP1 Del/Dup
+RLBP1	RLBP1	RLBP1 Gene Sequencing
+RMND1	RMND1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+RMND1	RMND1	Comprehensive Mitochondrial Nuclear Gene Panel
+RMND1	RMND1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+RMND1	RMND1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+RMRP	RMRP	B-positive SCID Panel
+RMRP	RMRP	Comprehensive SCID Panel
+RMRP	RMRP	RMRP Del/Dup
+RMRP	RMRP	RMRP Gene Sequencing
+RNASEH2A	RNASEH2A	AGS Tier 2
+RNASEH2A	RNASEH2A	AGS Panel
+RNASEH2B	RNASEH2B	AGS Tier 1
+RNASEH2B	RNASEH2B	AGS Tier 2
+RNASEH2B	RNASEH2B	AGS Panel
+RNASEH2C	RNASEH2C	RNASEH2C Hot Spots (Pakistani)
+RNASEH2C	RNASEH2C	AGS Tier 2
+RNASEH2C	RNASEH2C	AGS Panel
+RP1	RP1	RP1 Del/Dup
+RP1	RP1	RP1 Hot Spots
+RP1	RP1	adRP Tier 1
+RP2	RP2	RP2 Del/Dup (Females)
+RP2	RP2	RP2 Gene Sequencing
+RPE65	RPE65	LCA Tier 3
+RPE65	RPE65	RPE65 Del/Dup
+RPE65	RPE65	RPE65 Gene Sequencing
+RPE65	RPE65	arRP Del/Dup Panel
+RPE65	RPE65	arRP Sequencing Panel
+RPGRIP1	RPGRIP1	LCA Tier 6
+RPGRIP1L	RPGRIP1L	Joubert Syndrome and Related Disorders Panel
+RPGRIP1L	RPGRIP1L	Comprehensive Brain Malformations Panel
+RPL11	RPL11	RPL11 Gene Sequencing
+RPL5	RPL5	RPL5 Gene Sequencing
+RPS19	RPS19	RPS19 Del/Dup
+RPS19	RPS19	RPS19 Gene Sequencing
+RRM2B	RRM2B	Combined Mito Genome Plus Mito Nuclear Gene Panel
+RRM2B	RRM2B	Comprehensive Mitochondrial Nuclear Gene Panel
+RRM2B	RRM2B	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+RRM2B	RRM2B	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+RRM2B	RRM2B	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+RRM2B	RRM2B	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+RPS6KA3	RSK2	RSK2 (RPS6KA3) Gene Sequencing
+RPS6KA3	RSK2	RSK2 (RPS6KA3) Gene Sequencing & Del/Dup
+RPS6KA3	RSK2	RSK2 (RPS6KA3) Remaining Exons Sequencing
+RPS6KA3	RSK2	RSK2 (RPS6KA3) Select Exons Sequencing
+RPS6KA3	RSK2	RSK2 (RPS6KA3)
+RPS6KA3	RSK2	RSK2 (RPS6KA3) Del/Dup
+RYR1	RYR1	Congenital Myopathies & Muscular Dystrophies Panel
+RYR1	RYR1	Neuromuscular Disorders Panel
+RYR2	RYR2	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+RYR2	RYR2	Comprehensive Arrhythmia Panel
+RYR2	RYR2	CPVT Sequencing Panel
+RYR2	RYR2	Comprehensive Cardiomyopathy Panel
+RYR2	RYR2	ARVC Del/Dup Panel
+RYR2	RYR2	ARVC Sequencing Panel
+RYR2	RYR2	Other Arrhythmic Disorders Del/Dup Panel
+RYR2	RYR2	SBack To Top
+SAG	SAG	SAG c.926delA Mutation
+SAG	SAG	SAG Remaining Exon Sequencing
+SALL1	SALL1	Prenatal SALL1 Gene Sequencing
+SALL1	SALL1	SALL1 Del/Dup
+SALL1	SALL1	SALL1 Gene Sequencing
+SALL4	SALL4	Prenatal SALL4 Gene Sequencing
+SALL4	SALL4	SALL4 Del/Dup
+SALL4	SALL4	SALL4 Gene Sequencing & Del/Dup
+SARS2	SARS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SARS2	SARS2	Comprehensive Mitochondrial Nuclear Gene Panel
+SBDS	SBDS	SBDS Gene Sequencing
+SBF2	SBF2	Demyelinating CMT Panel
+SBF2	SBF2	Hereditary Neuropathy Panel
+SCARB2	SCARB2	Progressive Myoclonic Epilepsy Panel
+SCARB2	SCARB2	Comprehensive Epilepsy Panel
+SCN1A	SCN1A	STAT Epilepsy Panel
+SCN1A	SCN1A	Childhood-Onset Epilepsy Panel
+SCN1A	SCN1A	Infantile Epilepsy Panel
+SCN1A	SCN1A	Comprehensive Epilepsy Panel
+SCN1B	SCN1B	STAT Epilepsy Panel
+SCN1B	SCN1B	Comprehensive Arrhythmia Panel
+SCN1B	SCN1B	Childhood-Onset Epilepsy Panel
+SCN1B	SCN1B	Infantile Epilepsy Panel
+SCN1B	SCN1B	Comprehensive Epilepsy Panel
+SCN1B	SCN1B	BrS Sequencing Panel
+SCN1B	SCN1B	Other Arrhythmic Disorders Del/Dup Panel
+SCN2A	SCN2A	STAT Epilepsy Panel
+SCN2A	SCN2A	Childhood-Onset Epilepsy Panel
+SCN2A	SCN2A	Infantile Epilepsy Panel
+SCN2A	SCN2A	Comprehensive Epilepsy Panel
+SCN3B	SCN3B	Comprehensive Arrhythmia Panel
+SCN3B	SCN3B	BrS Sequencing Panel
+SCN4A	SCN4A	Neuromuscular Disorders Panel
+SCN4B	SCN4B	LQTS Del/Dup Panel
+SCN4B	SCN4B	LQTS Sequencing Panel
+SCN4B	SCN4B	LQTS Gene Sequencing & Del/Dup Panel
+SCN4B	SCN4B	Comprehensive Arrhythmia Panel
+SCN5A	SCN5A	Sudden Cardiac Arrest Arrhythmia Sequencing Panel
+SCN5A	SCN5A	LQTS Del/Dup Panel
+SCN5A	SCN5A	LQTS Sequencing Panel
+SCN5A	SCN5A	LQTS Gene Sequencing & Del/Dup Panel
+SCN5A	SCN5A	Comprehensive Arrhythmia Panel
+SCN5A	SCN5A	DCM/LVNC Sequencing Panel
+SCN5A	SCN5A	Comprehensive Cardiomyopathy Panel
+SCN5A	SCN5A	BrS Sequencing Panel
+SCN5A	SCN5A	Other Arrhythmic Disorders Del/Dup Panel
+SCN8A	SCN8A	STAT Epilepsy Panel
+SCN8A	SCN8A	Infantile Epilepsy Panel
+SCN8A	SCN8A	Comprehensive Epilepsy Panel
+SCN9A	SCN9A	SCN9A Gene Sequencing
+SCN9A	SCN9A	Hereditary Neuropathy Panel
+SCO1	SCO1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SCO1	SCO1	Comprehensive Mitochondrial Nuclear Gene Panel
+SCO1	SCO1	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+SCO1	SCO1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+SCO2	SCO2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SCO2	SCO2	Comprehensive Mitochondrial Nuclear Gene Panel
+SCO2	SCO2	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+SCO2	SCO2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+SCO2	SCO2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+SDHA	SDHA	SDHA Gene Sequencing
+SDHAF1	SDHAF1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SDHAF1	SDHAF1	Comprehensive Mitochondrial Nuclear Gene Panel
+SDHAF1	SDHAF1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+SDHAF2	SDHAF2	SDHAF2 (G78R) Mutation Analysis
+SDHB	SDHB	SDHB Gene Sequencing
+SDHB	SDHB	SDHB, SDHC & SDHD Del/Dup
+SDHC	SDHC	SDHC Gene Sequencing
+SDHC	SDHC	SDHB, SDHC & SDHD Del/Dup
+SDHD	SDHD	SDHD Gene Sequencing
+SDHD	SDHD	SDHB, SDHC & SDHD Del/Dup
+SEPN1	SEPN1	Congenital Myopathies & Muscular Dystrophies Panel
+SEPN1	SEPN1	Neuromuscular Disorders Panel
+SERAC1	SERAC1	Methylglutaconic Aciduria Nuclear Gene Panel
+SERAC1	SERAC1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SERAC1	SERAC1	Comprehensive Mitochondrial Nuclear Gene Panel
+SERAC1	SERAC1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+SERAC1	SERAC1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+SERAC1	SERAC1	SERPING1 (C1INH)
+SERAC1	SERAC1	SERPING1 (C1INH) Del/Dup
+SERAC1	SERAC1	SERPING1 (C1INH) Gene Sequencing & Del/Dup
+SGCA	SGCA	Limb-Girdle Muscular Dystrophy Panel
+SGCA	SGCA	Neuromuscular Disorders Panel
+SGCB	SGCB	Limb-Girdle Muscular Dystrophy Panel
+SGCB	SGCB	Neuromuscular Disorders Panel
+SGCD	SGCD	Cardiomyopathies Del/Dup Panel
+SGCD	SGCD	Limb-Girdle Muscular Dystrophy Panel
+SGCD	SGCD	DCM/LVNC Sequencing Panel
+SGCD	SGCD	Neuromuscular Disorders Panel
+SGCD	SGCD	Comprehensive Cardiomyopathy Panel
+SGCG	SGCG	Limb-Girdle Muscular Dystrophy Panel
+SGCG	SGCG	Neuromuscular Disorders Panel
+SGSH	SGSH	SGSH Del/Dup
+SGSH	SGSH	SGSH Gene Sequencing
+SGSH	SGSH	Sanfilippo/MPSIII Sequencing Panel
+SH3BP2	SH3BP2	SH3BP2 Gene Sequencing
+SH3TC2	SH3TC2	Demyelinating CMT Panel
+SH3TC2	SH3TC2	Hereditary Neuropathy Panel
+SHH	SHH	SHH Del/Dup
+SHH	SHH	Holoprosencephaly Panel & Del/Dup
+SHH	SHH	Prenatal Holoprosencephaly Panel & Del/Dup
+SHOC2	SHOC2	Prenatal Noonan Spectrum Disorders Panel
+SHOC2	SHOC2	Noonan and RASopathies Panel
+SHOC2	SHOC2	SHOC2 Gene Sequencing
+SIL1	SIL1	Neuromuscular Disorders Panel
+SIX1	SIX1	SIX1 Del/Dup
+SIX1	SIX1	SIX1 Gene Sequencing
+SIX3	SIX3	SIX3 Del/Dup
+SIX3	SIX3	Holoprosencephaly Panel & Del/Dup
+SIX3	SIX3	Prenatal Holoprosencephaly Panel & Del/Dup
+SIX6	SIX6	SIX6 Del/Dup
+SKI	SKI	Marfan/TAAD Sequencing & Del/Dup Panel
+SKI	SKI	Marfan Syndrome/TAAD Sequencing Panel
+SLC12A6	SLC12A6	Hereditary Neuropathy Panel
+SLC17A5	SLC17A5	SLC17A5 Del/Dup
+SLC17A5	SLC17A5	SLC17A5 Gene Sequencing & Del/Dup
+SLC19A3	SLC19A3	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SLC19A3	SLC19A3	Comprehensive Mitochondrial Nuclear Gene Panel
+SLC19A3	SLC19A3	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+SLC19A3	SLC19A3	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+SLC22A5	SLC22A5	Fatty Acid Oxidation Sequencing Panel
+SLC22A5	SLC22A5	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+SLC22A5	SLC22A5	SLC22A5 Del/Dup
+SLC22A5	SLC22A5	SLC22A5 Gene Sequencing
+SLC22A5	SLC22A5	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+SLC22A5	SLC22A5	Reflex Del/Dup Testing after Hyperammonemia Panel
+SLC25A13	SLC25A13	SLC25A13 Del/Dup
+SLC25A13	SLC25A13	SLC25A13 Gene Sequencing
+SLC25A13	SLC25A13	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+SLC25A13	SLC25A13	Reflex Del/Dup Testing after Hyperammonemia Panel
+SLC25A15	SLC25A15	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+SLC25A15	SLC25A15	Reflex Del/Dup Testing after Hyperammonemia Panel
+SLC25A19	SLC25A19	Microcephaly Panel
+SLC25A20	SLC25A20	Fatty Acid Oxidation Sequencing Panel
+SLC25A20	SLC25A20	Reflex Del/Dup Testing After Fatty Acid Oxidation Disorders Panel
+SLC25A20	SLC25A20	SLC25A20 Del/Dup
+SLC25A20	SLC25A20	SLC25A20 Gene Sequencing
+SLC25A20	SLC25A20	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+SLC25A20	SLC25A20	Reflex Del/Dup Testing after Hyperammonemia Panel
+SLC25A22	SLC25A22	Infantile Epilepsy Panel
+SLC25A22	SLC25A22	Comprehensive Epilepsy Panel
+SLC25A22	SLC25A22	SLC25A3 (PHC)
+SLC25A22	SLC25A22	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SLC25A22	SLC25A22	Comprehensive Mitochondrial Nuclear Gene Panel
+SLC25A22	SLC25A22	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+SLC25A4	SLC25A4	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SLC25A4	SLC25A4	Comprehensive Mitochondrial Nuclear Gene Panel
+SLC25A4	SLC25A4	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+SLC25A4	SLC25A4	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+SLC25A4	SLC25A4	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+SLC26A4	SLC26A4	SLC26A4 Gene Sequencing
+SLC27A4	SLC27A4	SLC27A4 Gene Sequencing
+SLC27A4	SLC27A4	Congenital Ichthyosis XomeDxSlice
+SLC2A1	SLC2A1	STAT Epilepsy Panel
+SLC2A1	SLC2A1	Childhood-Onset Epilepsy Panel
+SLC2A1	SLC2A1	Infantile Epilepsy Panel
+SLC2A1	SLC2A1	Comprehensive Epilepsy Panel
+SLC2A10	SLC2A10	Marfan Syndrome/TAAD Del/Dup Panel
+SLC2A10	SLC2A10	Marfan/TAAD Sequencing & Del/Dup Panel
+SLC2A10	SLC2A10	Marfan Syndrome/TAAD Sequencing Panel
+SLC37A4	SLC37A4	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SLC37A4	SLC37A4	Comprehensive Mitochondrial Nuclear Gene Panel
+SLC37A4	SLC37A4	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+SLC7A7	SLC7A7	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+SLC7A7	SLC7A7	Reflex Del/Dup Testing after Hyperammonemia Panel
+SLC9A6	SLC9A6	Rett/Angelman Syndrome Panel
+SLC9A6	SLC9A6	SLC9A6 Gene Sequencing
+SLC9A6	SLC9A6	Microcephaly Panel
+SLC9A6	SLC9A6	Childhood-Onset Epilepsy Panel
+SLC9A6	SLC9A6	Infantile Epilepsy Panel
+SLC9A6	SLC9A6	Comprehensive Epilepsy Panel
+SMAD3	SMAD3	Marfan Syndrome/TAAD Del/Dup Panel
+SMAD3	SMAD3	Marfan/TAAD Sequencing & Del/Dup Panel
+SMAD3	SMAD3	Marfan Syndrome/TAAD Sequencing Panel
+SMAD4	SMAD4	Colorectal Cancer Panel
+SMAD4	SMAD4	High/Moderate Risk Panel
+SMAD4	SMAD4	OncoGeneDx Custom Panel
+SMAD4	SMAD4	Comprehensive Cancer Panel
+SMAD4	SMAD4	BMPR1A, SMAD4 Gene Sequencing & Del/Dup
+SMAD4	SMAD4	JPS Del/Dup Analysis
+SMAD4	SMAD4	JPS Tier 1
+SMAD4	SMAD4	Hereditary Hemorrhagic Telangiectasia Panel
+SMAD9	SMAD9	Pulmonary Arterial Hypertension Panel
+SMC1A	SMC1A	SMC1A Del/Dup
+SMC1A	SMC1A	SMC1A Gene Sequencing
+SMC1A	SMC1A	NIPBL and SMC1A Sequencing and Del/Dup Panel
+SMPD1	SMPD1	SMPD1 Del/Dup
+SMPD1	SMPD1	SMPD1 Gene Sequencing
+SMPD1	SMPD1	SMPD1 Hot Spots (Ashkenazi Jewish mutation)
+SNAP29	SNAP29	Congenital Ichthyosis XomeDxSlice
+SNTA1	SNTA1	LQTS Del/Dup Panel
+SNTA1	SNTA1	LQTS Sequencing Panel
+SNTA1	SNTA1	LQTS Gene Sequencing & Del/Dup Panel
+SNTA1	SNTA1	Comprehensive Arrhythmia Panel
+SOS1	SOS1	Prenatal Noonan Spectrum Disorders Panel
+SOS1	SOS1	Noonan and RASopathies Panel
+SOS1	SOS1	Comprehensive Cardiomyopathy Panel
+SOX2	SOX2	SOX2 Del/Dup
+SOX2	SOX2	SOX2 Gene Sequencing
+SOX2	SOX2	Prenatal Anophthalmia/Microphthalmia Panel & Del/Dup
+SOX9	SOX9	Prenatal SOX9 Gene Sequencing and Del/Dup
+SOX9	SOX9	SOX9 Del/Dup
+SOX9	SOX9	SOX9 Gene Sequencing
+SPG7	SPG7	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SPG7	SPG7	Comprehensive Mitochondrial Nuclear Gene Panel
+SPG7	SPG7	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+SPG7	SPG7	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+SPINK5	SPINK5	SPINK5 Del/Dup
+SPINK5	SPINK5	SPINK5 Gene Sequencing
+SPINK5	SPINK5	Congenital Ichthyosis XomeDxSlice
+SPINK5	SPINK5	Hyper-IgE Syndromes Panel
+SPRED1	SPRED1	Noonan and RASopathies Panel
+SPRED1	SPRED1	SPRED1 Del/Dup
+SPRED1	SPRED1	SPRED1 Gene Sequencing
+SPTAN1	SPTAN1	STAT Epilepsy Panel
+SPTAN1	SPTAN1	Infantile Epilepsy Panel
+SPTAN1	SPTAN1	Comprehensive Epilepsy Panel
+SPTLC1	SPTLC1	Hereditary Neuropathy Panel
+SPTLC2	SPTLC2	Hereditary Neuropathy Panel
+SRD5A2	SRD5A2	Prenatal SRD5A2 Gene Sequencing
+SRD5A2	SRD5A2	SRD5A2 Del/Dup
+SRD5A2	SRD5A2	SRD5A2 Gene Sequencing
+SRPX2	SRPX2	Cortical Brain Malformations Panel
+SRPX2	SRPX2	Comprehensive Brain Malformations Panel
+SRPX2	SRPX2	Comprehensive Epilepsy Panel
+SRY	SRY	Prenatal SRY Gene Sequencing
+SRY	SRY	SRY Gene Sequencing
+ST14	ST14	Congenital Ichthyosis XomeDxSlice
+STAT3	STAT3	STAT3 Gene Sequencing
+STAT3	STAT3	STAT3 Remaining Exons Sequencing
+STAT3	STAT3	STAT3 Select Exons Sequencing
+STAT3	STAT3	Hyper-IgE Syndromes Panel
+STIL	STIL	Microcephaly Panel
+STK11	STK11	Colorectal Cancer Panel
+STK11	STK11	Pancreatic Cancer Panel
+STK11	STK11	STK11 Gene Sequencing & Del/Dup
+STK11	STK11	High/Moderate Risk Panel
+STK11	STK11	Breast/Ovarian Cancer Panel
+STK11	STK11	OncoGeneDx Custom Panel
+STK11	STK11	Comprehensive Cancer Panel
+STK11	STK11	Breast Cancer High Risk Panel
+STK11	STK11	Breast Cancer High Risk Panel and PALB2
+STK11	STK11	Breast Cancer High/Moderate Risk Panel
+STRA6	STRA6	STRA6 Gene Sequencing
+STS	STS	Congenital Ichthyosis XomeDxSlice
+STXBP1	STXBP1	STAT Epilepsy Panel
+STXBP1	STXBP1	Infantile Epilepsy Panel
+STXBP1	STXBP1	Comprehensive Epilepsy Panel
+SUCLA2	SUCLA2	Methylglutaconic Aciduria Nuclear Gene Panel
+SUCLA2	SUCLA2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SUCLA2	SUCLA2	Comprehensive Mitochondrial Nuclear Gene Panel
+SUCLA2	SUCLA2	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+SUCLA2	SUCLA2	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+SUCLA2	SUCLA2	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+SUCLA2	SUCLA2	Mitochondrial Complex I Deficiency Nuclear Gene Panel
+SUCLA2	SUCLA2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+SUCLA2	SUCLA2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+SUCLG1	SUCLG1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SUCLG1	SUCLG1	Comprehensive Mitochondrial Nuclear Gene Panel
+SUCLG1	SUCLG1	Methylmalonic Acidemia, Cobalamin Metabolism and Related Disorders Sequencing Panel
+SUCLG1	SUCLG1	Reflex Del/Dup Testing After MMA and Related Disorders Panel
+SUCLG1	SUCLG1	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+SUCLG1	SUCLG1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+SUCLG1	SUCLG1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+SUMF1	SUMF1	SUMF1 Del/Dup
+SUMF1	SUMF1	SUMF1 Gene Sequencing
+SURF1	SURF1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+SURF1	SURF1	Comprehensive Mitochondrial Nuclear Gene Panel
+SURF1	SURF1	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+SURF1	SURF1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+SURF1	SURF1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+SYN1	SYN1	Childhood-Onset Epilepsy Panel
+SYN1	SYN1	Comprehensive Epilepsy Panel
+SYNE1	SYNE1	Congenital Myopathies & Muscular Dystrophies Panel
+SYNE1	SYNE1	Neuromuscular Disorders Panel
+SYNE1	SYNE1	TBack To Top
+TAC3	TAC3	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+TACO1	TACO1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TACO1	TACO1	Comprehensive Mitochondrial Nuclear Gene Panel
+TACO1	TACO1	Mitochondrial Complex IV Deficiency Nuclear Gene Panel
+TACO1	TACO1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+TACR3	TACR3	Hypogonadotropic Hypogonadism Gene Sequencing and Del/Dup Panel
+TAT	TAT	TAT Del/Dup
+TAT	TAT	TAT Gene Sequencing
+TAZ	TAZ	Methylglutaconic Aciduria Nuclear Gene Panel
+TAZ	TAZ	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TAZ	TAZ	Comprehensive Mitochondrial Nuclear Gene Panel
+TAZ	TAZ	Cardiomyopathies Del/Dup Panel
+TAZ	TAZ	DCM/LVNC Sequencing Panel
+TAZ	TAZ	Comprehensive Cardiomyopathy Panel
+TAZ	TAZ	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+TBC1D24	TBC1D24	Childhood-Onset Epilepsy Panel
+TBC1D24	TBC1D24	Infantile Epilepsy Panel
+TBC1D24	TBC1D24	Comprehensive Epilepsy Panel
+TBX1	TBX1	TBX1 Del/Dup
+TBX1	TBX1	TBX1 Gene Sequencing
+TBX5	TBX5	Prenatal TBX5 Gene Sequencing
+TBX5	TBX5	TBX5 Del/Dup
+TBX5	TBX5	TBX5 Gene Sequencing
+TCAP	TCAP	Limb-Girdle Muscular Dystrophy Panel
+TCAP	TCAP	DCM/LVNC Sequencing Panel
+TCAP	TCAP	Neuromuscular Disorders Panel
+TCAP	TCAP	Comprehensive Cardiomyopathy Panel
+TCF4	TCF4	Rett/Angelman Syndrome Panel
+TCF4	TCF4	Microcephaly Panel
+TCF4	TCF4	Childhood-Onset Epilepsy Panel
+TCF4	TCF4	Infantile Epilepsy Panel
+TCF4	TCF4	Comprehensive Epilepsy Panel
+TCOF1	TCOF1	TCOF1 Del/Dup
+TCOF1	TCOF1	TCOF1 Gene Sequencing
+TERC	TERC	TERC Del/Dup
+TERC	TERC	TERC Gene Sequencing
+TERT	TERT	TERT Gene Sequencing
+TFG	TFG	Hereditary Neuropathy Panel
+TGFB2	TGFB2	Marfan/TAAD Sequencing & Del/Dup Panel
+TGFB2	TGFB2	Marfan Syndrome/TAAD Sequencing Panel
+TGFBR1	TGFBR1	Marfan Syndrome/TAAD Del/Dup Panel
+TGFBR1	TGFBR1	Marfan/TAAD Sequencing & Del/Dup Panel
+TGFBR1	TGFBR1	Marfan Syndrome/TAAD Sequencing Panel
+TGFBR1	TGFBR1	TGFBR1 Gene Sequencing
+TGFBR1	TGFBR1	Loeys-Dietz Syndrome Panel
+TGFBR2	TGFBR2	Marfan Syndrome/TAAD Del/Dup Panel
+TGFBR2	TGFBR2	Marfan/TAAD Sequencing & Del/Dup Panel
+TGFBR2	TGFBR2	Marfan Syndrome/TAAD Sequencing Panel
+TGFBR2	TGFBR2	Loeys-Dietz Syndrome Panel
+IL10	TGIF	Holoprosencephaly Panel & Del/Dup
+IL10	TGIF	Prenatal Holoprosencephaly Panel & Del/Dup
+TGM1	TGM1	TGM1 Del/Dup
+TGM1	TGM1	TGM1 Gene Sequencing
+TGM1	TGM1	Congenital Ichthyosis XomeDxSlice
+TGM5	TGM5	Congenital Ichthyosis XomeDxSlice
+TH	TH	TH Del/Dup
+TH	TH	TH Gene Sequencing
+TIMM44	TIMM44	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TIMM44	TIMM44	Comprehensive Mitochondrial Nuclear Gene Panel
+TIMM44	TIMM44	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+TIMM44	TIMM44	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+TIMM8A	TIMM8A	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TIMM8A	TIMM8A	Comprehensive Mitochondrial Nuclear Gene Panel
+TIMM8A	TIMM8A	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+TINF2	TINF2	TINF2 Del/Dup
+TINF2	TINF2	TINF2 Exon 6 Sequencing
+TK2	TK2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TK2	TK2	Comprehensive Mitochondrial Nuclear Gene Panel
+TK2	TK2	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+TK2	TK2	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+TK2	TK2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+TK2	TK2	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+TMEM126A	TMEM126A	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TMEM126A	TMEM126A	Comprehensive Mitochondrial Nuclear Gene Panel
+TMEM126A	TMEM126A	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+TMEM127	TMEM127	TMEM127 Gene Sequencing
+TMEM138	TMEM138	Joubert Syndrome and Related Disorders Panel
+TMEM138	TMEM138	Comprehensive Brain Malformations Panel
+TMEM216	TMEM216	Joubert Syndrome and Related Disorders Panel
+TMEM216	TMEM216	Comprehensive Brain Malformations Panel
+TMEM237	TMEM237	Joubert Syndrome and Related Disorders Panel
+TMEM237	TMEM237	Comprehensive Brain Malformations Panel
+TMEM43	TMEM43	Comprehensive Arrhythmia Panel
+TMEM43	TMEM43	Comprehensive Cardiomyopathy Panel
+TMEM43	TMEM43	ARVC Del/Dup Panel
+TMEM43	TMEM43	ARVC Sequencing Panel
+TMEM5	TMEM5	Syndromic Congenital Muscular Dystrophy Panel
+TMEM5	TMEM5	Neuromuscular Disorders Panel
+TMEM67	TMEM67	Joubert Syndrome and Related Disorders Panel
+TMEM67	TMEM67	Comprehensive Brain Malformations Panel
+TMEM70	TMEM70	Methylglutaconic Aciduria Nuclear Gene Panel
+TMEM70	TMEM70	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TMEM70	TMEM70	Comprehensive Mitochondrial Nuclear Gene Panel
+TMEM70	TMEM70	Hyperammonemia, Urea Cycle and Transporter Defects Sequencing Panel
+TMEM70	TMEM70	Reflex Del/Dup Testing after Hyperammonemia Panel
+TMEM70	TMEM70	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+TMEM70	TMEM70	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+TMPO	TMPO	Comprehensive Cardiomyopathy Panel
+TNFRSF1A	TNFRSF1A	TNFRSF1A Select Exons Sequencing
+TNFRSF1A	TNFRSF1A	Periodic Fever Syndromes Panel (7 genes)
+TNNC1	TNNC1	HCM Sequencing Panel
+TNNC1	TNNC1	Cardiomyopathies Del/Dup Panel
+TNNC1	TNNC1	DCM/LVNC Sequencing Panel
+TNNC1	TNNC1	Comprehensive Cardiomyopathy Panel
+TNNI2	TNNI2	Neuromuscular Disorders Panel
+TNNI3	TNNI3	HCM Sequencing Panel
+TNNI3	TNNI3	Cardiomyopathies Del/Dup Panel
+TNNI3	TNNI3	DCM/LVNC Sequencing Panel
+TNNI3	TNNI3	Comprehensive Cardiomyopathy Panel
+TNNT1	TNNT1	Congenital Myopathies & Muscular Dystrophies Panel
+TNNT1	TNNT1	Neuromuscular Disorders Panel
+TNNT2	TNNT2	HCM Sequencing Panel
+TNNT2	TNNT2	Cardiomyopathies Del/Dup Panel
+TNNT2	TNNT2	DCM/LVNC Sequencing Panel
+TNNT2	TNNT2	Comprehensive Cardiomyopathy Panel
+TNPO3	TNPO3	Limb-Girdle Muscular Dystrophy Panel
+TNPO3	TNPO3	Neuromuscular Disorders Panel
+TP53	TP53	Endometrial Cancer Panel
+TP53	TP53	Colorectal Cancer Panel
+TP53	TP53	Pancreatic Cancer Panel
+TP53	TP53	TP53 Del/Dup
+TP53	TP53	TP53 Gene Sequencing
+TP53	TP53	TP53 Gene Sequencing & Del/Dup
+TP53	TP53	High/Moderate Risk Panel
+TP53	TP53	Breast/Ovarian Cancer Panel
+TP53	TP53	OncoGeneDx Custom Panel
+TP53	TP53	Comprehensive Cancer Panel
+TP53	TP53	Breast Cancer High Risk Panel
+TP53	TP53	Breast Cancer High Risk Panel and PALB2
+TP53	TP53	Breast Cancer High/Moderate Risk Panel
+TP53	TP53	TP63 (TP73L)
+TP53	TP53	Prenatal TP73L (TP63) Gene Sequencing
+TP53	TP53	TP63 Del/Dup
+TP53	TP53	TP63 Remaining Exons Sequencing
+TP53	TP53	TP63 Select Exons Sequencing
+TPK1	TPK1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TPK1	TPK1	Comprehensive Mitochondrial Nuclear Gene Panel
+TPK1	TPK1	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+TPK1	TPK1	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+TPM1	TPM1	HCM Sequencing Panel
+TPM1	TPM1	Cardiomyopathies Del/Dup Panel
+TPM1	TPM1	DCM/LVNC Sequencing Panel
+TPM1	TPM1	Comprehensive Cardiomyopathy Panel
+TPM2	TPM2	Congenital Myopathies & Muscular Dystrophies Panel
+TPM2	TPM2	Neuromuscular Disorders Panel
+TPM3	TPM3	Congenital Myopathies & Muscular Dystrophies Panel
+TPM3	TPM3	Neuromuscular Disorders Panel
+TPM3	TPM3	TPP1 (CLN2)
+TPM3	TPM3	Progressive Myoclonic Epilepsy Panel
+TPM3	TPM3	TPP1 Del/Dup
+TPM3	TPM3	TPP1 Gene Sequencing
+TPM3	TPM3	Childhood-Onset Epilepsy Panel
+TPM3	TPM3	Infantile Epilepsy Panel
+TPM3	TPM3	Comprehensive Epilepsy Panel
+TREX1	TREX1	AGS Tier 1
+TREX1	TREX1	AGS Panel
+TRIM32	TRIM32	Limb-Girdle Muscular Dystrophy Panel
+TRIM32	TRIM32	Neuromuscular Disorders Panel
+TRMU	TRMU	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TRMU	TRMU	Comprehensive Mitochondrial Nuclear Gene Panel
+TRMU	TRMU	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+TRPM1	TRPM1	TRPM1 Gene Sequencing
+TRPV4	TRPV4	Axonal CMT Panel
+TRPV4	TRPV4	Hereditary Neuropathy Panel
+TRPV4	TRPV4	Neuromuscular Disorders Panel
+TSC1	TSC1	Tuberous Sclerosis Panel
+TSC1	TSC1	Infantile Epilepsy Panel
+TSC1	TSC1	Comprehensive Epilepsy Panel
+TSC2	TSC2	Tuberous Sclerosis Panel
+TSC2	TSC2	Infantile Epilepsy Panel
+TSC2	TSC2	Comprehensive Epilepsy Panel
+TSEN2	TSEN2	Comprehensive Brain Malformations Panel
+TSEN2	TSEN2	Pontocerebellar Hypoplasia Panel
+TSEN34	TSEN34	Comprehensive Brain Malformations Panel
+TSEN34	TSEN34	Pontocerebellar Hypoplasia Panel
+TSEN54	TSEN54	Comprehensive Brain Malformations Panel
+TSEN54	TSEN54	Pontocerebellar Hypoplasia Panel
+TSFM	TSFM	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TSFM	TSFM	Comprehensive Mitochondrial Nuclear Gene Panel
+TSFM	TSFM	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+TSFM	TSFM	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+TSPAN12	TSPAN12	TSPAN12 Gene Sequencing
+TTC19	TTC19	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TTC19	TTC19	Comprehensive Mitochondrial Nuclear Gene Panel
+TTC19	TTC19	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+TTN	TTN	Limb-Girdle Muscular Dystrophy Panel
+TTN	TTN	DCM/LVNC Sequencing Panel
+TTN	TTN	Neuromuscular Disorders Panel
+TTN	TTN	Comprehensive Cardiomyopathy Panel
+TTR	TTR	HCM Sequencing Panel
+TTR	TTR	TTR Del/Dup
+TTR	TTR	TTR Gene Sequencing
+TTR	TTR	Cardiomyopathies Del/Dup Panel
+TTR	TTR	DCM/LVNC Sequencing Panel
+TTR	TTR	Hereditary Neuropathy Panel
+TTR	TTR	Comprehensive Cardiomyopathy Panel
+TUBA1A	TUBA1A	Cortical Brain Malformations Panel
+TUBA1A	TUBA1A	Comprehensive Brain Malformations Panel
+TUBA8	TUBA8	Cortical Brain Malformations Panel
+TUBA8	TUBA8	Comprehensive Brain Malformations Panel
+TUBB2B	TUBB2B	Cortical Brain Malformations Panel
+TUBB2B	TUBB2B	Comprehensive Brain Malformations Panel
+TUBB3	TUBB3	Cortical Brain Malformations Panel
+TUBB3	TUBB3	Microcephaly Panel
+TUBB3	TUBB3	Comprehensive Brain Malformations Panel
+TUFM	TUFM	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TUFM	TUFM	Comprehensive Mitochondrial Nuclear Gene Panel
+TUFM	TUFM	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+TUFM	TUFM	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+TYK2	TYK2	Hyper-IgE Syndromes Panel
+TYMP	TYMP	Combined Mito Genome Plus Mito Nuclear Gene Panel
+TYMP	TYMP	Comprehensive Mitochondrial Nuclear Gene Panel
+TYMP	TYMP	MtDNA Depletion/Multiple Deletions Nuclear Gene Panel
+TYMP	TYMP	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+TYMP	TYMP	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+TYMP	TYMP	Mitochondrial Encephalopathy/ Leigh Syndrome Nuclear Gene Panel
+TYMP	TYMP	UBack To Top
+UBA1	UBA1	Neuromuscular Disorders Panel
+UBE3A	UBE3A	Rett/Angelman Syndrome Panel
+UBE3A	UBE3A	UBE3A Del/Dup
+UBE3A	UBE3A	UBE3A Gene Sequencing
+UBE3A	UBE3A	UBE3A Gene Sequencing & Del/Dup
+UBE3A	UBE3A	Microcephaly Panel
+UBE3A	UBE3A	Childhood-Onset Epilepsy Panel
+UBE3A	UBE3A	Infantile Epilepsy Panel
+UBE3A	UBE3A	Comprehensive Epilepsy Panel
+UNG	UNG	UNG Gene Sequencing
+UPF3B	UPF3B	Syndromic Macrocephaly/Overgrowth Panel
+UQCRB	UQCRB	Combined Mito Genome Plus Mito Nuclear Gene Panel
+UQCRB	UQCRB	Comprehensive Mitochondrial Nuclear Gene Panel
+UQCRB	UQCRB	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+UQCRQ	UQCRQ	Combined Mito Genome Plus Mito Nuclear Gene Panel
+UQCRQ	UQCRQ	Comprehensive Mitochondrial Nuclear Gene Panel
+USH1C	USH1C	Usher Syndrome Del/Dup Panel
+USH1C	USH1C	Usher Syndrome Panel
+USH1G	USH1G	Usher Syndrome Del/Dup Panel
+USH1G	USH1G	Usher Syndrome Panel
+USH2A	USH2A	arRP Del/Dup Panel
+USH2A	USH2A	arRP Sequencing Panel
+USH2A	USH2A	Usher Syndrome Del/Dup Panel
+USH2A	USH2A	Usher Syndrome Panel
+USH2A	USH2A	VBack To Top
+VCL	VCL	DCM/LVNC Sequencing Panel
+VCL	VCL	Comprehensive Cardiomyopathy Panel
+VHL	VHL	Pancreatic Cancer Panel
+VHL	VHL	VHL Gene Sequencing
+VHL	VHL	VHL Gene Sequencing & Del/Dup
+VHL	VHL	High/Moderate Risk Panel
+VHL	VHL	OncoGeneDx Custom Panel
+VHL	VHL	Comprehensive Cancer Panel
+VLDLR	VLDLR	Cortical Brain Malformations Panel
+VLDLR	VLDLR	Comprehensive Brain Malformations Panel
+VLDLR	VLDLR	VPS13B (COH1)
+VLDLR	VLDLR	VPS13B (COH1) Del/Dup
+VLDLR	VLDLR	VPS13B (COH1) Gene Sequencing
+VLDLR	VLDLR	VPS13B (COH1) Targeted (Finnish mutation) Gene Sequencing
+VPS33B	VPS33B	Congenital Ichthyosis XomeDxSlice
+VRK1	VRK1	Syndromic Congenital Muscular Dystrophy Panel
+VRK1	VRK1	Comprehensive Brain Malformations Panel
+VRK1	VRK1	Neuromuscular Disorders Panel
+VRK1	VRK1	Pontocerebellar Hypoplasia Panel
+VRK1	VRK1	VSX2 (CHX10)
+VRK1	VRK1	VSX2 (CHX10) Gene Sequencing
+VRK1	VRK1	Prenatal Anophthalmia/Microphthalmia Panel & Del/Dup
+VRK1	VRK1	WBack To Top
+WAS	WAS	WAS Del/Dup
+WAS	WAS	WAS Gene Sequencing
+WDR62	WDR62	Microcephaly Panel
+WFS1	WFS1	Combined Mito Genome Plus Mito Nuclear Gene Panel
+WFS1	WFS1	Comprehensive Mitochondrial Nuclear Gene Panel
+WFS1	WFS1	Progressive External Ophthalmoplegia (PEO)/Optic Atrophy Nuclear Gene Panel
+WNK1	WNK1	Hereditary Neuropathy Panel
+WNT10A	WNT10A	WNT10A Del/Dup
+WNT10A	WNT10A	WNT10A Gene Sequencing
+WT1	WT1	PAX6 Gene Sequencing & Del/Dup Panel
+WT1	WT1	XBack To Top
+WT1	WT1	XLRS1 (RS1)
+WT1	WT1	XLRS1 (RS1) Del/Dup (Females)
+WT1	WT1	XLRS1 (RS1) Gene Sequencing
+XRCC2	XRCC2	Pancreatic Cancer Panel
+XRCC2	XRCC2	Breast/Ovarian Cancer Panel
+XRCC2	XRCC2	OncoGeneDx Custom Panel
+XRCC2	XRCC2	Comprehensive Cancer Panel
+XRCC2	XRCC2	YBack To Top
+YARS2	YARS2	Combined Mito Genome Plus Mito Nuclear Gene Panel
+YARS2	YARS2	Comprehensive Mitochondrial Nuclear Gene Panel
+YARS2	YARS2	Lactic Acidosis/Pyruvate Metabolism Nuclear Gene Panel
+YARS2	YARS2	ZBack To Top
+ZAP70	ZAP70	B-positive SCID Panel
+ZAP70	ZAP70	Comprehensive SCID Panel
+ZEB2	ZEB2	Rett/Angelman Syndrome Panel
+ZEB2	ZEB2	Microcephaly Panel
+ZEB2	ZEB2	Childhood-Onset Epilepsy Panel
+ZEB2	ZEB2	Infantile Epilepsy Panel
+ZEB2	ZEB2	Comprehensive Epilepsy Panel
+ZIC2	ZIC2	ZIC2 Del/Dup
+ZIC2	ZIC2	Holoprosencephaly Panel & Del/Dup
+ZIC2	ZIC2	Prenatal Holoprosencephaly Panel & Del/Dup
+ZMPSTE24	ZMPSTE24	Congenital Ichthyosis XomeDxSlice

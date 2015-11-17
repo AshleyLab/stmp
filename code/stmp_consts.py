@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-Author: Prag Batra
+Author: Prag Batra (prag@stanford.edu)
 
 Purpose:
     
@@ -20,10 +20,6 @@ Example:
 
 import collections
 from collections import OrderedDict
-
-# annotation_db_file = 'data/annotationDB.sqlite'
-# db_beds_dir = 'data/db_beds'
-tiering_db_file = 'data/tieringDB.sqlite'
 
 # must exactly match the given column name
 # NOTE: the standard VCF columns (chrom, start, id, ref, alt, qual, filter, info) are currently hardcoded so this dictinary is ignored for these values
@@ -45,8 +41,4 @@ col_table_types_prefixes = OrderedDict([
     ('shuffle_wellderly', 'varchar(255)')
                                         ])
 
-# { 
-#     'shuffle_wellderly': 'varchar(255)'
-#                          
-#                          }
-
+vcf_col_header_chrom = 'CHROM'
