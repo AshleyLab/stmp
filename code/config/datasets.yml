@@ -56,17 +56,17 @@ clinvar:
     DataType: ['varchar(10)', 'int', 'int', 'varchar(512)', 'varchar(512)', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float', 'float']
 
 # NOTE: This dataset must be manually downloaded and may require preprocessing prior to import. Once the file has been downloaded and/or preprocessed, save it to db/datasets/ and specify the filename under "Source" below, or specify the full path to the file under "Source" below. Then uncomment the below lines and the dataset will be imported on the next run of STMP with the --update_db parameter.
-#phastCons:
-#  Annotation: hg19_phastConsElements46way
-#  Source: hg19_phastConsElements46way.txt
-#  Category: region
-#  Description:
-#    - phastCons most conserved element score, 0-1000
-#    - phastCons most conserved element lod score
-#  Comment: DOES NOT match alt allele from vcf file to risk variant
-#  Delimiters_for_multiple_matches: '|'
-#  ColumnHeaders: ['chrom', 'start', 'stop', 'MSA_MCE_lod', 'MSA_MCE_score']
-#  DataType: ['varchar(10)', 'int', 'int', 'varchar(500)', 'varchar(255)']
+phastCons:
+  Annotation: hg19_phastConsElements46way
+  Source: http://hgdownload.cse.ucsc.edu/goldenPath/hg19/database/phastConsElements46way.txt.gz #hg19_phastConsElements46way.txt
+  Category: region
+  Description:
+    - phastCons most conserved element score, 0-1000
+    - phastCons most conserved element lod score
+  Comment: DOES NOT match alt allele from vcf file to risk variant
+  Delimiters_for_multiple_matches: '|'
+  ColumnHeaders: ['chrom', 'start', 'stop', 'MSA_MCE_lod', 'MSA_MCE_score']
+  DataType: ['varchar(10)', 'int', 'int', 'varchar(500)', 'varchar(255)']
 
 dbnsfp:
   Annotation: hg19_ljb26_all

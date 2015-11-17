@@ -339,12 +339,12 @@ if args.vcf != None: # annotation
 		print str(datetime.datetime.now()) + ': Done with pgx/clinvar annotation'
 		
 	# end pgx function
-
-# to be tested
-def write_output_yaml(yaml_commands, output_dir):
-	outfile = open(os.path.join(output_dir, 'config.yml'), 'w')
-	yaml.dump(yaml_commands, outfile, default_flow_style=False)
-	return outfile
+	
+	# to be tested
+	def write_output_yaml(yaml_commands, output_dir):
+		outfile = open(os.path.join(output_dir, 'config.yml'), 'w')
+		yaml.dump(yaml_commands, outfile, default_flow_style=False)
+		return outfile
 
 ###################### MAIN CODE (logic to call main functions) ###############
 
