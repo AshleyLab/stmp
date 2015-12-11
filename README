@@ -12,7 +12,7 @@ Other versions of the above tools may also work but are not currently supported.
 
 Other dependencies (these must be in the user or system PATH before running STMP)
 - bcftools version 1.2
-- bedtools version 2.17.0
+- bedtools version 2.23.0
 
 Python dependencies
 - Pyyaml version 3.11

@@ -34,6 +34,10 @@ import tsv_utils
 import gzip
 import yaml_utils
 import general_utils
+import multiprocessing
+from multiprocessing import Pool
+import expand_intersectedBeds
+import stmp_annotation_checker
 
 # Locations of important things. (for now -- ideally should be in user's path)
 SNPEFF = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), os.pardir, os.pardir, 'third_party', 'snpeff', 'snpEff', 'snpEff.jar'))
@@ -240,7 +244,6 @@ def vcf2allelefreq(vcf_file_loc, output_dir, overwriteIfExists=False):
 	
 	return outfilename
 
-
 def snpeff(vcf_file_loc, output_dir):
 	# In a subprocess, start a SnpEff run on the sample VCF, and output it to the user-designated folder.
 	# By returning the process pointer, a step where its completion is awaited can be added to the top-level
@@ -324,18 +327,91 @@ def generateJoinedOutfilePath(output_dir, sample_name):
 # def checkLines(line1, line2):
 # 	chrKeys = ['chr', 'chrom', 'chromosome']
 # 	startKeys = ['start', 'begin', 'pos']
+# TODO finish
 # 	end
+
+def tag_exists(input_vcf, tag):
+	print 'checking whether tag ' + str(tag) + ' exists in input vcf'
+	cmd1 = 'grep "##FORMAT=<ID={tag}" {input_vcf}'.format(tag=tag, input_vcf=input_vcf)
+# 	print '1st cmd to check whether tag exists: ' + str(cmd1)
+	cmd2 = 'grep "##INFO=<ID={tag}" {input_vcf}'.format(tag=tag, input_vcf=input_vcf)
+	proc1 = subprocess.Popen(cmd1, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	proc2 = subprocess.Popen(cmd2, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+	stdout1,stderr1 = proc1.communicate()
+	rc1 = proc1.returncode
+	stdout2, stderr2 = proc2.communicate()
+	rc2 = proc2.returncode
+	if(rc1 != 0 and rc2 != 0): # not found
+		print 'could not find tag ' + str(tag) + ' in input vcf'
+		return False
+	else:
+		print 'found tag ' + str(tag) + ' in input vcf'
+		return True
+	
+	
+
+# extracts desired fields from the FORMAT/INFO column of the input VCF, placing each in a separate column. NOTE: This is different from extracting INFO tags from the dataset VCFs!
+def extractFormatCols(inputVCF, out_file_path):
+	print 'Extracting FORMAT fields from input VCF'
+	# for now, we'll use defaults and worry about YAML spec later
+	#Default extract AC, GT, FORMAT/DP, AD (AV and RV are analogous to AD).
+	# GT - 1 column per sample (FORMAT/per sample)
+	# DP - take mean across samples. 1 column per dataset (FORMAT/per sample)
+	# AD - these need to be divided to get the alt allelic fraction. take the mean across samples. 1 column per dataset. 
+	# AC - this comes from the INFO tag
+	# additional_tag_headers = ['AC', 'GT', 'DP', 'AD']
+	# %AC\t%AN
+	format_fields = ['AC', 'GT', 'DP', 'AD']
+	prefixed_format_fields = []
+	for field in format_fields:
+		prefixed_format_fields.append('%'+field)
+	#debug
+	print 'prefixed_format_fields: ' + str(prefixed_format_fields)
+	# check that each field exists in vcf before extracting
+	actual_prefixed_format_fields = []
+	actual_format_fields = []
+	for idx,field in enumerate(format_fields):
+		if(tag_exists(inputVCF, field)):
+			actual_prefixed_format_fields.append(prefixed_format_fields[idx])
+			actual_format_fields.append(format_fields[idx])
+	print 'actual format fields to query: ' + str(actual_format_fields)
+	outfile = open(out_file_path, 'w')
+	#print header
+	outfile.write("\t".join(actual_format_fields)+"\n")
+	outfile.close()
+	
+	cmd = "bcftools query -f '{formatfields}\n' ".format(formatfields="\t".join(actual_prefixed_format_fields)) + inputVCF # -H prints header but it includes other junk, e.g. # [1]AC	[2]GT	[3]DP	[4]AD
+	#+ " | awk '{OFS=\"\t\";print $0,$6/$7}'"
+	print 'cmd to extract FORMAT fields from input VCF: ' + cmd
+	proc = subprocess.Popen(cmd, shell=True, stdout=open(out_file_path, 'a'), stderr=subprocess.PIPE) # TODO pipe stdout to both python and file (since bcftools gives error as part of stdout, not stderr)
+	stderr = proc.communicate()[0]
+	if(proc.returncode != 0):
+		raise ValueError('Failed to extract format fields from input vcf. Cmd: ' + str(cmd) + '\nError: ' + str(stderr) + '\nReturn code: ' + str(proc.returncode))
+	#else
+# 	outfile.close()
+	return out_file_path
+
+# checks that the format cols have appropriate number of lines (matching the input VCF file, including header line and excluding VCF info lines)
+def checkFormatCols(inputVCF, format_cols_file):
+	return stmp_annotation_checker.check_file_numlines([inputVCF, format_cols_file], ignore_vcf_info_lines=True, raise_exception=True)
 
 # joins the files together to form 1 big annotated TSV
 # NOTE: requires all files to have exactly the same # of lines in the same order
 # Also will not work properly if point or region annotation output files have multiple header lines (which start with #)
-def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_dir, skipJoinCheck, yaml_commands, skip=False): # by default, don't skip in case the output file was updated
+def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_dir, skipJoinCheck, yaml_commands, skip=False, skip_annovar=False, skip_format_fields=True): # by default, don't skip in case the output file was updated
 	
 	print 'Merging all annotations into a single file'
 	
+	if(not skip_format_fields):
+		formatFieldsFile = extractFormatCols(inputVCF, os.path.join(general_utils.get_parent_dir(inputVCF), 'format_fields.tsv'))
+		checkFormatCols(inputVCF, formatFieldsFile) # TODO perhaps add user-specifiable option to skip checks
+	
 	ivh = open_compressed_or_regular(inputVCF, "r")
+	if(not skip_format_fields):
+		formatFields = open(formatFieldsFile, 'r')
 	snpeff = open(snpeff_tsv, "r")
-	annovar = open(annovar_tsv, "r")
+	if(not skip_annovar):
+		annovar = open(annovar_tsv, "r")
 	region = open(region_tsv, "r")
 	point = open(point_tsv, "r")
 	
@@ -360,10 +436,18 @@ def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_d
 					if col.lower() not in allCols:
 						allCols[col.lower()] = 1
 			
+			if(not skip_format_fields):
+				formatLine = formatFields.readline()
 			pointLine = point.readline()
 			regionLine = region.readline()
 			snpeffLine = snpeff.readline()
-			annoLine = annovar.readline()
+			if(not skip_annovar):
+				annoLine = annovar.readline()
+			
+			if(not skip_format_fields):
+				# insert VCF extracted format cols
+				line = line + "\t" + formatLine.rstrip("\n")
+# 				lineElts.extend(formatLine.rstrip("\n").split("\t"))
 			
 			
 			# check lines to make sure the rows are aligned
@@ -378,50 +462,52 @@ def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_d
 						print 'input VCF line excerpt: ' + str(inLineStr)
 				
 				# annovar check
-				if(not annoLine.startswith('#')):
-					annoCols = annoLine.rstrip("\n").split("\t")
-					chr = annoCols[0]
-					start = annoCols[1]
-					stop = annoCols[2]
-					ref = annoCols[3]
-					alt = annoCols[4]
-					inCols = line.split("\t")
-					if(not (annoCols[0] == inCols[0] # chr
-						and inCols[1] == annoCols[1] # start
-						#and inCols[1] <= annoCols[2] # stop
-						and inCols[3] == annoCols[3] # ref
-						and inCols[4] == annoCols[4] # alt
-						)
-						and annoCols[3] != '-' and annoCols[3] != '.' and annoCols[3] != '0'
-						and annoCols[4] != '-' and annoCols[4] != '.' and annoCols[4] != '0'
-						and inCols[3] != '-' and inCols[3] != '.' and inCols[3] != '0'
-						and inCols[4] != '-' and inCols[4] != '.' and inCols[4] != '0'
-					):
-						print 'Warning joining annovar functional annotations: input vcf line ' + str(vcfLineNum) + ' does not match annovar line ' + str(lineNum)
-						icp = inCols[0:2]
-						icp.extend(inCols[3:5])
-						acp = annoCols[0:2]
-						acp.extend(annoCols[3:5])
-						print 'input vcf line (partial): ' + str("\t".join(icp))
-						print 'annovar line (partial): ' + str("\t".join(acp))
+				if(not skip_annovar):
+					if(not annoLine.startswith('#')):
+						annoCols = annoLine.rstrip("\n").split("\t")
+						chr = annoCols[0]
+						start = annoCols[1]
+						stop = annoCols[2]
+						ref = annoCols[3]
+						alt = annoCols[4]
+						inCols = line.split("\t")
+						if(not (annoCols[0] == inCols[0] # chr
+							and inCols[1] == annoCols[1] # start
+							#and inCols[1] <= annoCols[2] # stop
+							and inCols[3] == annoCols[3] # ref
+							and inCols[4] == annoCols[4] # alt
+							)
+							and annoCols[3] != '-' and annoCols[3] != '.' and annoCols[3] != '0'
+							and annoCols[4] != '-' and annoCols[4] != '.' and annoCols[4] != '0'
+							and inCols[3] != '-' and inCols[3] != '.' and inCols[3] != '0'
+							and inCols[4] != '-' and inCols[4] != '.' and inCols[4] != '0'
+						):
+							print 'Warning joining annovar functional annotations: input vcf line ' + str(vcfLineNum) + ' does not match annovar line ' + str(lineNum)
+							icp = inCols[0:2]
+							icp.extend(inCols[3:5])
+							acp = annoCols[0:2]
+							acp.extend(annoCols[3:5])
+							print 'input vcf line (partial): ' + str("\t".join(icp))
+							print 'annovar line (partial): ' + str("\t".join(acp))
 						
 				# region check
 				# TODO finish
 			
 			
 			# deal with annoLine separately
-			annoLine = annoLine.rstrip("\n")
-			if(not foundAnnovarHeader): # first line is header in annovar
-				annoLine = annoLine.replace('.', '_')
-				annovarHeader = annoLine
-				# prepend "Annovar_" to each column in the annovar header
-				annovarHeaderCols = annovarHeader.split("\t")
-				for idx,col in enumerate(annovarHeaderCols):
-					annovarHeaderCols[idx] = 'Annovar_' + col
-				annovarHeader = "\t".join(annovarHeaderCols)
-				annoLine = annovarHeader # since we print out header from annoLine below
-				foundAnnovarHeader = True
-			line = line + "\t" + "\t".join(annoLine.split("\t")[5:len(annovarHeader.split("\t"))-1]) # include all columns except the last one (Otherinfo), which spans multiple columns
+			if(not skip_annovar):
+				annoLine = annoLine.rstrip("\n")
+				if(not foundAnnovarHeader): # first line is header in annovar
+					annoLine = annoLine.replace('.', '_')
+					annovarHeader = annoLine
+					# prepend "Annovar_" to each column in the annovar header
+					annovarHeaderCols = annovarHeader.split("\t")
+					for idx,col in enumerate(annovarHeaderCols):
+						annovarHeaderCols[idx] = 'Annovar_' + col
+					annovarHeader = "\t".join(annovarHeaderCols)
+					annoLine = annovarHeader # since we print out header from annoLine below
+					foundAnnovarHeader = True
+				line = line + "\t" + "\t".join(annoLine.split("\t")[5:len(annovarHeader.split("\t"))-1]) # include all columns except the last one (Otherinfo), which spans multiple columns
 			
 			# deal with other lines
 			for fileIndex, line2 in enumerate([pointLine, regionLine]): # for now, exclude snpeff since it annotates in the INFO column which is trickier to merge
@@ -461,6 +547,8 @@ def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_d
 			
 			# convert any . to '' in a given entry (to be consistent)
 			lineElts = line.split("\t")
+			
+			# clean up . character in columns (to save space in the final output file)
 			for idx, lineElt in enumerate(lineElts):
 				if(lineElt.lstrip().rstrip() == '.' or lineElt.lstrip().rstrip() == ''):
 					lineElt = ''
@@ -478,6 +566,7 @@ def joinFiles(inputVCF, snpeff_tsv, annovar_tsv, region_tsv, point_tsv, output_d
 			line = "\t".join(lineElts)
 			output.write(line + "\n")
 	
+	output.close()
 	return out_filepath
 
 # gets the consensus columns in the proper order (look up each one in the YAML for details of what cols it is generated from)
@@ -504,10 +593,25 @@ def get_consensus_col_names(consensus_col_cmds, suffix):
 # header = header elements (list), NOT a string!
 # same for output (line elements as a list, not a string)
 def get_consensus_col_header_line(header, yaml_commands):
+	# TODO extract desired VCF FORMAT tags here as well
+	# for now, we'll use defaults and worry about YAML spec later
+	#Default extract AC, GT, FORMAT/DP, AD (AV and RV are analogous to AD).
+	# GT - 1 column per sample (FORMAT/per sample)
+	# DP - take mean across samples. 1 column per dataset (FORMAT/per sample)
+	# AD - these need to be divided to get the alt allelic fraction. take the mean across samples. 1 column per dataset. 
+	# AC - this comes from the INFO tag
+	
 	annotation_cmds = yaml_commands[yaml_keys.kModules][yaml_keys.kAnnotation]
 	consensus_col_cmds = annotation_cmds[yaml_keys.kAConsensusColumns]
 	consensus_col_suffix = annotation_cmds[yaml_keys.kAConsensusColumnSuffix]
 	offset = annotation_cmds[yaml_keys.kAConsensusColumnOffset]
+	
+	# insert headers for additional VCF tags
+# 	additional_tag_headers = ['AC', 'GT', 'DP', 'AD']
+# 	for tag_header in additional_tag_headers:
+# 		header.insert(offset, tag_header)
+# 		offset += 1
+	# now insert the user-specified consensus headers after the VCF tags
 	consensus_col_headers = get_consensus_col_names(consensus_col_cmds, consensus_col_suffix)
 	for idx,consensus_header in enumerate(consensus_col_headers):
 		header.insert(offset+idx, consensus_header)
@@ -524,6 +628,14 @@ def get_consensus_col_line(lineElts, header, yaml_commands):
 	consensus_col_cmds = annotation_cmds[yaml_keys.kAConsensusColumns]
 	consensus_col_criteria = annotation_cmds[yaml_keys.kAConsensusCriteria]
 	offset = annotation_cmds[yaml_keys.kAConsensusColumnOffset]
+	# TODO insert VCF tag values before consensus col values
+	# TODO finish
+# 	vcf_tag_headers = ['AC', 'GT', 'DP', 'AD']
+# 	#AC
+# 	cmd = "bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT\t%AC\t%AN\n' " + vcf_file_loc + " | awk '{OFS=\"\t\";print $0,$6/$7}' > " + outfilepath
+# 	cmd = 'bcftools query -f %INFO/AC'
+	
+	# now insert the user-specified consensus column values
 	consensus_fields = get_ordered_consensus_cols(consensus_col_cmds)
 	# debug
 # 	print 'ordered consensus cols: ' + str(consensus_fields)
@@ -554,7 +666,15 @@ def get_values(lineElts, header, consensus_cols):
 		idx = header.index(consensus_col)
 		#debug
 # 		print 'idx: ' + str(idx)
-		values.append(lineElts[idx])
+		elt = lineElts[idx]
+		if ';' in elt:
+			elt = elt.split(';')
+			values.extend(elt)
+# 		elif ',' in elt:
+# 			elt = elt.split(',')
+# 			values.extend(elt)
+		else:
+			values.append(elt)
 	return values
 
 # for now, we pick the first value from the list that isn't blank or "unknown" (case-insensitive search). If no values match these criteria, we output ''.
@@ -584,6 +704,17 @@ def get_consensus_value(lineElts, header, consensus_cols, consensus_criteria='de
 			return maxValue
 		else:
 			return ''
+	#else
+	if(isinstance(consensus_criteria, list)): # list of values in order of priority
+		valuesDict = general_utils.list2dict(values)
+		if(len(valuesDict) == 1 and '' in valuesDict): # all specified columns in that row are empty
+			return ''
+		for value in consensus_criteria:
+			if(value in valuesDict):
+				return value
+		#else didn't find the value in the list, so fall back to default algo
+		print 'warning: could not find any of the specified consensus criteria values ' + str(consensus_criteria) + ' in row values ' + str(values)
+		return get_consensus_value(lineElts, header, consensus_cols, 'default') # rerun using default consensus criteria
 	#else
 	raise ValueError('Unknown consensus criteria specified in YAML: ' + str(consensus_criteria))
 
@@ -748,7 +879,6 @@ def setup_db_yaml(database_connection, yaml_commands, skip=True):
 # 	print 'table names: ' + str(table_names)
 	
 	for db in yaml_commands:
-		
 		#load default info
 		datasetPath = yaml_commands['default']['Dataset_Path']
 		if(not os.path.isabs(datasetPath)):
@@ -873,9 +1003,9 @@ def setup_db_yaml(database_connection, yaml_commands, skip=True):
  	db_bed_dir = relativeToAbsolutePath_scriptDir(yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDBedPath])
 	bed_delimiter = yaml_commands[yaml_keys.kModules][yaml_keys.kAnnotation][yaml_keys.kABedInternalDelimiter]
  	
- 	generate_bed_formatted_dbs(database_connection, range_tables, bed_delimiter=bed_delimiter, db_bed_dir=db_bed_dir, force_overwrite=not skip)
+ 	generate_bed_formatted_dbs(database_connection, range_tables, bed_delimiter=bed_delimiter, db_bed_dir=db_bed_dir, yaml_cmds=yaml_commands, force_overwrite=not skip)
  	
- 	print 'Done generating BED files.'
+#  	print 'Done generating BED files.'
  	
  		
 # UNUSED and DEPRECATED - replaced by setup_db_yaml
@@ -1120,7 +1250,7 @@ def reorderColumns(colNames):
 
 
 # generates bed files from region tables in our database so we can use bedtools to perform the region annotation
-def generate_bed_formatted_dbs(database_connection, table_names, db_bed_dir, bed_delimiter, force_overwrite=False):
+def generate_bed_formatted_dbs(database_connection, table_names, db_bed_dir, bed_delimiter, yaml_cmds, force_overwrite=False):
 	print("Generating bed-formatted tables for region annotation")
 	
 	db_bed_dir = relativeToAbsolutePath_scriptDir(db_bed_dir)
@@ -1132,9 +1262,11 @@ def generate_bed_formatted_dbs(database_connection, table_names, db_bed_dir, bed
 	
 	tables_and_files = [(table, os.path.join(db_bed_dir, table + '.bed')) for table in table_names]
 	
+	processes = []
+	
 	for t,f in tables_and_files:
 		if not os.path.isfile(f) or force_overwrite:
-			print("Generating BED for " + t)
+			print("\nGenerating BED for " + t)
 			columnsInfo = getColumnsOfTable(c, t)
 			colNames = []
 			# get column nmes
@@ -1152,11 +1284,24 @@ def generate_bed_formatted_dbs(database_connection, table_names, db_bed_dir, bed
 			headerout = open(headerf, 'w')
 			headerout.write("\t".join([t+'_'+colname for colname in colNames[3:]]) + "\n")
 			
-			with open(f, 'w') as outfile:
-				for row in c.execute(cmd):
+			unsortedf = f+'.unmerged.bed'
+			with open(unsortedf, 'w') as outfile:
+				for ridx,row in enumerate(c.execute(cmd)):
+# 					row[-1] = row[-1].rstrip("\n\n")
 					strings = []
 					infoArr = []
+					#debug
+					if(ridx < 5):
+						print 'row: ' + str(row)
 					for idx,x in enumerate(row):
+						if(idx == len(row) -1 and (type(x) is str or type(x) is unicode)):
+							#debug
+# 							print 'x before rstrip: ' + str(x)
+							x = x.rstrip("\n\n") # effectively the same as rstrip("\n")
+							#debug
+# 							print 'x after rstrip: ' + str(x)
+# 						if(type(x) is str):
+# 							x = x.rstrip("\n\n")
 						if type(x) is int or type(x) is float or type(x) is str:
 							x2 = str(x)
 							x2 = x2.encode('utf8')
@@ -1174,12 +1319,39 @@ def generate_bed_formatted_dbs(database_connection, table_names, db_bed_dir, bed
 					#now write our 4 columns to BED file
 					outstr = "\t".join(strings)
 					outfile.write(outstr + "\n")
+				outfile.close()
+			# merge regions during loading so we don't need to use condense_intersectBed_output.py later
+			#debug
+			print 'bedfile: ' + str(unsortedf)
+			
+			# SORT AND MERGE WORKAROUND (should work on Mac OS, but does not actually sort or merge the output BED files). WARNING: This will NOT behave as expected unless the condense_intersectBed script is used as part of range annotation!
+# 			cmd = 'cat "{bedfile}"'.format(bedfile=unsortedf)
+# 			print 'bed ignore sort command: ' + str(cmd)
+# 			subprocess.Popen(cmd, stdout=open(f, 'w'), shell=True).wait()
+# 			print 'unsorted output bedfile: ' + str(f)
+			
+			# REGULAR SORT AND MERGE (doesn't work on Mac OS bc GNU sort accepts different parameters)
+			cmd = 'sort -k1,1V -k2,2n "{bedfile}"'.format(bedfile=unsortedf)
+			print 'bed sort command: ' + str(cmd)
+			subprocess.Popen(cmd, stdout=open(f, 'w'), shell=True).wait()
+			print 'sorted output bedfile: ' + str(f)
+# 			print 'sorted bedfile: ' + str(f+'.sorted.bed')
+# 			cmd = 'bedtools merge -c 4 -o collapse -delim "{bed_multimatch_internal_delimiter}"'.format(bed_multimatch_internal_delimiter=yaml_cmds[yaml_keys.kModules][yaml_keys.kAnnotation][yaml_keys.kABedMultimatchInternalDelimiter])
+# 			print 'bed region merge cmd: ' + str(cmd)
+# 			subprocess.Popen(cmd, stdin=open(f+'.sorted.bed', 'r'), stdout=open(f, 'w'), shell=True).wait()
+# 			print 'output bedfile: ' + str(f)
+# 			processes.append(subprocess.Popen(cmd, stdin=open(f+'.sorted.bed', 'r'), stdout=open(f, 'w'), shell=True))
+			# TODO error check bedtools merge and other output for each third-party command (return codes and stderr)
+			# TODO check whether final output BED file has size > 0
 			
 		else:
 			print("Reusing existing BED for " + t)
+			# TODO check whether final output BED file has size > 0
 			
 	database_connection.commit()
-
+	for process in processes:
+		print 'bed region merging: waiting on ' + str(process)		
+	print 'Done generating BED files.'
 
 # exception handling
 def PrintException():
@@ -1197,7 +1369,46 @@ def getHeaderFile(bed_file_path):
 	return bed_file_path.replace('.bed', '.bed.header')
 
 
-def annotate_range(database_connection, vcf_file_loc, output_dir_loc, modules_yaml_path, yaml_commands, skip=False, print_range_cmd_only=False, presorted_vcf=False, force_overwrite_beds=False):
+def expandBED(bedPath, bed_multimatch_internal_delimiter, bed_delimiter, dataset_multimatch_delimiter, fileHeaders):
+	print 'Expanding file ' + str(bedPath)
+	outSuffix='.tsv'
+	f = open(bedPath, 'r')
+	out_file_path = bedPath+outSuffix
+	out_file = open(out_file_path, 'w')
+	prevTime = datetime.datetime.now().second
+	for currLine,fl in enumerate(f):
+		prevTime = print_progress_timed('line ' + str(currLine), prevTime)
+		lineContents = []
+		fl = fl.rstrip("\n")
+		if(fl == '.' or len(fl) == 0):
+			# extend lineContents by appropriate # of blank columns
+			lineContents.extend(['']*len(fileHeaders[bedPath]))
+		elif(bed_multimatch_internal_delimiter in fl):
+			# split annotations and then recombine using specified default delimiter
+			annotations = fl.split(bed_multimatch_internal_delimiter)
+			finalCols = ['']*len(fileHeaders[bedPath]) # ensures the appropriate number of cols for future hits (which will be appended to the appropriate empty string)
+			for annotation in annotations:
+				annotationComponents = annotation.split(bed_delimiter)
+				if(len(annotationComponents) > 0):
+					for idx,component in enumerate(annotationComponents):
+						try:
+							if(finalCols[idx] != ''):
+								finalCols[idx] += dataset_multimatch_delimiter
+							finalCols[idx] += component
+						except IndexError:
+							print 'error: index ' + str(idx) + ' beyond size of finalCols (' + str(len(finalCols)) + ') on file ' + str(bedPath) + ' line ' + str(currLine)
+							raise 
+							
+			lineContents.extend(finalCols)
+		else:
+			flc = fl.split(bed_delimiter)
+			lineContents.extend(flc)
+		out_file.write("\t".join(lineContents) + "\n")
+	return out_file_path
+	
+
+def annotate_range(database_connection, vcf_file_loc, output_dir_loc, modules_yaml_path, datasets_yaml_path, yaml_commands, skip=False, print_range_cmd_only=False, presorted_vcf=False, force_overwrite_beds=False):
+	vcf_numSampleCols = vcfUtils.getNumSampleCols(vcf_file_loc)
 	intersected_tmp_dir = os.path.join(output_dir_loc, 'intersected_beds') # TODO make scratch dir a separate param for this function
 	db_bed_dir = relativeToAbsolutePath_scriptDir(yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDBedPath])
 # 	db_bed_dir = relativeToAbsolutePath_scriptDir(db_bed_dir)
@@ -1229,16 +1440,16 @@ def annotate_range(database_connection, vcf_file_loc, output_dir_loc, modules_ya
 		bed_file_path = os.path.join(db_bed_dir, t + '.bed')
  		
  		try:
-			cmd = "(cat {header}; intersectBed -a {vcf_file_loc} -b {fname} -loj | {condense} | cut -f13)".format(
+ 			# TODO have condense_intersectbed do the cutting to cut out the VCF cols. That would allow us to easily include multiple cols from the intersectbed output (as opposed to just cutting 1).
+			cmd = "(cat {header}; intersectBed -a {vcf_file_loc} -b {fname} -loj | {condense} | cut -f{colIndex})".format(
+				colIndex=13+vcf_numSampleCols,
 				header = getHeaderFile(bed_file_path),
 				vcf_file_loc = vcf_file_loc, 
 				fname = bed_file_path,
 				condense = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'condense_intersectBed_output.py --modules={modules_yaml}'.format(modules_yaml=modules_yaml_path))
 			)
 	 		
-# 	 		if(print_range_cmd_only):
 	 		print 'range annotation cmd: ' + cmd
-# 	 		else:
 			processes.append(subprocess.Popen(cmd, stdout = open(out_file_loc, 'w'), shell = True))
 		except:
 			PrintException()
@@ -1246,75 +1457,61 @@ def annotate_range(database_connection, vcf_file_loc, output_dir_loc, modules_ya
 	if(print_range_cmd_only):
 		return
 	
+	prevTime = datetime.datetime.now().second
 	for p in processes:
+		prevTime = print_progress_timed('Waiting on intersectbed range annotation process ' + str(p), prevTime)
 		p.wait()
 	
 	# now merge the range annotations
 	annotations = [os.path.join(intersected_tmp_dir, f) for f in os.listdir(intersected_tmp_dir)]
 	
+	# check line counts
+	stmp_annotation_checker.check_file_numlines(annotations) # TODO add VCF linecount (non ## lines but include header line) to compare against
+	
 	out_filepath = os.path.join(output_dir_loc, "{name}.range_joined.vcf".format(name = sample_name))
-	
-	out_file = open(out_filepath, 'w')
-	
-	# open each intersected file
-	files = []
-	fileHeaders = {} # dictionary of arrays by filename
-	for file1 in annotations:
-		f = open(file1, 'r')
-		files.append(f)
-		fileHeaders[f] = f.readline().rstrip("\n").split("\t") # header split by tab, not bed delimiter
-		f.seek(0) # reset file pos so we correctly read and print out header below
 	
 	# for now, just using the default delimiter. Later, check if there's a specific delimiter for a given dataset and use that instead.
 	dataset_multimatch_delimiter = yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDMultimatchDelimiter]
 	
-	try:
-		def mergeFiles():
-			currPos = 0
-			currLine = -1
-			while True:
-				lineContents = []
-				currLine += 1
-				for file1 in files:
-					fl = file1.readline().rstrip("\n")
-					if(len(fl) == 0 or fl == '.'):
-						# extend lineContents by appropriate # of blank columns
-						lineContents.extend(['']*len(fileHeaders[file1]))
-					elif(bed_multimatch_internal_delimiter in fl):
-						# split annotations and then recombine using specified default delimiter
-						annotations = fl.split(bed_multimatch_internal_delimiter)
-						finalCols = ['']*len(fileHeaders[file1]) # ensures the appropriate number of cols for future hits (which will be appended to the appropriate empty string)
-						for annotation in annotations:
-							annotationComponents = annotation.split(bed_delimiter)
-							if(len(annotationComponents) > 0):
-								for idx,component in enumerate(annotationComponents):
-									try:
-										if(finalCols[idx] != ''):
-											finalCols[idx] += dataset_multimatch_delimiter
-										finalCols[idx] += component
-									except IndexError:
-										print 'error: index ' + str(idx) + ' beyond size of finalCols (' + str(len(finalCols)) + ') on file ' + str(file1) + ' line ' + str(currLine)
-										raise 
-										
-						lineContents.extend(finalCols)
-					else:
-						flc = fl.split(bed_delimiter)
-						lineContents.extend(flc)
-				out_file.write("\t".join(lineContents) + "\n")
-				
-				#check for EOF
-				newPos = files[0].tell()
-				if(newPos == currPos):
-					print 'done with intersectbed merge'
-					return
-				#else
-				currPos = newPos
-		
-		mergeFiles()
-		
-	except StopIteration: # never gets called
-			# done writing
-			print 'done with intersectbed merge'
+	
+	# expands bed files to have proper # of columns for easy merge into the final annotated file
+	# NOTE: expanding .tab files, NOT .bed files!
+	def expandBEDs(bedPaths):
+		script_dir = general_utils.get_code_dir_abs()
+		expand_script_path = os.path.join(script_dir, 'expand_intersectedBeds.py')
+		processes = []
+		bedOutFiles = []
+		outSuffix = '.tsv'
+		for bedPath in bedPaths:
+			cmd = 'python "{expandScript}" --tab_file "{bedPath}" --out_suffix "{outSuffix}" --config_modules "{config_modules}" --config_datasets "{config_datasets}"'.format(expandScript = expand_script_path, bedPath=bedPath, outSuffix=outSuffix, config_modules=modules_yaml_path, config_datasets=datasets_yaml_path)
+			print 'expand intersectedBeds cmd: ' + str(cmd)
+			processes.append(subprocess.Popen(cmd, shell=True))
+		for idx,process in enumerate(processes):
+			print 'waiting on expand beds cmd for ' + str(bedPaths[idx])
+			stderr = process.communicate()[0] # check
+			returncode = process.returncode
+			if(returncode != 0):
+				raise ValueError('expand beds cmd failed (return code ' + str(returncode) + ')') #+ str(stderr))
+			bedOutFiles.append(bedPaths[idx]+outSuffix)
+		return bedOutFiles
+	
+	def mergeFiles(expandedBedPaths, outFilePath):
+		cmd = 'paste {expandedBedFiles}'.format(expandedBedFiles=' '.join(expandedBedPaths))
+		print 'range annotation mergeFiles cmd: ' + str(cmd)
+		print 'writing cmd output to ' + str(outFilePath)
+		process = subprocess.Popen(cmd, shell=True, stdout=open(outFilePath, 'w'), stderr = subprocess.PIPE)
+		err = process.communicate()[0] # check
+		returncode = process.returncode
+		print 'cmd return code: ' + str(returncode) + ' stderr: ' + str(err)
+		if(returncode != 0):
+			raise ValueError('Merging range annotation files (paste command) failed.\nReturn code: ' + str(returncode) + '\nErr: ' + str(err) + '\nCmd: ' + str(cmd))
+		# TODO might need to close output file handle here?
+	
+	print 'merging range annotation .tab files'
+	expandedBeds = expandBEDs(annotations)
+	# check line counts
+	stmp_annotation_checker.check_file_numlines(expandedBeds)
+	mergeFiles(expandedBeds, out_filepath)
 	
 	print 'Finished bedtools region (range) annotation'
 	
@@ -1531,10 +1728,11 @@ def annotate_point(database_connection, vcf_file_loc, output_dir_loc, sample_db_
 			columns = c.fetchall()
 			for column in columns:
 				column = column[1]
-				if(column != 'chrom' and column != 'start' and column != 'stop'
-				and column != 'ref' and column != 'alt'
-				and column != 'id' and column != 'qual'
-				and column != 'filter'
+				column_lower = column.lower()
+				if(column_lower != 'chrom' and column_lower != 'start' and column_lower != 'stop'
+				and column_lower != 'ref' and column_lower != 'alt'
+				and column_lower != 'id' and column_lower != 'qual'
+				and column_lower != 'filter'
 				):
 					cmd += ", '{db}_{column}'".format(db = table, column=column)
 				
@@ -1548,10 +1746,11 @@ def annotate_point(database_connection, vcf_file_loc, output_dir_loc, sample_db_
 			columns = c.fetchall()
 			for index, column in enumerate(columns):
 				column = column[1]
-				if(column != 'chrom' and column != 'start' and column != 'stop'
-				and column != 'ref' and column != 'alt'
-				and column != 'id' and column != 'qual'
-				and column != 'filter'
+				column_lower = column.lower()
+				if(column_lower != 'chrom' and column_lower != 'start' and column_lower != 'stop'
+				and column_lower != 'ref' and column_lower != 'alt'
+				and column_lower != 'id' and column_lower != 'qual'
+				and column_lower != 'filter'
 				):
 						#regular
 						cmd += ", ifnull({table}.'{column}','') as '{table}_{column}'".format(table = table, column=column) # add tab to keep columns separated
@@ -1572,7 +1771,7 @@ def annotate_point(database_connection, vcf_file_loc, output_dir_loc, sample_db_
 		
 	print 'computing total number of lines to annotate'
 	lines_cmd =  "grep -v '^##' {vcf}| wc -l".format(vcf=vcf_file_loc)
-	totalLines = (subprocess.check_output(lines_cmd, shell=True)).rstrip()
+	totalLines = (subprocess.check_output(lines_cmd, shell=True)).rstrip().split(' ')[-1]
 	print 'total number of lines: ' + str(totalLines)
 	
 	print 'writing point annotation output file ' + out_file_loc
@@ -1588,9 +1787,15 @@ def annotate_point(database_connection, vcf_file_loc, output_dir_loc, sample_db_
 				timer = currtime
 			try:
 				f.write(("\t".join(x.encode('utf8').strip("\n") if isinstance(x, basestring) else str(x) for x in row) + "\n"))
-			except UnicodeEncodeError or UnicodeDecodeError:
-				print 'row: ' + str(row)
-				raise # re-raises the original exception
+			except UnicodeEncodeError:
+				print 'UnicodeEncode error in row: ' + str(row)
+				raise
+			except UnicodeDecodeError:
+				print 'UnicodeDecode error in row: ' + str(row)
+				raise
+#  			except UnicodeEncodeError or UnicodeDecodeError:
+# 				print 'Unicode error in row: ' + str(row)
+# 				raise # re-raises the original exception
 			idx += 1
 
 	database_connection.commit()

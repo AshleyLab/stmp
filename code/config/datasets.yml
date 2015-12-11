@@ -109,7 +109,7 @@ exac_tol:
 uk10k:
   License:
   Source: 'ftp://ngs.sanger.ac.uk/production/uk10k/UK10K_COHORT/REL-2012-06-02/UK10K_COHORT.20140722.sites.vcf.gz'
-  Annotation: uk10k_freq
+  Annotation: uk10k
   Category: point
   Class: frequency
   Citation:
@@ -198,6 +198,29 @@ gonl:
 #  StartingLine: 1
 #  ColumnHeaders: [chr,start,end,'','','','','','','',class,'','','','','','','','',subcellular_location,'','','','']
 #  DataType: [varchar(5),int,int,'','','','','','','',varchar(255),'','','','','','','','',varchar(255),'','','','']
+
+gene_info:
+    License:
+    Source: Homo_sapiens.gene_info_slim.bed
+    StartingLine: 1
+    Annotation: gene_info
+    Category: region
+    Description:
+#    ColumnHeaders: [chrom,start,stop,geneName,synonyms,type_of_gene,symbol_from_nomenclature_authority,full_name_from_nomenclature_authority,other_designations]
+    ColumnHeaders: [chrom,start,stop,'',synonyms,type_of_gene,symbol_from_nomenclature_authority,full_name_from_nomenclature_authority, other_designations]
+    DataType: ['varchar(2)','int','int','',varchar(255),varchar(50),varchar(50),varchar(255),varchar(255)]
+    Comment: 'ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/GENE_INFO/Mammalia/Homo_sapiens.gene_info.gz'
+
+omim_gene_disorder:
+    License:
+    Source: omim_gene_disorder.txt.updated.bed
+    StartingLine: 1
+    Annotation: omim_gene_disorder
+    Category: region
+    Description:
+    ColumnHeaders: [chrom,start,stop,'','','',gene_status,gene_title,comment,disorder]
+    DataType: ['varchar(2)','int','int','','','',varchar(255),varchar(255),varchar(255),varchar(255)]
+    Comment: 'ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/GENE_INFO/Mammalia/Homo_sapiens.gene_info.gz'
 
 #kegg:
 #  License: 

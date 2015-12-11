@@ -4,6 +4,7 @@
 kModules = 'Modules'
 
 kTiering = 'tiering'
+kTSkipFilterPassCheck = 'Skip_Filter_Pass_Check'
 kTRareAlleleFreqCutoff='Rare_Allele_Frequency_Cutoff'
 kTGeneNameCol='Gene_Name_Column'
 kTAlleleFreqCols='Allele_Frequency_Columns'

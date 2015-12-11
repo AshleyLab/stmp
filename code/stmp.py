@@ -37,6 +37,7 @@ import stmp_annotation_checker # for checking annotated output file
 
 import multiprocessing
 from multiprocessing import pool
+from multiprocessing import Process
 import time
 from time import strftime, localtime
 import os
@@ -81,6 +82,7 @@ annotate_group.add_argument('--drop_samples', action='store_true', help='drops s
 annotate_group.add_argument('--drop_sample', action='store_true', help='drops this sample from the database after completing annotation')
 annotate_group.add_argument('--region_annotations_only', action='store_true', help='just do region annotation')
 annotate_group.add_argument('--print_region_cmd_only', action='store_true', help="just print region annotation command (don't actually do the annotation or anything else")
+annotate_group.add_argument('--skip_annovar', action='store_true', help='skip annovar functional annotations')
 
 # variant tiering (prioritization)
 tiering_group = parser.add_argument_group('Variant Prioritization', 'Arguments for variant prioritization')
@@ -158,8 +160,12 @@ if args.vcf != None: # annotation
 		print 'Skipping multiallelic check'
 	
 	# strip chr prefix
-	stripChr_vcf = stmp_annotation_util.stripChrPrefix(args.vcf, args.scratch_dir, skip_if_exists=False)
+	stripChr_vcf = stmp_annotation_util.stripChrPrefix(args.vcf, args.scratch_dir, skip_if_exists=True)
 	args.vcf=stripChr_vcf
+	
+	# extract FORMAT tags
+	# TODO finish
+# 	modifiedVCF = 
 
 ############### MAIN FUNCTIONS (ANNOTATION, TIERING, PGX) ################
 	
@@ -167,7 +173,7 @@ if args.vcf != None: # annotation
 	def annotate(args):		
 		if args.region_annotations_only:
 			#region annotation does not require sample vcf to be uploaded to our db
-			region_outfile = stmp_annotation_util.annotate_range(db_conn, args.vcf, args.scratch_dir, modules_yaml_path=args.modules, yaml_commands=yaml_commands, force_overwrite_beds=args.clean_beds)
+			region_outfile = stmp_annotation_util.annotate_range(db_conn, args.vcf, args.scratch_dir, modules_yaml_path=args.modules, datasets_yaml_path=args.yaml, yaml_commands=yaml_commands, force_overwrite_beds=args.clean_beds)
 			exit(0)
 		
 		#Functional variant effect prediction
@@ -182,7 +188,9 @@ if args.vcf != None: # annotation
 		# annovar + region annotation
 		if not args.point_annotations_only:
 			[annovar_proc, annovar_outfile] = stmp_annotation_util.annovar_annotate_functional(args.vcf, args.scratch_dir)
-			region_outfile = stmp_annotation_util.annotate_range(db_conn, args.vcf, args.scratch_dir, modules_yaml_path=args.modules, yaml_commands=yaml_commands, force_overwrite_beds=args.clean_beds) # Find annotations which cover a genomic interval.  This is done with BEDtools.
+# 			stmp_annotation_util.annotate_range(database_connection, vcf_file_loc, output_dir_loc, modules_yaml_path, datasets_yaml_path=args.yaml, yaml_commands, skip, print_range_cmd_only, presorted_vcf, force_overwrite_beds)
+# 			p = Process(target=stmp_annotation_util.annotate_range, args=(db_conn, args.vcf, args.scratch_dir, args.modules, args.yaml, yaml_commands, args.clean_beds))
+			region_outfile = stmp_annotation_util.annotate_range(db_conn, args.vcf, args.scratch_dir, modules_yaml_path=args.modules, datasets_yaml_path=args.yaml, yaml_commands=yaml_commands, force_overwrite_beds=args.clean_beds) # Find annotations which cover a genomic interval.  This is done with BEDtools.
 		
 		# point annotation
 		point_outfile = stmp_annotation_util.annotate_point(db_conn, args.vcf, args.scratch_dir, sample_db_path, debug=args.debug_point_annotations) # Find annotations which are associated with a single locus.  This is done with a SQL join.
@@ -199,7 +207,7 @@ if args.vcf != None: # annotation
 		snpeff_tsv_outfile = stmp_annotation_util.snpeff2tsv(sample_name, snpeff_vcf_outfile, args.scratch_dir)
 	
 		#join the results into a single file
-		joined_outfile = stmp_annotation_util.joinFiles(args.vcf, snpeff_tsv_outfile, annovar_outfile, region_outfile, point_outfile, args.output_dir, args.skip_join_checks, yaml_commands=yaml_commands)
+		joined_outfile = stmp_annotation_util.joinFiles(args.vcf, snpeff_tsv_outfile, annovar_outfile, region_outfile, point_outfile, args.output_dir, args.skip_join_checks, yaml_commands=yaml_commands, skip_annovar=args.skip_annovar)
 		
 		# TODO may need to clean up temporary range annotation files (in output/scratch dir) to avoid issues with region annotation.
 		# for now (must do this to avoid issues with region annotation)
@@ -269,9 +277,10 @@ if args.vcf != None: # annotation
 		stmp_tiering_util.tiers_allvars(annotation_joined_outfile, output_dir, args.target_genes, pop=args.ethnicity, yaml_cmds=yaml_cmds)
 		
 		# SFS filtering (TODO)
-# 		if args.sfs_file != "None":	
-# 			for i in range(1,5):
-# 				stmp_tiering_util.filter_sfs(os.path.join(args.output_dir, "allvars.tier"+str(i)+".txt"), args.sfs_file, os.path.join(args.output_dir, "allvars.tier"+str(i)+"-sfs_filtered.txt"), 2)
+		if args.sfs_file != "None":
+			print 'Performing SFS filtering (check output at ' + str(output_dir) + ')'
+			for i in range(1,5):
+				stmp_tiering_util.filter_sfs(output_dir+'.tier'+str(i)+'.txt', args.sfs_file, output_dir+'.tier'+str(i)+"-sfs_filtered.txt", 2)
 	
 	# end tiering function
 	
@@ -286,6 +295,7 @@ if args.vcf != None: # annotation
 			candidate_out_dir = os.path.join(args.output_dir, 'Candidate')
 			if(not os.path.isdir(candidate_out_dir)):
 				os.makedirs(candidate_out_dir)
+			print 'Tiering candidate genes (user-specified)'
 			tier(args, joined_outfile, yaml_cmds=yaml_commands, output_dir=candidate_out_dir)
 			tiering_output_dirs.append(candidate_out_dir)
 		
@@ -294,6 +304,7 @@ if args.vcf != None: # annotation
 		if(not os.path.isdir(global_tiering_out_dir)):
 			os.makedirs(global_tiering_out_dir)
 		args.target_genes = None # forces global tiering (no filtering based on a certain gene list)
+		print 'Tiering all genes (Global)'
 		tier(args, joined_outfile, yaml_cmds=yaml_commands, output_dir=global_tiering_out_dir)
 		tiering_output_dirs.append(global_tiering_out_dir)
 		
@@ -304,6 +315,7 @@ if args.vcf != None: # annotation
 			if(not os.path.isdir(out_dir)):
 				os.makedirs(out_dir)
 			args.target_genes = yaml_utils.get_abs_path(tiering_gene_lists[tiering_gene_list])
+			print 'Tiering ' + str(tiering_gene_list) + ' genes'
 			tier(args, joined_outfile, yaml_cmds=yaml_commands, output_dir=out_dir)
 			tiering_output_dirs.append(out_dir)
 		
@@ -355,7 +367,7 @@ if args.vcf != None: # annotation
 		exit(0)
 	
 	if args.print_region_cmd_only:
-		stmp_annotation_util.annotate_range(db_conn, args.vcf, args.scratch_dir, modules_yaml_path=args.modules, yaml_commands=yaml_commands, print_range_cmd_only=True, force_overwrite_beds=args.clean_beds)
+		stmp_annotation_util.annotate_range(db_conn, args.vcf, args.scratch_dir, modules_yaml_path=args.modules, datasets_yaml_path=args.yaml, yaml_commands=yaml_commands, print_range_cmd_only=True, force_overwrite_beds=args.clean_beds)
 		exit(0)
 	
 	# pgx doesn't depend on other annotations

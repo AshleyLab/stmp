@@ -21,9 +21,56 @@ import sys
 from sys import argv
 import argparse
 import copy
+import subprocess
 
 import general_utils
 
+# checks files in parallel to make sure they all have the same line count. By default, raises
+# an exception if this is not the case. If raise_exception is set to false, prints a warning instead. If lineCount is left at the default (-1), uses the number of lines in the first specified file for comparison against all other files.
+def check_file_numlines(files, lineCount=-1, ignore_vcf_info_lines=True, raise_exception=True):
+    bedPaths = files
+    lineCountBedFile = ''
+    retVal = True
+    for bedFile in bedPaths:
+        if(ignore_vcf_info_lines):
+            cmd = 'grep -v "##" {file}|wc -l'.format(file=bedFile)
+        else:
+            cmd = 'wc -l {bedFile}'.format(bedFile = bedFile)
+        print 'cmd to check # of lines in file: ' + cmd
+        processes = []
+        processes.append(subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE))
+    for idx,process in enumerate(processes):
+        out,err = process.communicate() # blocks until process terminates
+        returnvalue = process.returncode
+        if(returnvalue != 0):
+            raise ValueError('Failed to get number of lines for file. Cmd: ' + str(cmd) + '\nError: ' + str(err) + '\nOutput: ' + str(out) + '\nReturn code: ' + str(returnvalue))
+        #else
+        outarr = out.split(' ')
+        #debug
+#         print 'cmd output as array: ' + str(outarr)
+        numLines = int(outarr[-1])
+        if(lineCount == -1):
+            lineCount = numLines
+            lineCountBedFile = bedPaths[idx]
+        elif(numLines != lineCount):
+            if(lineCountBedFile != ''):
+                errorText = str(numLines) + ' lines in ' + str(bedPaths[idx]) + ' different from expected ' + str(lineCount) + ' lines in ' + str(lineCountBedFile) + '\ncmd output as array: ' + str(outarr)
+            else:
+                errorText = str(numLines) + ' lines in ' + str(bedPaths[idx]) + ' different from expected ' + str(lineCount) + ' lines' + '\ncmd output as array: ' + str(outarr)
+            
+            if(raise_exception):
+                raise ValueError(errorText)
+            else:
+                print 'Warning: ' + errorText
+                retVal = False
+    
+    if(not retVal):
+        return False
+    #else
+    print '+(OK) Files all have same line count (' + str(lineCount) + ')'
+    return True
+    
+    
 # currently checks annotated output for any columns that are completely empty (no value for any row in the output file)
 def check_annotated_output(out_file, suppress_print = False): 
     f = open(out_file, 'r')
@@ -89,7 +136,7 @@ if __name__ == '__main__':
                 del new_missing_cols[col]
         overall_missing_cols = new_missing_cols
     
-    print str(len(overall_missing_cols)) + ' cols with no value across ANY of the {num} input files: '.format(num=str(len(input_files)))
+    print str(len(overall_missing_cols)) + ' out of {numcols} cols with no value across ANY of the {num} input files: '.format(num=str(len(input_files)), numcols=len(global_cols))
     for col in overall_missing_cols:
         print str(col)
 

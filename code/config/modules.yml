@@ -3,10 +3,32 @@ annotation:
     Snpeff_Path: '../../third_party/snpeff/snpEff' # relative to stmp.py
     Annovar_Path: '../../third_party/annovar' # relative to stmp.py
     Snpeff_Memory: '6g'
-    Consensus_Column_Insertion_Offset: 10 # position to insert consensus columns at, starting from 0
+    Consensus_Column_Insertion_Offset: 10 # position to insert consensus columns (including vcf FORMAT extracted fields) at, starting from 0
     Consensus_Column_Suffix: 'Summary'
     Consensus_Criteria:
         Max_Allele_Freq: 'Max_Freq' # find the greatest value as opposed to default behavior of finding the first non-empty/unknown value from the specified datasets
+        # from http://doc-openbio.readthedocs.org/projects/annovar/en/latest/user-guide/gene/
+        Function: [
+    'exonic', 'splicing', # precedence 1
+    'ncRNA', # precendence 2
+    'UTR5', 'UTR3', # precedence 3
+    'intronic', # precedence 4
+    'upstream', 'downstream', # precedence 5
+    'intergenic', # precedence 6
+                   ]
+        ExonicFunction: [
+    'frameshift insertion', # precedence 1
+    'frameshift deletion', # 2
+    'frameshift block substitution', #...
+    'stopgain',
+    'stoploss',
+    'nonframeshift insertion',
+    'nonframeshift deletion',
+    'nonframeshift block substitution',
+    'nonsynonymous SNV',
+    'synonymous SNV',
+    'unknown', # 11
+                         ]
     Consensus_Columns:
         # Can specify either as dataset.columnName, or just absolute column name (which cannot contain "." character)
         Order: [Gene, Function, ExonicFunction, Max_Allele_Freq] # if a column is not specified here, it will appear in a random order after the specified columns.
@@ -16,10 +38,12 @@ annotation:
         Max_Allele_Freq: [1kg_popfreq_all.1000g_all, 1kg_popfreq_all.esp6500siv2_all, uk10k.AF, gonl.AF] #, wellderly.AF] # sardinia, french canadian, koreans, ashkenazi
         
     Bed_Multimatch_Internal_Delimiter: '~||||~' # WARNING: do not modify this unless you know what you are doing! Will cause annotated output to be messed up if it conflicts with existing delimiters in the range datasets.
+#    Bed_Internal_Delimiter: "	"
     Bed_Internal_Delimiter: '~|||~' # WARNING: do not modify this unless you know what you are doing! Will cause annotated output to be messed up if it conflicts with existing delimiters in the range datasets.
     
     
 tiering:
+    Skip_Filter_Pass_Check: True # normally checks that all tiered variants have "PASS" in the FILTER column.
     Target_Gene_Lists:
         Clinical_Clinvar: 'config/gene_lists/clinvar_gene_specific_summary.txt'
         Clinical_Panel: 'config/gene_lists/genedx_names.txt' # currently genedx
@@ -28,11 +52,11 @@ tiering:
     Rare_Allele_Frequency_Cutoff: 0.01 # as a decimal
     Gene_Name_Column: Gene_Summary
     
-    Allele_Frequency_Columns: [Max_Allele_Freq_Summary]
+    Allele_Frequency_Columns: [Max_Allele_Freq_Summary, 1kg_popfreq_all.1000g_all, 1kg_popfreq_all.esp6500siv2_all, uk10k.AF, gonl.AF]
     Functional_Columns: [Annovar_Func_refGene, Annovar_ExonicFunc_refGene, Annovar_Func_knownGene, Annovar_ExonicFunc_knownGene, Annovar_Func_wgEncodeGencodeBasicV19, Annovar_ExonicFunc_wgEncodeGencodeBasicV19] # TODO add snpeff
     
     # for separating multiple threshold values for a given column (will check for a match with any of them)
-    Column_Multiple_Threshold_Separator: '|'
+    Column_Multiple_Threshold_Separator: '|' # currently unused
     
     # Conservation info
     Conservation_Columns: ['dbnsfp.GERP++_RS', phastCons.MSA_MCE_score] # NOTE: currently missing dbnsfp_phyloP_pred

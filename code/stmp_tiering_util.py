@@ -26,6 +26,7 @@ import yaml_keys
 import general_utils
 import xlwt # for exporting tiered results as Excel workbook (XLS file)
 import stmp_consts
+import subprocess
 
 #function for tier 1,2,3,4 targeted calls in specified gene regions, infile is from stanovar vcf
 # pop = population our sample comes from
@@ -35,6 +36,28 @@ def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds):
     freq = yaml_cmds[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTRareAlleleFreqCutoff]
     gene_name_col_header = yaml_cmds[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTGeneNameCol]
     functional_column_headers = yaml_utils.convertColumns(yaml_cmds[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTFunctionalCols], yaml_cmds)
+    skip_filter_pass_check = yaml_cmds[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTSkipFilterPassCheck]
+    
+    # check for whether any variant contains "PASS"
+    cmd = 'grep "PASS" {infile}|grep -v "#"|wc -l'.format(infile=in_file)
+    process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout,stderr = process.communicate()
+    returncode = process.returncode
+    if(returncode != 0):
+        raise ValueError('Failed to search annotated VCF for "PASS" prior to tiering.\ncmd: ' + str(cmd) + '\nErr: ' + str(stderr) + '\nReturncode: ' + returncode + '\nOutput: ' + str(stdout))
+    #else
+    numHits = int(stdout)
+    # TODO move this to pre-checks (prior to even annotation)
+    if(numHits == 0 and not skip_filter_pass_check):
+        raise ValueError('No variants detected that passed filtering. Re-run STMP with "Skip_Filter_Pass_Check: True" in modules.yml to prioritize all variants anyway.')
+    elif(numHits == 0):
+        print 'NOTICE: no variants detected that passed filtering. Skipping filter PASS check and prioritizing all variants anyway.'
+    else:
+        print 'Found ' + str(numHits) + ' variants that passed filtering.' + ' Tiering all variants, not just these.' if skip_filter_pass_check else ' Tiering just these variants.'
+#         if(skip_filter_pass_check):
+#             print 'Tiering all variants, not just these.'
+#         else:
+#             print 'Tiering just these variants.'
     
     #open input and output files and initialize counters and lists for background populations
     filein = open(in_file, "r")
@@ -66,8 +89,12 @@ def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds):
     rarevars = 0
     
     allele_freq_cols = yaml_utils.convertColumns(yaml_cmds[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTAlleleFreqCols], yaml_cmds) #convertTieringColumns(yaml_cmds)
+    #debug
+    print 'allele freq cols: ' + str(allele_freq_cols)
     
     backpoplist = vcfUtils.get_listindex(headlist, allele_freq_cols)
+    #debug
+#     print 'backpoplist: ' + str(backpoplist)
 
     #initialize gene list for region prioritization
     if(gene_file != None):
@@ -88,7 +115,7 @@ def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds):
     #iterate over input file and parse into tiers
     for line in filein:
         total+=1
-        if (("PASS" in line) and ("#" in line) == 0 and vcfUtils.is_rare(line, freq, backpoplist)
+        if ((skip_filter_pass_check or "PASS" in line) and ("#" in line) == 0 and vcfUtils.is_rare(line, freq, backpoplist, yaml_cmds)
             and not vcfUtils.contains_text('MT', line, [stmp_consts.vcf_col_header_chrom], headlist, yaml_cmds, case_sensitive=False)
             and not vcfUtils.contains_text('ncRNA', line, functional_column_headers, headlist, yaml_cmds, case_sensitive=True)
             ):
@@ -141,6 +168,7 @@ def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds):
 
 # converts tiered output txt files to a single XLS worksheet (with a single sheet per output dir, and variants sorted by tier within each sheet)
 def tiers2xls(tier_dirs, output_dir):
+    print 'Saving tiered variants to Excel worksheet'
     # make new excel output worksheet
     wb = xlwt.Workbook()
      
@@ -161,10 +189,15 @@ def tiers2xls(tier_dirs, output_dir):
             if(idx != 0): # skip header for all files except the first one
                 tierh.readline()
                 
-            for line in tierh:
+            for lineNum,line in enumerate(tierh):
                 lineContents = line.rstrip("\n").split("\t")
                 for col,value in enumerate(lineContents):
-                    sheet.write(rowNum, col, value)
+                    if(len(value) > 32767):
+                        print 'warning: tierFile ' + str(tierFile) + ' line ' + str(lineNum) + ' col ' + str(col) + ' has length ' + str(len(value)) + ' longer than 32767 chars. Truncating.'
+                        sheet.write(rowNum, col, value[:32767])
+#                         print 'warning: value ' + str(value) + ' longer than 32767 chars'
+                    else:
+                        sheet.write(rowNum, col, value)
                 
                 rowNum += 1
     
@@ -184,8 +217,12 @@ def filter_sfs(infile, sfs_file, outfile, thresh):
     #read in 
     for line in f_sfs:
         linelist = line.replace("\n", "").split("\t")
-        chrom = linelist[0]
+        chrom = linelist[0].lstrip('chr') # remove chr prefix if present
+        #debug
+#         print 'sfs chrom: ' + str(chrom)
         pos = linelist[1]
+        #debug
+#         print 'sfs pos: ' + str(pos)
     all_dict[chrom+":"+pos] = linelist[2] 
 
     #read and filter input file
@@ -198,7 +235,11 @@ def filter_sfs(infile, sfs_file, outfile, thresh):
         if ("CHROM" in line) == 0:
                 linelist = line.split("\t")
                 chrom = linelist[chrindex]
+                #debug
+#                 print 'tsv chr: ' + str(chrom)
                 pos = linelist[posindex]
+                #debug
+#                 print 'tsv pos: ' + str(pos)
                 if all_dict.has_key(chrom+":"+pos):
                     if int(all_dict[chrom+":"+pos]) <= int(thresh):
                         f_out.write(line.replace("\n", "\t")+all_dict[chrom+":"+pos]+"\n")

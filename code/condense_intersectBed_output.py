@@ -22,7 +22,7 @@ Example:
 
 	1	241320	rs79974410	A	G	3.22	PASS	DP	70	13_Heterochrom/lo,11_Weak_Txn
 
-The script does in a streaming fashion from stdin.
+The script does so in a streaming fashion from stdin.
 '''
 
 from __future__ import print_function
@@ -42,22 +42,38 @@ annotations = []
 firstTime = True
 
 for line in sys.stdin:
+	if(line.startswith('#')): # header
+		print (line.rstrip("\n"))
+		continue
+	#else
 	s = line.rstrip('\n').split("\t")
 	if firstTime:
-		prevline = [''] * len(s)
-# 	print ('number of entries: ' + str(len(s)), file=sys.stderr) #debug
-# 	print ('s[1] ' + s[1] + ' pl[1] ' + prevline[1] + ' s2 ' + s[2] + ' pl2 ' + prevline[2] 
-# 	+ ' s3 ' + s[3] + ' pl3 ' + prevline[3], file=sys.stderr) #debug
-	if not firstTime and (line.startswith('#') or s[0] != prevline[0] or s[1] != prevline[1] or s[2] != prevline[2] or s[3] != prevline[3] or s[4] != prevline[4]): # line doesn't match previous, or it's a header.  In either case, trigger output.
-		print('\t'.join(prevline[0:12] + [bed_multimatch_internal_delimiter.join(annotations)]))
-		annotations = []
-	else: # it's a duplicate!  Start/continue annotation collection.
-		annotations.append(s[-1])
+# 		prevLine = ['']*len(s)
+		prevLine = s
 		firstTime = False
-
-	prevline = s
+		continue
+	#else
+	# 3 cases: 
+	# 1) duplicate annotation (same chr, start, stop, annotation)
+	# 2) additional annotation (same chr, start, stop (aka same variant), different annotation)
+	# 3) different annotation (different chr, start, and/or stop, aka different variant)
+	if(not firstTime):
+		# case 1: duplicate annotation
+		if(s[0] == prevLine[0] and s[1] == prevLine[1] and s[2] == prevLine[2] and s[3] == prevLine[3]): # chr, start, stop, annotation match
+			continue # do nothing -- we already have this annotation in the annotations list
+		# case 2: additional annotation
+		elif(s[0] == prevLine[0] and s[1] == prevLine[1] and s[2] == prevLine[2] and s[3] != prevLine[3]): # chr, start, stop match, but not annotation (additional annotation)
+			# add to list of annotations for this variant
+			annotations.append(s[-1])
+		# case 3: different annotation (annotation for a different variant)
+		# trigger output + reset annotation list
+		else:
+			print ('\t'.join(prevLine) + '\t' + bed_multimatch_internal_delimiter.join(annotations)) # for now, print out entire VCF line + annottion (TODO print out just annotation in future)
+			annotations = []
+			annotations.append(s[-1])
+			
+	prevLine = s
 
 # print out any remaining annotations
-if len(annotations) > 0:
-	print('\t'.join(prevline[0:12] + [bed_multimatch_internal_delimiter.join(annotations)]))
-
+if(len(annotations) > 0):
+	print ('\t'.join(prevLine) + '\t' + bed_multimatch_internal_delimiter.join(annotations)) # for now, print out entire VCF line + annotation (TODO print out just annotation in future)

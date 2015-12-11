@@ -18,6 +18,39 @@ Example:
 '''
 
 import os
+import datetime
+import subprocess
+
+# gets number of lines in a file
+def get_num_lines(filePath, ignore_vcf_info_lines=True):
+    if(ignore_vcf_info_lines):
+        cmd = 'grep -v "##" {file}|wc -l'.format(file=filePath)
+    else:
+        cmd = 'wc -l {file}'.format(file = filePath)
+#     cmd = 'wc -l {file}'.format(file=filePath)
+    proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    stdout,stderr = proc.communicate()
+    returncode = proc.returncode
+    if(returncode != 0):
+        raise ValueError('Failed to get number of lines in file. Cmd: ' + cmd + '\nError: ' + str(stderr) + '\nOutput: ' + str(stdout) + '\nReturn Code: ' + str(returncode))
+    #else
+    numLines = int(stdout.split(' ')[0])
+    return numLines
+
+
+# gets absolute path to directory where the code (i.e. this script file) is
+def get_code_dir_abs():
+    return os.path.dirname(os.path.realpath(__file__))
+
+# prints the given string every [interval] s or longer (depending on how often this method is called). Call it each time the progress (e.g. line number) changes.
+# NOTE: prevTime and interval must be in SECONDS
+def print_progress_timed(progressStr, prevTime, interval=5):
+    currtime = datetime.datetime.now().second
+    if(abs(currtime - prevTime) > interval):
+        print str(datetime.datetime.now()) + ': ' + progressStr
+        return currtime
+    #else
+    return prevTime
 
 def list2dict(list):
     dict = {}
@@ -41,6 +74,10 @@ def root_or_cwd(mydir):
         return os.path.join(os.getcwd(), mydir) # merge the current working directory to the provided partial path
     else:
         return(mydir) # no change
+
+# gets the absolute path to the parent dir of the given path
+def get_parent_dir(path):
+    return os.path.abspath(os.path.join(path, os.pardir))
 
 # gets name of file/directory (including extension)
 def get_file_or_dir_name(path):

@@ -9,6 +9,14 @@ import sys
 import vcfHeaders
 import yaml_keys
 import yaml_utils
+import subprocess
+
+def getNumSampleCols(vcf_file_loc):
+    cmd = 'bcftools query -l {vcf}|wc -l'.format(vcf=vcf_file_loc)
+    print 'cmd to get # of vcf sample cols: ' + str(cmd)
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+    output = proc.stdout.read()
+    return int(output)
 
 #gets proper head from vcf file, ignoring all other stuff
 def get_head(infile):
@@ -91,14 +99,24 @@ def allele_coder(GT, d, alt, q, p, data_type):
     #deals with real time genomics format vcf files
 
 #boolean, returns 1 for a variant with frequency below threshold (for all background populations consider) or novel or unknown allele frequency, 0 otherwise 
-def is_rare(templine, freq_thresh, bp_indexlist):
+def is_rare(templine, freq_thresh, bp_indexlist, yaml_commands):
+    #debug
+#     print 'bp_indexlist: ' + str(bp_indexlist)
+    multimatch_delimiter = yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDMultimatchDelimiter]
     templinelist = templine.split("\t")
     rare_flag = 1 # rare
     for i in bp_indexlist:
         if templinelist[i] != "":
+            templinelistElts = templinelist[i].split(multimatch_delimiter)
             # should throw an exception if templinelist[i] isn't a float
-            if float(templinelist[i]) > float(freq_thresh):
-                rare_flag = 0 # not rare
+            #debug
+#             print 'templinelist[{i}]: '.format(i=i) + str(float(templinelist[i]))
+#             print 'freq thresh: ' + str(float(freq_thresh))
+            for elt in templinelistElts:
+                if(float(elt) > float(freq_thresh)):
+                    rare_flag = 0 # not rare
+#             if float(templinelist[i]) > float(freq_thresh):
+#                 rare_flag = 0 # not rare
     return rare_flag
 
 # returns true if the specified text is found in any of the specified columns
