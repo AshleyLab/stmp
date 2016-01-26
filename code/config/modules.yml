@@ -1,7 +1,11 @@
+testing:
+    Test_Dataset_Path: '../data/test/input_data/genome_in_a_bottle/subset.rs.vcf'
+    Default_Test_Output_Dir: '../data/test/output_unverified/genome_in_a_bottle/subset'
+    
 annotation:
-    #Parameter_Annovar: # annovar default parameters
-    Snpeff_Path: '../../third_party/snpeff/snpEff' # relative to stmp.py
-    Annovar_Path: '../../third_party/annovar' # relative to stmp.py
+    #Parameter_Annovar: # Annovar default parameters. Currently unused but may be used in a future release.
+#    Annovar_Path: '../third_party/annovar' # relative to stmp.py. Currently unused but will likely be used in a future release.
+    Snpeff_Path: '../third_party/snpeff/snpEff' # relative to stmp.py
     Snpeff_Memory: '6g'
     Consensus_Column_Insertion_Offset: 10 # position to insert consensus columns (including vcf FORMAT extracted fields) at, starting from 0
     Consensus_Column_Suffix: 'Summary'
@@ -27,15 +31,29 @@ annotation:
     'nonframeshift block substitution',
     'nonsynonymous SNV',
     'synonymous SNV',
-    'unknown', # 11
+    'unknown', # lowest precedence
                          ]
     Consensus_Columns:
         # Can specify either as dataset.columnName, or just absolute column name (which cannot contain "." character)
-        Order: [Gene, Function, ExonicFunction, Max_Allele_Freq] # if a column is not specified here, it will appear in a random order after the specified columns.
-        Gene: [Annovar_Gene_refGene, Annovar_Gene_knownGene, Annovar_Gene_wgEncodeGencodeBasicV19, refseq.genename, refseq.name] # TODO add snpeff
-        Function: [Annovar_Func_refGene, Annovar_Func_knownGene, Annovar_Func_wgEncodeGencodeBasicV19]
-        ExonicFunction: [Annovar_ExonicFunc_refGene, Annovar_ExonicFunc_knownGene, Annovar_ExonicFunc_wgEncodeGencodeBasicV19]
-        Max_Allele_Freq: [1kg_popfreq_all.1000g_all, 1kg_popfreq_all.esp6500siv2_all, uk10k.AF, gonl.AF] #, wellderly.AF] # sardinia, french canadian, koreans, ashkenazi
+        Order: [ # if a column is not specified here, it will appear in a random order after the specified columns.
+            Gene, 
+#            Description, # uncomment if description column uncommented below
+            Function, 
+            ExonicFunction, 
+            Max_Allele_Freq
+            ]
+        Gene: [Annovar_Gene_refGene, Annovar_Gene_knownGene, Annovar_Gene_wgEncodeGencodeBasicV19, refseq.geneName, refseq.name] # TODO add snpeff
+#        Description: [gene_info.full_name_from_nomenclature_authority] # uncomment if gene_info imported
+        Function: [Annovar_Func_refGene, Annovar_Func_knownGene, Annovar_Func_wgEncodeGencodeBasicV19] # TODO add snpeff
+        ExonicFunction: [Annovar_ExonicFunc_refGene, Annovar_ExonicFunc_knownGene, Annovar_ExonicFunc_wgEncodeGencodeBasicV19] # TODO add snpeff
+        Max_Allele_Freq: [
+            # 1kg
+            1kg_popfreq_all.pop_freq_max, 1kg_popfreq_all.1000g_all, 1kg_popfreq_all.1000g_afr, 1kg_popfreq_all.1000g_amr, 1kg_popfreq_all.1000g_eas, 1kg_popfreq_all.1000g_eur, 1kg_popfreq_all.1000g_sas, 1kg_popfreq_all.exac_all, 1kg_popfreq_all.exac_afr, 1kg_popfreq_all.exac_amr, 1kg_popfreq_all.exac_eas, 1kg_popfreq_all.exac_fin, 1kg_popfreq_all.exac_nfe, 1kg_popfreq_all.exac_oth, 1kg_popfreq_all.exac_sas, 1kg_popfreq_all.esp6500siv2_all, 1kg_popfreq_all.esp6500siv2_aa, 1kg_popfreq_all.esp6500siv2_ea, 
+            uk10k.AF, 
+            gonl.AF,
+            #wellderly.AF, # uncomment if wellderly has been imported
+            exac.AF
+            ]
         
     Bed_Multimatch_Internal_Delimiter: '~||||~' # WARNING: do not modify this unless you know what you are doing! Will cause annotated output to be messed up if it conflicts with existing delimiters in the range datasets.
 #    Bed_Internal_Delimiter: "	"
@@ -43,7 +61,9 @@ annotation:
     
     
 tiering:
-    Skip_Filter_Pass_Check: True # normally checks that all tiered variants have "PASS" in the FILTER column.
+    Max_Num_Variants_Per_Tier: 10000
+    Filter_Pass_Values: ['PASS', '.', ''] # anything else in the FILTER column is a fail and that variant will be excluded from our tiered output
+    Skip_Filter_Pass_Check_If_Needed: True # normally checks that all tiered variants have "PASS" in the FILTER column.
     Target_Gene_Lists:
         Clinical_Clinvar: 'config/gene_lists/clinvar_gene_specific_summary.txt'
         Clinical_Panel: 'config/gene_lists/genedx_names.txt' # currently genedx
@@ -51,12 +71,10 @@ tiering:
         # Candidate gene list is user-specified at command-line ("--target_genes=(path to target gene list, 1 gene per line)")
     Rare_Allele_Frequency_Cutoff: 0.01 # as a decimal
     Gene_Name_Column: Gene_Summary
-    
-    Allele_Frequency_Columns: [Max_Allele_Freq_Summary, 1kg_popfreq_all.1000g_all, 1kg_popfreq_all.esp6500siv2_all, uk10k.AF, gonl.AF]
-    Functional_Columns: [Annovar_Func_refGene, Annovar_ExonicFunc_refGene, Annovar_Func_knownGene, Annovar_ExonicFunc_knownGene, Annovar_Func_wgEncodeGencodeBasicV19, Annovar_ExonicFunc_wgEncodeGencodeBasicV19] # TODO add snpeff
-    
+    Allele_Frequency_Columns: [Max_Allele_Freq_Summary]
+    Functional_Columns: [Function_Summary, ExonicFunction_Summary]
     # for separating multiple threshold values for a given column (will check for a match with any of them)
-    Column_Multiple_Threshold_Separator: '|' # currently unused
+    Column_Multiple_Threshold_Separator: '|'
     
     # Conservation info
     Conservation_Columns: ['dbnsfp.GERP++_RS', phastCons.MSA_MCE_score] # NOTE: currently missing dbnsfp_phyloP_pred

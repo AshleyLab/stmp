@@ -1,0 +1,6 @@
+CYP2C19	No haplotype matches
+CYP2C9	No haplotype matches
+CYP2D6	No haplotype matches
+SLCO1B1	No haplotype matches
+TPMT	No haplotype matches
+VKORC1	No haplotype matches

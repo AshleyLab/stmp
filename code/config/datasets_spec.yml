@@ -1,19 +1,56 @@
 default:
-    Build: GRCh37
-    Dataset_Path: 'datasets/' # where datasets will be downloaded before loading into our database
-    Delimiters_for_multiple_matches: ['||'] # potentially check if this comes up in any dataset during load and raise a warning/adjust it if it does
-    Parameter_Annovar: # annovar default parameters
+    # Build information. Currently we only support hg19.
+    Build: hg19
+    # where datasets will be downloaded before loading into our database
+    Dataset_Path: '../data/datasets/' 
+    # where to store BED files used in range annotation
+    Bed_Path: '../data/beds'
+    # Delimiter used when there are multiple annotation hits for the same variant within a given dataset.
+    Delimiter_for_multiple_matches: '|'
     
-#Template dataset:
-    Annotation: What the dataset should be called in our database. This will be prepended to each column in the annotated output file (e.g. for Annotation=clinvar, output columns would be clinvar_clnsig, clinvar_clnrevstat, etc.)
-    Source: URL/path to locally downloaded source file
-    Class: (optional) any combination of ['function','freq', 'regulatory', 'low-confidence', 'conservation', 'tolerance', 'function_score', 'somatic', 'pgx', 'clinical'] 
-    AnnotationType: (optional) one of ['Annovar'|'Snpeff'|'region'|'point'] 
-    ColumnHeaders: ordered list of columns named as you would like them to appear in the annotated output. To exclude a column, just give it a blank name '' (e.g. ['', 'chr', 'start', 'stop', ...]. If dataset is a VCF, just specify the names of the tags you'd like to import from the INFO column. Standard VCF columns (e.g. chr, start, ID, ref, alt, qual, filter) will be imported automatically.
-    DataType: ordered list of data types for each of the columns specified above. If a column is excluded, the datatype should also be given as a blank string ''. For VCF datasets, just specify datatypes of the INFO tags given above -- datatypes for the other columns will be taken care of automatically. Note that sqlite3 does not check data types so STMP will not throw an error if the actual data does not match the given data type.
-    StartingLine: (optional) Line in the dataset file to start the import at (default = 0). Use this if headers are not prefixed with '#'.
-    Description: (optional) description of dataset
-    License: (optional)
-        # Type: (optional) e.g. academic
-        # URL: (optional) URL of dataset homepage/license page
-    Comment: (optional) any other comments
+# we will use the below name to identify the dataset in modules.yml, so it must be unique for each dataset.
+name_of_dataset:
+    # Whether we should automatically import this dataset into the database. Should be True unless there is a reason not to import it (e.g. the file needs to be preprocessed first).
+    Import_If_Missing: True
+    # (optional) License information for proprietary or otherwise restricted datasets.
+    License: 
+        # (optional) e.g. academic
+        Type: 
+        # (optional) URL of dataset homepage/license page
+        URL: 
+    # URL/path to locally downloaded source file. If specifying a URL, file will be automatically downloaded to Dataset_Path above. If specifying a local path, either provide the absolute path or give the path relative to Dataset_Path above (e.g. if you place your file in Dataset_Path, you can just give the filename here).
+    Source: 
+    # What the dataset should be called in our annotated output. This will be prepended to each relevant column in the annotated output file (e.g. for Annotation=clinvar, output columns would be clinvar_clnsig, clinvar_clnrevstat, etc.)
+    Annotation: 
+    # (optional) Which class of annotations this dataset contains (e.g. frequency, clinical, function, etc.). Currently unused by STMP.
+    Class: 
+    # Type of annotation. Must be either "point" or "region".
+    Category: 
+    # Ordered list of columns named as you would like them to appear in the annotated output. To exclude a column, just give it a blank name '' (e.g. ['', 'chr', 'start', 'stop', ...]. If dataset is a VCF, just specify the names of the tags you'd like to import from the INFO column. Standard VCF columns (e.g. chr, start, ID, ref, alt, qual, filter) will be imported automatically.
+    ColumnHeaders: 
+    # Ordered list of data types for each of the columns specified above (e.g. ['int', 'varchar(255)', 'float']). If a column is excluded, the datatype should also be given as a blank string ''. For VCF datasets, just specify datatypes of the INFO tags given above -- datatypes for the other columns will be taken care of automatically. Note that sqlite3 does not check data types, so STMP will not throw an error if the actual data does not match the given data type.
+    DataType: 
+    # (optional) Line in the dataset file to start the import at (default = 0). Use this if headers are not prefixed with '#' in the dataset file.
+    StartingLine: 
+    # (optional) description of dataset
+    Description: 
+    # (optional) any other comments
+    Comment: 
+
+
+## Below is a template of the above stub without comments (commented out items are optional). This can be copy-pasted and filled in with the appropriate values to import a new dataset into STMP (be sure to change name_of_dataset at the top to the name of your dataset, as these names must be unique for every dataset in datasets.yml).
+
+name_of_dataset:
+    Import_If_Missing: True
+#    License: 
+#        Type: 
+#        URL: 
+    Source: 
+    Annotation: 
+#    Class: 
+    Category: 
+    ColumnHeaders: 
+    DataType: 
+#    StartingLine: 
+#    Description: 
+#    Comment: 

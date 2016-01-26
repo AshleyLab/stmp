@@ -87,12 +87,15 @@ if __name__ == '__main__':
     
     args = parser.parse_args()
     
-    modules_yaml = yaml_utils.parse_yaml(args.config_modules)
-    datasets_yaml = yaml_utils.parse_yaml(args.config_datasets)
+    config_yaml = yaml_utils.parse_yaml_input_files(args.config_datasets, args.config_modules)
+    modules_yaml = config_yaml[yaml_keys.kModules]
+#     modules_yaml = yaml_utils.parse_yaml(args.config_modules)
+#     datasets_yaml = yaml_utils.parse_yaml(args.config_datasets)
+    
     bed_delimiter = modules_yaml[yaml_keys.kAnnotation][yaml_keys.kABedInternalDelimiter]
     bed_multimatch_internal_delimiter = modules_yaml[yaml_keys.kAnnotation][yaml_keys.kABedMultimatchInternalDelimiter]
     # for now, just using the default delimiter. Later, check if there's a specific delimiter for a given dataset and use that instead.
-    dataset_multimatch_delimiter = datasets_yaml[yaml_keys.kDDefaults][yaml_keys.kDMultimatchDelimiter]
+    dataset_multimatch_delimiter = yaml_utils.get_dataset_defaults(config_yaml)[yaml_keys.kDMultimatchDelimiter]
     
     expandBED(args.tab_file, bed_multimatch_internal_delimiter, bed_delimiter, dataset_multimatch_delimiter, args.out_suffix)
 

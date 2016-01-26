@@ -1,0 +1,9 @@
+Metrics for stmp filtering, all variants from reference
+Total variants queried: 884
+Rare variants (allele freq < 0.01) queried: 53
+Rare variants in 863 target genes: 0
+Candidate variants, tier 0 (rare clinvar pathogenic or likely pathogenic variants with rating > 0 stars): 0
+Candidate variants, tier 1 (rare LOF variants -- stoploss, stopgain, splicing, and frameshift): 0
+Candidate variants, tier 2 (rare nonframeshift or (nonsynonymous and conserved) variants): 0
+Candidate variants, tier 3 (rare nonsynonymous pathogenic variants): 0
+Candidate variants, tier 4 (all other rare exonic/splicing variants with ExAC tolerance z-score (syn_z or mis_z or lof_z) > 2): 0

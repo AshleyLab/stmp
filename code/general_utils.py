@@ -20,6 +20,16 @@ Example:
 import os
 import datetime
 import subprocess
+import gzip
+import mmap
+
+
+# improved open function that handles .gz files properly
+def open_compressed_or_regular(f, options):
+    if(f.endswith('.gz')):
+        return gzip.open(f, options)
+    #else
+    return open(f, options)
 
 # gets number of lines in a file
 def get_num_lines(filePath, ignore_vcf_info_lines=True):
@@ -69,11 +79,17 @@ def get_headlist_tsv(myfile):
 def root_or_cwd(mydir):
     # If the user has specified a file using a partial filepath relative to the current working directory, complete that path so that 
     # the file may be located.  If the filepath is absolute (i.e. starting from the root directory) then leave it alone.
-    
     if mydir[0] != '/':
         return os.path.join(os.getcwd(), mydir) # merge the current working directory to the provided partial path
     else:
         return(mydir) # no change
+
+# if needed, converts relative path to absolute path (with respect to code directory)
+def root_or_code_dir(mydir):
+    if mydir[0] != '/':
+        return os.path.join(get_code_dir_abs(), mydir)
+    else:
+        return mydir
 
 # gets the absolute path to the parent dir of the given path
 def get_parent_dir(path):
@@ -82,4 +98,19 @@ def get_parent_dir(path):
 # gets name of file/directory (including extension)
 def get_file_or_dir_name(path):
     return os.path.split(path)[-1]
+
+
+# CURRENTLY UNUSED
+# helper function: uses mmap to delete a given set of positions from a file
+def deleteFromMmap(f, mm, start, end):
+    length = end - start
+    size = len(mm)
+    newsize = size - length
+
+    mm.move(start,end,size-end)
+    mm.flush()
+    mm.close()
+    f.truncate(newsize)
+    mm = mmap.mmap(f.fileno(),0)
+    return mm
 

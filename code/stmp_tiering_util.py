@@ -53,11 +53,8 @@ def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds):
     elif(numHits == 0):
         print 'NOTICE: no variants detected that passed filtering. Skipping filter PASS check and prioritizing all variants anyway.'
     else:
-        print 'Found ' + str(numHits) + ' variants that passed filtering.' + ' Tiering all variants, not just these.' if skip_filter_pass_check else ' Tiering just these variants.'
-#         if(skip_filter_pass_check):
-#             print 'Tiering all variants, not just these.'
-#         else:
-#             print 'Tiering just these variants.'
+        print 'Found ' + str(numHits) + ' variants that passed filtering.' + ' Tiering just these variants.'
+        skip_filter_pass_check = False
     
     #open input and output files and initialize counters and lists for background populations
     filein = open(in_file, "r")
@@ -129,19 +126,23 @@ def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds):
             if gene_file == None or genes.has_key(gene):
                 target_genes+=1
                 # tier 0: clinvar
-                if(vcfUtils.isClinvarPathogenicOrLikelyPathogenic(line, headlist, yaml_cmds) and not vcfUtils.contains_text('0', line, [yaml_cmds['clinvar'][yaml_keys.kDAnnotation]+'_'+vcfHeaders.kClinvarStarHeader], headlist, yaml_cmds, case_sensitive=False)):
+                if(vcfUtils.isClinvarPathogenicOrLikelyPathogenic(line, headlist, yaml_cmds) and not vcfUtils.contains_text('0', line, [yaml_utils.get_datasets(yaml_cmds)['clinvar'][yaml_keys.kDAnnotation]+'_'+vcfHeaders.kClinvarStarHeader], headlist, yaml_cmds, case_sensitive=False)):
                     fileout0.write("0\t"+line)
                     damaging0+=1
+                # tier 1
                 elif vcfUtils.is_functional(line, "stoploss stopgain splicing frameshift", functional_column_headers, headlist):
                     fileout1.write("1\t"+line)
                     damaging1+=1
+                # tier 2
                 elif ((vcfUtils.is_functional(line, "nonsynonymous", functional_column_headers, headlist) and vcfUtils.is_conserved(line, headlist, yaml_cmds)) or vcfUtils.is_functional(line, "nonframeshift", functional_column_headers, headlist)):
                     fileout2.write("2\t"+line)
                     damaging2+=1
+                # tier 3
                 elif vcfUtils.is_functional(line, "nonsynonymous", functional_column_headers, headlist) and vcfUtils.is_pathogenic(line, headlist, yaml_cmds):
                     fileout3.write("3\t"+line)
                     damaging3+=1
-                elif vcfUtils.tolerance_pass(line, headlist, yaml_cmds):
+                # tier 4
+                elif vcfUtils.tolerance_pass(line, headlist, yaml_cmds) and vcfUtils.is_functional(line, "exonic splicing", functional_column_headers, headlist):
                     fileout4.write("4\t"+line)
                     damaging4+=1
                 # else ignore variant
@@ -149,11 +150,11 @@ def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds):
     output_log.write("Total variants queried: "+str(total)+"\n")
     output_log.write("Rare variants (allele freq < {freq}) queried: ".format(freq=str(freq))+str(rarevars)+"\n")
     output_log.write("Rare variants in {num} target genes: ".format(num=str(len(genes)) if gene_file != None else '')+str(target_genes)+"\n")
-    output_log.write("Candidate variants, tier 0 (rare clinvar pathogenic or likely pathogenic variants): "+str(damaging0)+"\n")
+    output_log.write("Candidate variants, tier 0 (rare clinvar pathogenic or likely pathogenic variants with rating > 0 stars): "+str(damaging0)+"\n")
     output_log.write("Candidate variants, tier 1 (rare LOF variants -- stoploss, stopgain, splicing, and frameshift): "+str(damaging1)+"\n")
     output_log.write("Candidate variants, tier 2 (rare nonframeshift or (nonsynonymous and conserved) variants): "+str(damaging2)+"\n")
     output_log.write("Candidate variants, tier 3 (rare nonsynonymous pathogenic variants): "+str(damaging3)+"\n")
-    output_log.write("Candidate variants, tier 4 (all other rare variants with ExAC tolerance z-score (syn_z or mis_z or lof_z) > 2): "+str(damaging4)+"\n")
+    output_log.write("Candidate variants, tier 4 (all other rare exonic/splicing variants with ExAC tolerance z-score (syn_z or mis_z or lof_z) > 2): "+str(damaging4)+"\n")
 
     filein.close()
     if(gene_file != None):
@@ -167,11 +168,11 @@ def tiers_allvars(in_file, out_stem, gene_file, pop, yaml_cmds):
 
 
 # converts tiered output txt files to a single XLS worksheet (with a single sheet per output dir, and variants sorted by tier within each sheet)
-def tiers2xls(tier_dirs, output_dir):
+def tiers2xls(tier_dirs, output_dir, yaml_commands):
     print 'Saving tiered variants to Excel worksheet'
     # make new excel output worksheet
-    wb = xlwt.Workbook()
-     
+    wb = xlwt.Workbook(encoding='latin-1') # needed since our SQLite database gives results using latin-1 encoding (so we'd otherwise get UnicodeDecode errors when attempting to decode certain characters if we specified nothing (default is probably ascii) or (probably) UTF-8 as the encoding for the workbook).
+    
     for dir in tier_dirs:
         dirname = general_utils.get_file_or_dir_name(dir)
         sheetname = dirname
@@ -189,13 +190,19 @@ def tiers2xls(tier_dirs, output_dir):
             if(idx != 0): # skip header for all files except the first one
                 tierh.readline()
                 
+            warned_of_tier_variants_exceeded = False
+            
             for lineNum,line in enumerate(tierh):
                 lineContents = line.rstrip("\n").split("\t")
                 for col,value in enumerate(lineContents):
                     if(len(value) > 32767):
                         print 'warning: tierFile ' + str(tierFile) + ' line ' + str(lineNum) + ' col ' + str(col) + ' has length ' + str(len(value)) + ' longer than 32767 chars. Truncating.'
                         sheet.write(rowNum, col, value[:32767])
-#                         print 'warning: value ' + str(value) + ' longer than 32767 chars'
+                    elif(lineNum > yaml_commands[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTMaxNumVariantsPerTier]):
+                        if(not warned_of_tier_variants_exceeded):
+                            print 'warning: number of variants exceeded for ' + str(tierFile) + '. Omitting remaining variants in this tier from XLS file. Current max variants per tier: ' + str(yaml_commands[yaml_keys.kModules][yaml_keys.kTiering][yaml_keys.kTMaxNumVariantsPerTier]) + '. To output more variants per tier, modify this value in modules.yml.'
+                            warned_of_tier_variants_exceeded = True
+                        continue # don't increment the rowNum since we didn't write anything
                     else:
                         sheet.write(rowNum, col, value)
                 

@@ -68,7 +68,7 @@ for line in sys.stdin:
 		# case 3: different annotation (annotation for a different variant)
 		# trigger output + reset annotation list
 		else:
-			print ('\t'.join(prevLine) + '\t' + bed_multimatch_internal_delimiter.join(annotations)) # for now, print out entire VCF line + annottion (TODO print out just annotation in future)
+			print ('\t'.join(prevLine) + '\t' + bed_multimatch_internal_delimiter.join(annotations)) # for now, print out entire VCF line + annotation (TODO print out just annotation in future)
 			annotations = []
 			annotations.append(s[-1])
 			

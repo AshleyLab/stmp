@@ -102,7 +102,7 @@ def allele_coder(GT, d, alt, q, p, data_type):
 def is_rare(templine, freq_thresh, bp_indexlist, yaml_commands):
     #debug
 #     print 'bp_indexlist: ' + str(bp_indexlist)
-    multimatch_delimiter = yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDMultimatchDelimiter]
+    multimatch_delimiter = yaml_utils.get_dataset_defaults(yaml_commands)[yaml_keys.kDMultimatchDelimiter]
     templinelist = templine.split("\t")
     rare_flag = 1 # rare
     for i in bp_indexlist:
@@ -115,8 +115,6 @@ def is_rare(templine, freq_thresh, bp_indexlist, yaml_commands):
             for elt in templinelistElts:
                 if(float(elt) > float(freq_thresh)):
                     rare_flag = 0 # not rare
-#             if float(templinelist[i]) > float(freq_thresh):
-#                 rare_flag = 0 # not rare
     return rare_flag
 
 # returns true if the specified text is found in any of the specified columns
@@ -182,7 +180,7 @@ def tolerance_pass(line, headlist, yaml_commands):
     tolerance_zscore_cutoff = tiering_cmds[yaml_keys.kTToleranceZScoreCutoff]
     
     for zscore_col_header in tolerance_zscore_colHeaders:
-        zscores = lineList[headlist.index(zscore_col_header)].split(yaml_commands[yaml_keys.kDDefaults][yaml_keys.kDMultimatchDelimiter]) # our delimiter
+        zscores = lineList[headlist.index(zscore_col_header)].split(yaml_utils.get_dataset_defaults(yaml_commands)[yaml_keys.kDMultimatchDelimiter]) # our delimiter
         for zscore in zscores:
             if(zscore != '' and float(zscore) > float(tolerance_zscore_cutoff)):
                 return True
@@ -218,47 +216,11 @@ def is_conserved(templine, headlist, yaml_commands):
         #debug
 #         elif(col == ''):
 #             print 'warning: no value for '
-    
-#     phyloP = ''
-#     if(vcfHeaders.kPhyloP_pred in headlist):
-#         phyloP = templinelist[headlist.index(vcfHeaders.kPhyloP_pred)]
-#     else:
-#         print 'warning: ' + vcfHeaders.kPhyloP_pred + ' not found in annotated header'
-#         
-#     gerp = ''
-#     if(vcfHeaders.kGerp in headlist):
-#         gerp = templinelist[headlist.index(vcfHeaders.kGerp)]
-#     else:
-#         print 'warning: ' + vcfHeaders.kGerp + ' not found in annotated header'
-#         
-#     phast_cons = ''
-#     if(vcfHeaders.kPhastConsElts46Way in headlist):
-#         phast_cons = templinelist[headlist.index(vcfHeaders.kPhastConsElts46Way)]
-#     else:
-#         print 'warning: ' + vcfHeaders.kPhastConsElts46Way + ' not found in annotated header'
-#     
-#     wg_gerp = ''
-#     if(vcfHeaders.kWg_gerp in headlist): 
-#         wg_gerp = templinelist[headlist.index(vcfHeaders.kWg_gerp)]
-#     else:
-#         print 'warning: ' + vcfHeaders.kWg_gerp + ' not found in annotated header'
-# 
-#     if gerp != "": #and phyloP != "":
-#         gerp = float(gerp)
-#         if gerp >= 2.0:
-#             total+=1
-#     if phyloP == "C":
-#         total+=1
-#     if phast_cons!= "":
-#         if int(phast_cons) >= 250:
-#             total+=1
-#     if wg_gerp != "":
-#         if float(wg_gerp) >= 2.0:
-#             total+=1
+
     if total >= thresh:
-        return 1
+        return 1 # True
     else:
-        return 0
+        return 0 # False
 
 
 def getClinvarInfoCol(templine, headlist):
@@ -270,7 +232,7 @@ def getClinvarInfoCol(templine, headlist):
 
 # TODO be consistent -- when doing clinvar star annotation, need clinvar clinrevstatus without "clinvar_" prefix, but when doing tiering with final annotated VCF, need clinvar clinsig with "clinvar_" prefix
 def getClinvarClinsigHeader(yaml_cmds):
-    return yaml_cmds['clinvar']['Annotation']+'_'+vcfHeaders.kClinvarClinSigHeader
+    return yaml_utils.get_datasets(yaml_cmds)['clinvar'][yaml_keys.kDAnnotation]+'_'+vcfHeaders.kClinvarClinSigHeader
 #     return vcfHeaders.kClinvarClinSigHeader
 def getClinvarClinRevStatusHeader(yaml_cmds):
 #     return yaml_cmds['clinvar']['Annotation']+'_'+vcfHeaders.kClinvarClinRevStatusHeader
@@ -287,11 +249,7 @@ def getClinvarClinsigStr(templine, headlist, yaml_cmds):
         raise IndexError('could not get index of clinvar clinical significance column (' + clinvarClinsigHeader + ') in annotated file')
         print 'error could not get index of clinvar clinical review status column in annotated file'
         return ''
-#     clinvarInfo = getClinvarInfoCol(templine, headlist)
-#     if('CLNSIG' in clinvarInfo):
-#         None # TODO finish
-#     # else
-#     return ''
+
 def clinvarClinsigStr2Array(clinsig_str):
     return clinsig_str.split('|')
 def getClinvarClinsigArray(templine, headlist):
@@ -316,6 +274,7 @@ def getClinvarClinReviewStatusStr(templine, headlist, yaml_cmds):
         raise IndexError('could not get index of clinvar clinical review status column (' + clinvarClinRevStatusStr +') in annotated file')
         print 'error could not get index of clinvar clinical review status column in annotated file'
         return ''
+    
 # clinrevstatus convenience methods
 def clinvarClinRevStatusStr2Array(clinrevstat_str):
     return clinrevstat_str.split('|')
@@ -332,7 +291,6 @@ def getClinvarClinReviewStatusArray(templine, headlist):
 # 4 stars: practice guideline (http://www.ncbi.nlm.nih.gov/clinvar/docs/review_guidelines/)
 def clinvarStars(templine, headlist, yaml_cmds):
     clinRevStatStr = getClinvarClinReviewStatusStr(templine, headlist, yaml_cmds)
-    
     # new star code (for clinvar xml)
     if('practice guideline' in clinRevStatStr):
         return 4
@@ -368,18 +326,18 @@ def clinvarStars(templine, headlist, yaml_cmds):
 #         #else, no conflicting interpretations
 #         return 2
 
+
 # whether the given column passes the given criterion (> if a given threshold = number, or = if threshold = string)
 def passes_criteria(col, colThresholds):
-#     passed = False
     for colThreshold in colThresholds:
         if(col != '' and
            (((type(colThreshold) is float or type(colThreshold) is int) and float(col) >= colThreshold)
             or col == colThreshold)
         ):
-#             passed = True
             return True
     #else
     return False
+
 
 #boolean, returns 1 for variant that is pathogenic according to user-defined criteria
 def is_pathogenic(templine, headlist, yaml_commands):
@@ -407,58 +365,12 @@ def is_pathogenic(templine, headlist, yaml_commands):
             continue
 
         #else
-#         if(isinstance(colsThresholds[idx], list)):
         colThresholds = yaml_utils.split_multiple_col_thresholds(colsThresholds[idx], yaml_commands)
         col = templinelist[headlist.index(colHeader)]
         passed = passes_criteria(col, colThresholds)
         if(passed):
             pathogenic += 1
             
-#         passed = False
-#         for colThreshold in colThresholds:
-#             if(col != '' and
-#                (((type(colThreshold) is float or type(colThreshold) is int) and float(col) >= colThreshold)
-#                 or col == colThreshold)
-#             ):
-#                 passed = True
-#                 break
-#         if(passed):
-#             pathogenic += 1
-    
-#     sift = templinelist[headlist.index(vcfHeaders.kSiftPred)] if vcfHeaders.kSiftPred in headlist else ''
-#     pp2 = templinelist[headlist.index(vcfHeaders.kPolyphen2Pred)] if vcfHeaders.kPolyphen2Pred in headlist else ''
-#     lrt = templinelist[headlist.index(vcfHeaders.kLrtPred)] if vcfHeaders.kLrtPred in headlist else ''
-#     mt = templinelist[headlist.index(vcfHeaders.kMutationTasterPred)] if vcfHeaders.kMutationTasterPred in headlist else ''
-#     pp2_2 = templinelist[headlist.index(vcfHeaders.kPolyphen2Pred_2)] if vcfHeaders.kPolyphen2Pred_2 in headlist else ''
-#     
-#     # check for header mismatches
-#     if(vcfHeaders.kSiftPred not in headlist):
-#         print 'warning: ' + vcfHeaders.kSiftPred + ' not found in annotated header'
-#     if(vcfHeaders.kPolyphen2Pred not in headlist):
-#         print 'warning: ' + vcfHeaders.kPolyphen2Pred + ' not found in annotated header'
-#     if(vcfHeaders.kLrtPred not in headlist):
-#         print 'warning: ' + vcfHeaders.kLrtPred + ' not found in annotated header'
-#     if(vcfHeaders.kMutationTasterPred not in headlist):
-#         print 'warning: ' + vcfHeaders.kMutationTasterPred + ' not found in annotated header'
-#     if(vcfHeaders.kPolyphen2Pred_2 not in headlist):
-#         print 'warning: ' + vcfHeaders.kPolyphen2Pred_2 + ' not found in annotated header (though currently unused)'
-#     
-#     if sift == "D":
-#         pathogenic+=1
-#         #debug
-#         print 'SIFT=D'
-#     if (pp2 == "P") or (pp2 == "D"):
-#         pathogenic+=1
-#         #debug 
-#         print 'pp=P or D'
-#     if lrt == "D":
-#         pathogenic+=1
-#         # debug
-#         print 'lrt=D'
-#     if (mt == "A") or (mt == "D"):
-#         pathogenic+=1
-#         #debug
-#         print 'mt=A or D'
     if pathogenic >= int(nalg):
         #debug
 #         print 'is pathogenic'
@@ -536,6 +448,7 @@ def is_central_mod(templine, headlist, rank_thresh, phenotype):
         else:
             return 0
 
+
 # CURRENTLY UNUSED
 #finds variants in topologically central location in network according to user defined criteria
 def is_central_all(templine, headlist, rank_thresh, phenotype):
@@ -564,6 +477,7 @@ def is_central_all(templine, headlist, rank_thresh, phenotype):
                 return 0
         else:
             return 0
+
 
 # CURRENTLY UNUSED
 #finds variants in expressed regions according to user-defined criteria
@@ -594,6 +508,7 @@ def is_expressed(templine, headlist, rank_thresh, phenotype):
         else:
             return 0
 
+
 # CURRENTLY UNUSED
 #finds variants in differentially expressed regions according to user-defined criteria
 def is_diffexpr(templine, headlist, phenotype, q_thresh):
@@ -615,6 +530,7 @@ def is_diffexpr(templine, headlist, phenotype, q_thresh):
         else:
             return 0
 
+
 #gives max allele frequency in a list of allele frequency annotations
 def max_af(templine, headlist, bp_indexlist):
     templinelist = templine.split("\t")
@@ -625,6 +541,7 @@ def max_af(templine, headlist, bp_indexlist):
                 af = float(templinelist[i])
     return af
                  
+
 #parses info field of vcf file and returns tuple float for mq and mq0
 def parse_info(infofield):
     infolist = infofield.split(";")
@@ -634,6 +551,7 @@ def parse_info(infofield):
         elif "MQ0=" in element:
             mapq0=float(element.replace("MQ0=", ""))
     return mapq, mapq0
+
 
 #merges vcf files split by chromosome, writing head from chromosome 1 to X only for now
 def mergeFiles(fin_stem, f_out):

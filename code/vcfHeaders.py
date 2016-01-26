@@ -45,7 +45,7 @@ kVCFColTypes = {
                 # there shouldn't be a definition for the INFO col bc we're only importing specific tags
                 }
 
-# for rare variant identification - DEPRECATED and probably UNUSED (should be specified in modules YAML instead)
+# for rare variant identification - DEPRECATED and probably UNUSED (now specified in modules YAML instead)
 kHapMap2And3_CEU = 'hg19_hapmap2and3_CEU_info'
 k1000g_all = 'hg19_popfreq_all_20150413_1000g_all'
 k1000g_eur = 'hg19_popfreq_all_20150413_1000g_eur'
@@ -59,7 +59,7 @@ k_hapmap2and3_YRI = 'hg19_hapmap2and3_YRI_info'
 k_esp6500si_AA = 'hg19_popfreq_all_20150413_esp6500siv2_aa'
 k1000g_afr = 'hg19_popfreq_all_20150413_1000g_afr'
 
-# for tiering - DEPRECATED and probably UNUSED (should be specified in modules YAML instead)
+# for tiering - DEPRECATED and probably UNUSED (now specified in modules YAML instead)
 kClinvar = 'clinvar_info'
 kEncode_dnaseCluster = 'hg19_wgEncodeRegDnaseClustered_r'
 kPhyloP_pred = "dbnsfp_PhyloP_Pred" # warning currently not in annotated output file

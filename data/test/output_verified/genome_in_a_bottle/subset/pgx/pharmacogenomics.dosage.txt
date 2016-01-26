@@ -1,0 +1,1 @@
+rsid	gene	genotype	annotation	level of evidence	annotation type	PMIDs	drugs	disease	ethnicity

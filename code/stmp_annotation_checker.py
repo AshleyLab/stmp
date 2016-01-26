@@ -49,6 +49,14 @@ def check_file_numlines(files, lineCount=-1, ignore_vcf_info_lines=True, raise_e
         #debug
 #         print 'cmd output as array: ' + str(outarr)
         numLines = int(outarr[-1])
+        if(numLines == 0):
+            errorText = str(numLines) + ' lines in '+ str(bedPaths[idx]) + '. Please check that this file was annotated correctly.' + '\ncmd output as array: ' + str(outarr)
+            if(raise_exception):
+                raise ValueError(errorText)
+            else:
+                print 'Warning: ' + errorText
+                retVal = False
+                
         if(lineCount == -1):
             lineCount = numLines
             lineCountBedFile = bedPaths[idx]
