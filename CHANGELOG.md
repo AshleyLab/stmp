@@ -1,6 +1,9 @@
 # Release History
 
-## Version 1.3 (January 8, 2015)
+## Version 1.3.1 (February 1, 2015)
+- Updated source for Exac Tolerance dataset (original link is now broken).
+
+## Version 1.3 (January 25, 2015)
 ## Highlights
 - STMP can now be run in a "test mode" to ensure it is set up correctly. Simply run `python stmp.py --test` to activate this mode. Output will be stored in `(stmp_dir)/data/test/output_unverified` by default, or can be stored in a different directory with the `--output_dir` parameter. If desired, you can compare it against our output (`output_verified`) to see if it is the same (e.g. `diff -rq (stmp_dir)/data/test/output_unverified/ (stmp_dir)/data/test/output_verified/`).
 - STMP now includes SnpEFF annotations as part of the joined annotated output file (previously they were only output as a separate file). Note that the SnpEFF annotated column contains the entire VCF INFO column with added SnpEFF annotation tags.

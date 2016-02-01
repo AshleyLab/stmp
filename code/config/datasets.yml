@@ -138,13 +138,13 @@ exac:
 exac_tol:
   Import_If_Missing: True
   License:
-  Source: ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3/functional_gene_constraint/forweb_cleaned_exac_r03_march16_z_data_pLI.txt
+  Source: ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3/functional_gene_constraint/fordist_cleaned_exac_r03_march16_z_pli_rec_null_data.txt
   Annotation: exac_tolerance
   Category: region
   StartingLine: 1 # first line (0) is header without #
   Class: tolerance
   Citation:
-  Description: 'ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3/functional_gene_constraint/README_forweb_cleaned_exac_r03_2015_03_16_z_data_pLI_2015_10_11.txt'
+  Description: 'ftp://ftp.broadinstitute.org/pub/ExAC_release/release0.3/functional_gene_constraint/README_fordist_cleaned_exac_r03_z_data_pLI_2016_01_13.txt'
   ColumnHeaders: [transcript, gene, chr, n_exons, start, end, bp, '', '', '', '', '', '', '', '', '', syn_z, mis_z, lof_z, pLI]
   DataType: ['varchar(2)', 'int', 'varchar(25)', 'int', 'int', 'int', 'int', '', '', '', '', '', '', '', '', '', 'float', 'float', 'float', 'float']
 
