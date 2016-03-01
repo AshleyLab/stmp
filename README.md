@@ -61,7 +61,8 @@ Other versions of the above tools may also work but are not currently supported.
     - E.g. snpeff would be linked/copied as `third_party/snpeff/snpEff` (this folder should include files such as `snpEff.jar`)
 - Ensure Pyyaml is installed (via pip install, etc.)
 - Ensure the appropriate versions of bedtools and bcftools (above) are installed and in the user/system PATH. These can be either downloaded directly from the corresponding websites or installed via a program such as bcbio.
-- Run the appropriate ANNOVAR command to download the datasets specified in Appendix 1 (e.g. `annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/` from within `third_party/annovar` to download the refGene dataset). *NOTE: `hg19_wgEncodeGencodeBasicV19Mrna.fa` is no longer provided by Annovar/UCSC and must instead be downloaded manually from `https://www.dropbox.com/s/icw1loscvpm6v84/hg19_wgEncodeGencodeBasicV19Mrna.fa?dl=0` and copied to the annovar/humandb folder. Without this file, `Annovar_ExonicFunc_wgEncodeGencodeBasicV19` and `Annovar_AAChange_wgEncodeGencodeBasicV19` will not show up correctly in the annotated output.*
+- Run the appropriate ANNOVAR command to download the datasets specified in Appendix 1 (e.g. `annotate_variation.pl -buildver hg19 -downdb -webfrom annovar refGene humandb/` from within `third_party/annovar` to download the refGene dataset). 
+    - **NOTE: `hg19_wgEncodeGencodeBasicV19Mrna.fa` is no longer provided by Annovar/UCSC and must instead be downloaded manually from `https://www.dropbox.com/s/icw1loscvpm6v84/hg19_wgEncodeGencodeBasicV19Mrna.fa?dl=0` and copied to the annovar/humandb folder. Without this file, `Annovar_ExonicFunc_wgEncodeGencodeBasicV19` and `Annovar_AAChange_wgEncodeGencodeBasicV19` will not show up correctly in the annotated output.**
 
 - If you would like to run trio tools: 
    - Copy `code/annovar/summarize_annovarRDv2.pl` to `third_party/annovar`
@@ -137,7 +138,8 @@ Dewey FE, Grove ME, Priest JR, Waggott D, Batra P, Miller CL, et al. (2015) "Seq
 
 
 ### Appendix 1: List of ANNOVAR datasets to download for functional annotation
-*NOTE: `hg19_wgEncodeGencodeBasicV19Mrna.fa` is no longer provided by Annovar/UCSC and must instead be downloaded manually from `https://www.dropbox.com/s/icw1loscvpm6v84/hg19_wgEncodeGencodeBasicV19Mrna.fa?dl=0` and copied to the annovar/humandb folder. Without this file, `Annovar_ExonicFunc_wgEncodeGencodeBasicV19` and `Annovar_AAChange_wgEncodeGencodeBasicV19` will not show up correctly in the annotated output.*
+**NOTE: `hg19_wgEncodeGencodeBasicV19Mrna.fa` is no longer provided by Annovar/UCSC and must instead be downloaded manually from `https://www.dropbox.com/s/icw1loscvpm6v84/hg19_wgEncodeGencodeBasicV19Mrna.fa?dl=0` and copied to the annovar/humandb folder. Without this file, `Annovar_ExonicFunc_wgEncodeGencodeBasicV19` and `Annovar_AAChange_wgEncodeGencodeBasicV19` will not show up correctly in the annotated output.**
+
 	GRCh37_MT_ensGeneMrna.fa
 	GRCh37_MT_ensGene.txt
 	hg19_example_db_generic.txt
@@ -149,7 +151,7 @@ Dewey FE, Grove ME, Priest JR, Waggott D, Batra P, Miller CL, et al. (2015) "Seq
 	hg19_MT_ensGene.txt
 	hg19_refGeneMrna.fa
 	hg19_refGene.txt
-	hg19_wgEncodeGencodeBasicV19Mrna.fa - *see note above*
+	hg19_wgEncodeGencodeBasicV19Mrna.fa - **see note above**
 	hg19_wgEncodeGencodeBasicV19.txt
 
 
